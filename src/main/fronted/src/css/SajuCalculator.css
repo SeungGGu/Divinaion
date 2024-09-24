@@ -1,0 +1,56 @@
+.saju-container {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.saju-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.gender-options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+button {
+    padding: 0.5rem 2rem;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.saju-result {
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.saju-table {
+    margin: 0 auto;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.saju-table th,
+.saju-table td {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.saju-table th {
+    background-color: #f8f8f8;
+}

@@ -35,3 +35,13 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# Maven/Gradle 관련
+target/
+*.class
+
+# Node.js 관련
+node_modules/
+
+# 기타
+*.log

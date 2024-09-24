@@ -76,6 +76,7 @@ public class SajuService {
 
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("API 호출 실패: " + e.getMessage());
             return "API 호출 실패: " + e.getMessage();
         }
     }

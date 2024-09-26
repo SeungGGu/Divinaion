@@ -1,12 +1,11 @@
 package com.km.divination.controller;
 
-import com.km.divination.dto.UserDTO;
 import com.km.divination.service.SajuService;
+import com.km.divination.util.SajuCalculator.SajuResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/saju")
@@ -16,8 +15,11 @@ public class SajuController {
     private SajuService sajuService;
 
     @PostMapping("/calculate")
-    public String calculateSaju(@RequestBody UserDTO userDTO) {
-        // 생년월일과 출생 시간을 이용하여 사주를 계산
-        return sajuService.calculateSaju(userDTO.getBirthDate(), userDTO.getBirthTime());
+    public SajuResult calculateSaju(@RequestBody Map<String, String> request) {
+        String birthDate = request.get("birthDate");
+        String birthTime = request.get("birthTime");
+
+        // SajuResult 객체 반환
+        return sajuService.calculateSaju(birthDate, birthTime);
     }
 }

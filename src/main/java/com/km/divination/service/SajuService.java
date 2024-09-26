@@ -1,6 +1,7 @@
 package com.km.divination.service;
 
 import com.km.divination.util.SajuCalculator;
+import com.km.divination.util.SajuCalculator.SajuResult;
 import com.km.divination.util.TimeAdjuster;
 import org.springframework.stereotype.Service;
 
@@ -57,7 +58,7 @@ public class SajuService {
     }
 
     // 사주 계산 로직
-    public String calculateSaju(String birthDate, String birthTime) {
+    public SajuResult calculateSaju(String birthDate, String birthTime) {
         try {
             // 출생 시각을 LocalDateTime으로 변환
             LocalDate birthDateParsed = LocalDate.parse(birthDate);
@@ -72,12 +73,13 @@ public class SajuService {
             birthDateTime = TimeAdjuster.adjustTime(birthDateTime);
 
             // SajuCalculator를 사용하여 사주 계산 (절기 데이터 전달)
-            return SajuCalculator.calculateSaju(birthDateTime, solarTerms);
+            SajuResult sajuResult = SajuCalculator.calculateSaju(birthDateTime, solarTerms);
+
+            return sajuResult;  // JSON 형태로 응답
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("API 호출 실패: " + e.getMessage());
-            return "API 호출 실패: " + e.getMessage();
+            return null;
         }
     }
 }

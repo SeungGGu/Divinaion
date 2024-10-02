@@ -195,17 +195,47 @@ public class SajuCalculator {
         return twelveJi[birthDateTime.getDayOfYear() % 12];
     }
 
-    // 시주 계산 (생시 기반의 천간, 지지)
     private static String getSiFromTime(LocalDateTime dateTime) {
         int hour = dateTime.getHour();
-        int index = hour / 2; // 시각을 2시간 단위로 나눈 후 지지 계산
-        String ji = twelveJi[index % 12];
+        int minute = dateTime.getMinute();
 
-        // 시지에 맞춰 시간을 계산 (시간에 따른 천간은 10개 중 일부만 사용됨)
+        // 야자시와 조자시 구분
+        if (hour == 23 || (hour == 0 && minute < 30)) {
+            // 야자시 (23:00 ~ 24:00): 해당 날짜의 시주를 계산
+            return calculateTimeGanJi(dateTime, false);
+        } else if (hour == 0 && minute >= 30 || hour == 1) {
+            // 조자시 (00:30 ~ 01:30): 다음 날로 시주를 계산
+            LocalDateTime nextDay = dateTime.plusDays(1);
+            return calculateTimeGanJi(nextDay, true);
+        } else {
+            // 나머지 시간대: 기존 방식으로 계산
+            return calculateTimeGanJi(dateTime, false);
+        }
+    }
+
+    // 시주의 천간과 지지 계산 함수
+    private static String calculateTimeGanJi(LocalDateTime dateTime, boolean isNextDay) {
+        // 시각에 따른 지지 계산
+        int hour = dateTime.getHour();
+        String ji;
+        if (hour >= 23 || hour < 1) ji = "자";
+        else if (hour >= 1 && hour < 3) ji = "축";
+        else if (hour >= 3 && hour < 5) ji = "인";
+        else if (hour >= 5 && hour < 7) ji = "묘";
+        else if (hour >= 7 && hour < 9) ji = "진";
+        else if (hour >= 9 && hour < 11) ji = "사";
+        else if (hour >= 11 && hour < 13) ji = "오";
+        else if (hour >= 13 && hour < 15) ji = "미";
+        else if (hour >= 15 && hour < 17) ji = "신";
+        else if (hour >= 17 && hour < 19) ji = "유";
+        else if (hour >= 19 && hour < 21) ji = "술";
+        else ji = "해";
+
+        // 일간에 따른 시간(천간) 계산
         String dayGan = getDayGan(dateTime);
         int dayGanIndex = getIndexFromTenKan(dayGan);
         String[] timeGanList = {"갑", "병", "무", "경", "임", "갑", "병", "무", "경", "임"};
-        String gan = timeGanList[(hour / 2 + dayGanIndex) % 10]; // 천간의 순환에 맞춰 계산
+        String gan = timeGanList[(hour / 2 + dayGanIndex) % 10];
 
         return gan + "," + ji;
     }

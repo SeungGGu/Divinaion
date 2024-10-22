@@ -1,12 +1,15 @@
 package com.km.divination.service;
 
+import com.km.divination.util.DaylightSavingTimeUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpMethod;
-import com.km.divination.util.SajuCalculator.SajuResult;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class SajuService {
@@ -25,16 +28,19 @@ public class SajuService {
      */
     public String calculateSaju(String birthDate, String birthTime, String birthdayType, String gender) {
         try {
-            // 생년월일 형식 변환 (YYYYMMDD)
-            String formattedBirthDate = birthDate.replace("-", "");
+            // 입력한 출생 시간과 날짜를 합쳐서 서머타임 체크
+            String birthDateTime = birthDate + " " + birthTime;
+            LocalDateTime adjustedDateTime = DaylightSavingTimeUtil.adjustForDaylightSavingTime(birthDateTime);
 
-            // 시간 형식 변환
-            String formattedTime = convertTimeToEnum(birthTime);
+            // 조정된 시간으로 다시 birthDate와 birthTime 분리
+            String formattedBirthDate = adjustedDateTime.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+            String formattedTime = convertTimeToEnum(adjustedDateTime.format(DateTimeFormatter.ofPattern("HH:mm")));
+
 
             // JSON 요청 데이터 생성
             String requestJson = String.format(
-                "{\"birthday\":\"%s\",\"time\":\"%s\",\"birthdayType\":\"%s\",\"gender\":\"%s\"}",
-                formattedBirthDate, formattedTime, birthdayType, gender
+                    "{\"birthday\":\"%s\",\"time\":\"%s\",\"birthdayType\":\"%s\",\"gender\":\"%s\"}",
+                    formattedBirthDate, formattedTime, birthdayType, gender
             );
 
             // HTTP 요청 설정
@@ -45,7 +51,7 @@ public class SajuService {
             // API 요청
             RestTemplate restTemplate = new RestTemplate();
             ResponseEntity<String> response = restTemplate.exchange(
-                UNSEBAKSA_API_URL, HttpMethod.POST, requestEntity, String.class
+                    UNSEBAKSA_API_URL, HttpMethod.POST, requestEntity, String.class
             );
 
             // API 응답 전체 출력

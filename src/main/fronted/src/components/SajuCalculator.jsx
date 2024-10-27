@@ -4,11 +4,11 @@ import '../css/SajuCalculator.css';
 
 //오행 색상 매핑
 const fiveElementColorMap = {
-    wood: "green",  // 목(木)
-    fire: "red",    // 화(火)
-    earth: "yellow", // 토(土)
-    metal: "silver", // 금(金)
-    water: "blue"   // 수(水)
+    wood: '#89b798',  // green for 목(木)
+    fire: '#e57373',   // red for 화(火)
+    earth: '#f0d58c',  // yellow for 토(土)
+    metal: '#c0c0c0',  // silver for 금(金)
+    water: 'black'   // blue for 수(水)
 };
 
 //한자 천간 및 지지에 따른 오행 매핑
@@ -91,6 +91,28 @@ const SajuCalculator = () => {
         }
     };
 
+    //숫자 00000000 0000/00/00 변환 함수
+    const handleDateChange = (e) => {
+        let input = e.target.value.replace(/[^0-9]/g, ''); // 숫자 이외의 값 제거
+        if (input.length > 8) input = input.slice(0, 8); // 최대 8자리로 제한
+
+        if (input.length === 8) {
+            const year = input.slice(0, 4);
+            const month = input.slice(4, 6);
+            const day = input.slice(6, 8);
+
+            // 날짜 유효성 검사 (YYYY/MM/DD 형식)
+            if (parseInt(month, 10) < 1 || parseInt(month, 10) > 12 || parseInt(day, 10) < 1 || parseInt(day, 10) > 31) {
+                alert("날짜 형식이 잘못되었습니다. 올바른 생년월일을 yyyy/dd/mm 형식으로 입력해 주세요.");
+                setBirthDate("");
+            } else {
+                setBirthDate(`${year}/${month}/${day}`);
+            }
+        } else {
+            setBirthDate(input); // 8자리가 아닐 때는 그대로 입력된 값을 유지
+        }
+    };
+
     // 한자 -> 한글 변환 함수
     const convertToKorean = (hanja) => {
         return hanjaToKoreanMap[hanja] || hanja; // 매핑된 한글 반환, 없으면 그대로 한자 반환
@@ -104,7 +126,7 @@ const SajuCalculator = () => {
 
 // 배경색에 따라 텍스트 색상을 동적으로 설정하는 함수
     const getTextColor = (backgroundColor) => {
-        if (backgroundColor === 'blue') {
+        if (backgroundColor === 'black') {
             return 'white';  // 배경이 파란색이면 글자색을 하얀색으로
         }
         return 'black';  // 그 외의 경우 기본 검정색 글자
@@ -153,9 +175,11 @@ const SajuCalculator = () => {
                     </select>
                     <input
                         className="input-field"
-                        type="date"
+                        type="text"
+                        placeholder="0000/00/00"
                         value={birthDate}
-                        onChange={(e) => setBirthDate(e.target.value)}
+                        onChange={handleDateChange}
+                        maxLength={8}
                         required
                     />
                     <input

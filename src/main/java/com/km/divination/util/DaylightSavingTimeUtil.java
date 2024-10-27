@@ -12,7 +12,7 @@ public class DaylightSavingTimeUtil {
      * @return LocalDateTime: 서머타임 또는 30분 빠른 시간 조정된 시간 반환, 아니면 그대로 반환
      */
     public static LocalDateTime adjustForDaylightSavingTime(String birthDateTime) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
         LocalDateTime dateTime = LocalDateTime.parse(birthDateTime, formatter);
 
         // 30분 느림 적용 확인

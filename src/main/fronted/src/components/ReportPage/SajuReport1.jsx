@@ -51,69 +51,69 @@ const SajuReport1 = () => {
     const { name, result } = sajuData;
 
     return (
-        <div className="report-page-container">
+        <div className="saju-report1-container">
             <h1>1. {name}님의 출생 정보로 보는 성격과 운명 분석</h1>
             <p>출생 시기와 사주 팔자를 통해 삶의 흐름을 알아보세요</p>
 
-            <div className="saju-result">
-                <table className="saju-table">
+            <div className="saju-report1-result">
+                <table className="saju-report1-table">
                     <thead>
-                        <tr>
-                            <th></th>
-                            <th>생시</th>
-                            <th>생일</th>
-                            <th>생월</th>
-                            <th>생년</th>
-                        </tr>
+                    <tr>
+                        <th></th>
+                        <th>생시</th>
+                        <th>생일</th>
+                        <th>생월</th>
+                        <th>생년</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>천간 (한글)</th>
-                            <td>{convertToKorean(result.timeSky)}</td>
-                            <td>{convertToKorean(result.daySky)}</td>
-                            <td>{convertToKorean(result.monthSky)}</td>
-                            <td>{convertToKorean(result.yearSky)}</td>
-                        </tr>
-                        <tr>
-                            <th>천간 (한자)</th>
-                            <td className="saju-cell" style={{ backgroundColor: getElementColor(result.timeSky), color: getTextColor(getElementColor(result.timeSky)) }}>{result.timeSky}</td>
-                            <td className="saju-cell" style={{ backgroundColor: getElementColor(result.daySky), color: getTextColor(getElementColor(result.daySky)) }}>{result.daySky}</td>
-                            <td className="saju-cell" style={{ backgroundColor: getElementColor(result.monthSky), color: getTextColor(getElementColor(result.monthSky)) }}>{result.monthSky}</td>
-                            <td className="saju-cell" style={{ backgroundColor: getElementColor(result.yearSky), color: getTextColor(getElementColor(result.yearSky)) }}>{result.yearSky}</td>
-                        </tr>
-                        <tr>
-                            <th>관계</th>
-                            <td>{result.manseTimeSkyRelation}</td>
-                            <td>본원</td>
-                            <td>{result.manseMonthSkyRelation}</td>
-                            <td>{result.manseYearSkyRelation}</td>
-                        </tr>
-                        <tr>
-                            <th>지지 (한글)</th>
-                            <td>{convertToKorean(result.timeGround)}</td>
-                            <td>{convertToKorean(result.dayGround)}</td>
-                            <td>{convertToKorean(result.monthGround)}</td>
-                            <td>{convertToKorean(result.yearGround)}</td>
-                        </tr>
-                        <tr>
-                            <th>지지 (한자)</th>
-                            <td className="saju-cell" style={{ backgroundColor: getElementColor(result.timeGround), color: getTextColor(getElementColor(result.timeGround)) }}>{result.timeGround}</td>
-                            <td className="saju-cell" style={{ backgroundColor: getElementColor(result.dayGround), color: getTextColor(getElementColor(result.dayGround)) }}>{result.dayGround}</td>
-                            <td className="saju-cell" style={{ backgroundColor: getElementColor(result.monthGround), color: getTextColor(getElementColor(result.monthGround)) }}>{result.monthGround}</td>
-                            <td className="saju-cell" style={{ backgroundColor: getElementColor(result.yearGround), color: getTextColor(getElementColor(result.yearGround)) }}>{result.yearGround}</td>
-                        </tr>
-                        <tr>
-                            <th>관계</th>
-                            <td>{result.manseTimeGroundRelation}</td>
-                            <td>{result.manseDayGroundRelation}</td>
-                            <td>{result.manseMonthGroundRelation}</td>
-                            <td>{result.manseYearGroundRelation}</td>
-                        </tr>
+                    <tr>
+                        <th>천간 (한글)</th>
+                        <td>{convertToKorean(result.timeSky)}</td>
+                        <td>{convertToKorean(result.daySky)}</td>
+                        <td>{convertToKorean(result.monthSky)}</td>
+                        <td>{convertToKorean(result.yearSky)}</td>
+                    </tr>
+                    <tr>
+                        <th>천간 (한자)</th>
+                        <td className="saju-report1-cell" style={{ backgroundColor: getElementColor(result.timeSky), color: getTextColor(getElementColor(result.timeSky)) }}>{result.timeSky}</td>
+                        <td className="saju-report1-cell" style={{ backgroundColor: getElementColor(result.daySky), color: getTextColor(getElementColor(result.daySky)) }}>{result.daySky}</td>
+                        <td className="saju-report1-cell" style={{ backgroundColor: getElementColor(result.monthSky), color: getTextColor(getElementColor(result.monthSky)) }}>{result.monthSky}</td>
+                        <td className="saju-report1-cell" style={{ backgroundColor: getElementColor(result.yearSky), color: getTextColor(getElementColor(result.yearSky)) }}>{result.yearSky}</td>
+                    </tr>
+                    <tr>
+                        <th>관계</th>
+                        <td>{result.manseTimeSkyRelation}</td>
+                        <td>본원</td>
+                        <td>{result.manseMonthSkyRelation}</td>
+                        <td>{result.manseYearSkyRelation}</td>
+                    </tr>
+                    <tr>
+                        <th>지지 (한글)</th>
+                        <td>{convertToKorean(result.timeGround)}</td>
+                        <td>{convertToKorean(result.dayGround)}</td>
+                        <td>{convertToKorean(result.monthGround)}</td>
+                        <td>{convertToKorean(result.yearGround)}</td>
+                    </tr>
+                    <tr>
+                        <th>지지 (한자)</th>
+                        <td className="saju-report1-cell" style={{ backgroundColor: getElementColor(result.timeGround), color: getTextColor(getElementColor(result.timeGround)) }}>{result.timeGround}</td>
+                        <td className="saju-report1-cell" style={{ backgroundColor: getElementColor(result.dayGround), color: getTextColor(getElementColor(result.dayGround)) }}>{result.dayGround}</td>
+                        <td className="saju-report1-cell" style={{ backgroundColor: getElementColor(result.monthGround), color: getTextColor(getElementColor(result.monthGround)) }}>{result.monthGround}</td>
+                        <td className="saju-report1-cell" style={{ backgroundColor: getElementColor(result.yearGround), color: getTextColor(getElementColor(result.yearGround)) }}>{result.yearGround}</td>
+                    </tr>
+                    <tr>
+                        <th>관계</th>
+                        <td>{result.manseTimeGroundRelation}</td>
+                        <td>{result.manseDayGroundRelation}</td>
+                        <td>{result.manseMonthGroundRelation}</td>
+                        <td>{result.manseYearGroundRelation}</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
 
-            <p className="footer-text">출생일과 시간으로 {name}님의 성격과 운명을 깊이 있게 살펴보세요</p>
+            <p className="saju-report1-footer">출생일과 시간으로 {name}님의 성격과 운명을 깊이 있게 살펴보세요</p>
         </div>
     );
 };

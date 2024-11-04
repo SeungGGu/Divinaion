@@ -36,9 +36,9 @@ out/
 ### VS Code ###
 .vscode/
 
-# Maven/Gradle 관련
-target/
-*.class
+# Gradle 관련
+.gradle/
+build/
 
 # Node.js 관련
 node_modules/

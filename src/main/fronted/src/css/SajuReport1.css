@@ -1,6 +1,5 @@
-/* SajuReport1.css */
-
-.report-page-container {
+/* SajuReport1 전체 컨테이너 */
+.saju-report1-container {
     margin: 0 auto;
     width: 80%;
     max-width: 900px;
@@ -12,46 +11,42 @@
     color: #e0e0e0;
 }
 
-.report-page-container h1 {
+.saju-report1-container h1 {
     text-align: center;
     color: #f0f0f0;
     font-size: 2rem;
     margin-bottom: 1rem;
 }
 
-.report-page-container p {
+.saju-report1-container p {
     text-align: center;
     color: #b0b0b0;
     font-size: 1rem;
     margin-bottom: 2rem;
 }
 
-.saju-result {
-    margin-top: 2rem;
-}
-
-.saju-table {
+.saju-report1-table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 15px;
     font-size: 1.3rem;
 }
 
-.saju-table th,
-.saju-table td {
+.saju-report1-table th,
+.saju-report1-table td {
     padding: 1.2rem;
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.saju-table th {
+.saju-report1-table th {
     background-color: #3d3d3d;
     font-weight: bold;
     color: #cccccc;
 }
 
-.saju-cell {
+.saju-report1-cell {
     font-size: 1.5rem;
     font-weight: bold;
     text-transform: uppercase;
@@ -60,15 +55,15 @@
     color: #f0f0f0;
 }
 
-.saju-cell[data-bg="dark"] {
+.saju-report1-cell[data-bg="dark"] {
     color: #ffffff;
 }
 
-.saju-cell[data-bg="light"] {
+.saju-report1-cell[data-bg="light"] {
     color: #000000;
 }
 
-.footer-text {
+.saju-report1-footer {
     margin-top: 1.5rem;
     text-align: center;
     color: #999;

@@ -49,7 +49,7 @@ const SajuCalculator = () => {
     const [birthTime, setBirthTime] = useState('');
     const [birthdayType, setBirthdayType] = useState('SOLAR'); // 양력/음력 여부
     const [gender, setGender] = useState('MALE'); // 성별
-    const [result, setResult] = useState(null);
+    const [result] = useState(null);
     const {setSajuData} = useSaju();
     const navigate = useNavigate();
 

@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import {useSaju} from '../context/SajuContext';
 import '../css/SajuCalculator.css';
+import {useNavigate} from "react-router-dom";
 
 //오행 색상 매핑
 const fiveElementColorMap = {
@@ -42,11 +44,14 @@ const hanjaToKoreanMap = {
 };
 
 const SajuCalculator = () => {
+    const [name, setName] = useState(''); // 이름 상태 추가
     const [birthDate, setBirthDate] = useState('');
     const [birthTime, setBirthTime] = useState('');
     const [birthdayType, setBirthdayType] = useState('SOLAR'); // 양력/음력 여부
     const [gender, setGender] = useState('MALE'); // 성별
     const [result, setResult] = useState(null);
+    const {setSajuData} = useSaju();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -73,7 +78,19 @@ const SajuCalculator = () => {
                 birthdayType,
                 gender
             });
-            setResult(response.data.data); // result 객체의 'data' 필드를 사용
+            const calculationResult = response.data.data;
+            // setResult(calculationResult);
+            // 사주 정보를 Context에 저장
+            setSajuData({
+                name,
+                birthDate,
+                birthTime,
+                birthdayType,
+                gender,
+                result: calculationResult,
+            });
+            navigate('/Intro1');
+
         } catch (error) {
             console.error('Error calculating saju:', error);
         }
@@ -143,6 +160,8 @@ const SajuCalculator = () => {
                     type="text"
                     placeholder="최대 12글자 이내로 입력하세요"
                     maxLength="12"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     required
                 />
 

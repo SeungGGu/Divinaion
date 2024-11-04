@@ -1,0 +1,81 @@
+/* 전체 컨테이너 */
+.report-page-container {
+    background-color: #333333;
+    color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 제목 스타일 */
+.report-page-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.report-page-container p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* 이름 박스 컨테이너 */
+.name-box-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* 개별 이름 박스 */
+.name-box {
+    background-color: #ffffff;
+    color: #333333;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #cccccc;
+}
+
+/* 안내 텍스트 */
+.info-text {
+    color: #007bff;
+    font-size: 1rem;
+    margin-top: 20px;
+}
+
+/* 이미지 컨테이너 */
+.image-container {
+    margin-top: 20px;
+}
+
+.image-container img {
+    width: 200px; /* 이미지 크기 조정 */
+    border-radius: 10px;
+    border: 2px solid #cccccc;
+}
+
+/* 다음 페이지 버튼 */
+.next-button {
+    background-color: #444;
+    color: #f0f0f0;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+    background-color: #666;
+}

@@ -1,0 +1,76 @@
+/* 전체 컨테이너 */
+.analysis-page-container {
+    background-color: #1a1a1a; /* 어두운 배경색 */
+    color: #e0e0e0;
+    padding: 20px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 제목 스타일 */
+.analysis-page-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: #f0f0f0; /* 밝은 텍스트 색상 */
+}
+
+/* 카테고리 컨테이너 */
+.analysis-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80%;
+}
+
+/* 각 카테고리 스타일 */
+.category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    color: #f0f0f0; /* 기본 텍스트 색상 */
+}
+
+.category h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.category p {
+    margin: 5px 0 0 0;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* 각 카테고리 색상 */
+.green { background-color: #446b54; } /* 어두운 녹색 */
+.red { background-color: #823d3d; } /* 어두운 빨간색 */
+.orange { background-color: #7a5e2f; color: #f0f0f0; } /* 어두운 주황색 */
+.white { background-color: #333333; color: #e0e0e0; } /* 어두운 회색 */
+.black { background-color: #1a1a1a; color: #e0e0e0; } /* 검은색 */
+.yellow { background-color: #7a6a3d; color: #f0f0f0; } /* 어두운 노란색 */
+
+/* 다음 페이지 버튼 */
+.next-button {
+    background-color: #444;
+    color: #f0f0f0;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+    background-color: #666;
+}

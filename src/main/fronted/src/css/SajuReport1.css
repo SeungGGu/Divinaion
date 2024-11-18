@@ -1,72 +1,121 @@
-/* SajuReport1 전체 컨테이너 */
+.saju-report1-wrapper {
+    background-color: #2b2b2b;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
 .saju-report1-container {
-    margin: 0 auto;
-    width: 80%;
-    max-width: 900px;
-    background-color: #2c2c2c;
-    padding: 30px;
+    background-color: #3b3b3b;
+    color: #f0f0f0;
     border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    font-family: 'Arial', sans-serif;
-    color: #e0e0e0;
-}
-
-.saju-report1-container h1 {
-    text-align: center;
-    color: #f0f0f0;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.saju-report1-container p {
-    text-align: center;
-    color: #b0b0b0;
-    font-size: 1rem;
-    margin-bottom: 2rem;
-}
-
-.saju-report1-table {
+    padding: 30px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    max-width: 1200px;
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 15px;
-    font-size: 1.3rem;
 }
 
-.saju-report1-table th,
-.saju-report1-table td {
-    padding: 1.2rem;
+h1 {
+    font-size: 1.8rem;
     text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
 }
 
-.saju-report1-table th {
-    background-color: #3d3d3d;
-    font-weight: bold;
-    color: #cccccc;
-}
-
-.saju-report1-cell {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    padding: 1rem;
-    border-radius: 10px;
-    color: #f0f0f0;
-}
-
-.saju-report1-cell[data-bg="dark"] {
-    color: #ffffff;
-}
-
-.saju-report1-cell[data-bg="light"] {
-    color: #000000;
-}
-
-.saju-report1-footer {
-    margin-top: 1.5rem;
+p {
     text-align: center;
-    color: #999;
+    margin-bottom: 30px;
     font-size: 1rem;
+    color: #d1d1d1;
+}
+
+.saju-report1-tables {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.saju-table,
+.analysis-table {
+    width: 48%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.saju-table th,
+.saju-table td,
+.analysis-table th,
+.analysis-table td {
+    border: 1px solid #555;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.saju-table th {
+    background-color: #444;
+    color: #ddd;
+}
+
+.analysis-table th {
+    background-color: #222;
+    color: #f4d03f;
+    text-align: left;
+}
+
+.analysis-table td {
+    background-color: #555;
+    color: #fff;
+    text-align: left;
+}
+
+.next-button {
+    display: block;
+    margin: 30px auto 0;
+    padding: 15px 30px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+    background-color: #0056b3;
+}
+
+/* 상단 사주 테이블 */
+.top-saju-table {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    background-color: #3d3d3d;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.saju-row {
+    text-align: center;
+}
+
+.saju-cell-header {
     font-weight: bold;
+    font-size: 1rem;
+    color: #cccccc;
+    margin-bottom: 5px;
+}
+
+.saju-cell {
+    background-color: #444;
+    color: #f0f0f0;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 70px;
+    text-align: center;
 }

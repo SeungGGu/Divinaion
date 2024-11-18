@@ -1,0 +1,52 @@
+.report6-container {
+    background: linear-gradient(to bottom, #2b1055, #7597de);
+    color: white;
+    padding: 40px;
+    text-align: center;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+
+.report6-header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.report6-header p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #dcdcdc;
+}
+
+.report6-image {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.profession-image {
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.report6-footer p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.next-page-button {
+    padding: 10px 20px;
+    background-color: #f0d58c;
+    color: #000;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.next-page-button:hover {
+    background-color: #e5c07b;
+}

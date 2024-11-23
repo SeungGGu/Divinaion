@@ -1,11 +1,23 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 // Context 생성
 const SajuContext = createContext();
 
-// Context Provider 컴포넌트
+export const useSaju = () => useContext(SajuContext);
+
 export const SajuProvider = ({ children }) => {
-    const [sajuData, setSajuData] = useState(null); // 사주 데이터를 저장하는 상태
+    const [sajuData, setSajuData] = useState(() => {
+        // 로컬 스토리지에서 데이터 복구
+        const savedData = localStorage.getItem('sajuData');
+        return savedData ? JSON.parse(savedData) : null;
+    });
+
+    useEffect(() => {
+        // sajuData가 변경될 때 로컬 스토리지에 저장
+        if (sajuData) {
+            localStorage.setItem('sajuData', JSON.stringify(sajuData));
+        }
+    }, [sajuData]);
 
     return (
         <SajuContext.Provider value={{ sajuData, setSajuData }}>
@@ -13,6 +25,3 @@ export const SajuProvider = ({ children }) => {
         </SajuContext.Provider>
     );
 };
-
-// Context를 사용하기 쉽게 하기 위한 커스텀 훅
-export const useSaju = () => useContext(SajuContext);

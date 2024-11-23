@@ -1,0 +1,111 @@
+.report40-container {
+    background-color: #1e1e1e;
+    color: #f8f8f8;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+.report40-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f0c674;
+    margin-bottom: 10px;
+}
+
+.report40-subtitle {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.report40-content {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+}
+
+.analysis-table-container, .year-table-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.analysis-table, .year-table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 500px;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 12px; /* 둥근 모서리 추가 */
+    overflow: hidden;
+}
+
+.analysis-table th, .year-table th {
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #3d3d3d;
+    color: #f8f8f8;
+    text-align: center;
+    border: 1px solid #555;
+}
+
+.analysis-table td, .year-table td {
+    padding: 15px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #f8f8f8;
+    border: 1px solid #444;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 6px; /* 셀의 모서리 둥글게 */
+}
+
+.analysis-table td {
+    font-size: 1.2rem;
+}
+
+.analysis-table td, .year-table td {
+    border-radius: 6px;
+}
+
+.year-table td {
+    font-size: 1rem;
+    padding: 10px;
+}
+
+.report40-footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1rem;
+    color: #bbb;
+}
+
+.report40-next-button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    color: #000;
+    background-color: #f0c674;
+    border: none;
+    border-radius: 8px; /* 버튼 모서리 둥글게 */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.report40-next-button:hover {
+    background-color: #e5b960;
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); /* 버튼에 그림자 효과 */
+}

@@ -1,0 +1,85 @@
+.report29-container {
+    background-color: #1e1e1e;
+    color: #f8f8f8;
+    padding: 40px;
+    min-height: 100vh;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.report-title {
+    font-size: 2rem;
+    color: #f0c674;
+    margin-bottom: 10px;
+}
+
+.report-subtitle {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+    margin-bottom: 30px;
+}
+
+/* 전체 레이아웃 컨테이너 */
+.yin-yang-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px; /* 표 간격 */
+    margin-top: 20px;
+}
+
+/* 각 표 컨테이너 */
+.table-container {
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    width: 45%; /* 표 크기를 조정하여 균형 유지 */
+}
+
+/* 표 스타일 */
+.yin-yang-table,
+.yin-yang-summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.yin-yang-table th,
+.yin-yang-table td,
+.yin-yang-summary-table th,
+.yin-yang-summary-table td {
+    border: 1px solid #444;
+    padding: 10px;
+    font-size: 1.1rem;
+    color: #f8f8f8;
+}
+
+.yin-yang-table th,
+.yin-yang-summary-table th {
+    font-weight: bold;
+    background-color: #333; /* 헤더 배경색 */
+}
+
+.yin-yang-footer {
+    margin-top: 30px;
+    font-size: 1rem;
+    color: #dcdcdc;
+}
+
+.next-page-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #f0d58c;
+    color: #000;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.next-page-button:hover {
+    background-color: #e5c07b;
+}

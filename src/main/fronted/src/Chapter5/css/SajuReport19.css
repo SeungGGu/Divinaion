@@ -1,0 +1,82 @@
+.report19-container {
+    background-color: #1e1e1e;
+    color: #f8f8f8;
+    padding: 40px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+}
+
+.report-title {
+    font-size: 2rem;
+    color: #f0c674;
+    margin-bottom: 10px;
+}
+
+.report-subtitle {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+    margin-bottom: 30px;
+}
+
+.blessing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    background-color: #2a2a2a;
+    color: #f8f8f8;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.blessing-table th,
+.blessing-table td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #444;
+}
+
+.blessing-table th {
+    background-color: #444;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.blessing-table td {
+    font-size: 1rem;
+}
+
+.blessing-title {
+    font-weight: bold;
+    color: #f0c674;
+}
+
+.blessing-score {
+    color: #e5b960;
+}
+
+.blessing-message {
+    color: #dcdcdc;
+    font-style: italic;
+}
+
+.footer-section {
+    margin-top: 20px;
+}
+
+.next-page-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #000;
+    background-color: #f0c674;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.next-page-button:hover {
+    background-color: #e5b960;
+    transform: scale(1.05);
+}

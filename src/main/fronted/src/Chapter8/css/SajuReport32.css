@@ -1,0 +1,85 @@
+.report32-container {
+    background-color: #1e1e1e;
+    color: #f8f8f8;
+    padding: 40px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+}
+
+.report-title {
+    font-size: 2rem;
+    color: #f0c674;
+    margin-bottom: 20px;
+}
+
+.report-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #dcdcdc;
+}
+
+.health-summary-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.health-card {
+    width: 200px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    text-align: center;
+}
+
+.health-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+.health-image {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.health-description {
+    padding: 15px;
+    font-size: 0.9rem;
+    color: #dcdcdc;
+    line-height: 1.5;
+    text-align: left;
+    list-style: none;
+}
+
+.health-description li {
+    margin-bottom: 5px;
+}
+
+.report32-footer {
+    margin-top: 30px;
+    font-size: 1rem;
+    color: #dcdcdc;
+}
+
+.next-page-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #f0d58c;
+    color: #000;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.next-page-button:hover {
+    background-color: #e5c07b;
+}

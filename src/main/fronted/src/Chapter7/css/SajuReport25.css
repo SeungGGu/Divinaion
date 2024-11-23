@@ -1,0 +1,73 @@
+.report25-container {
+    background-color: #1e1e1e;
+    color: #f8f8f8;
+    padding: 40px;
+    text-align: center;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+
+.report-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #f0c674;
+}
+
+.report-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #dcdcdc;
+}
+
+.report-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.energy-analysis-section {
+    flex: 1;
+    text-align: left;
+}
+
+.energy-score-section {
+    flex: 1;
+    text-align: left;
+}
+
+.energy-analysis-table,
+.energy-score-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.energy-analysis-table th,
+.energy-analysis-table td,
+.energy-score-table th,
+.energy-score-table td {
+    border: 1px solid #444;
+    padding: 10px;
+    text-align: center;
+    color: #f8f8f8;
+}
+
+.footer-section {
+    margin-top: 20px;
+}
+
+.next-page-button {
+    padding: 10px 20px;
+    background-color: #f0c674;
+    color: #000;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.next-page-button:hover {
+    background-color: #e5c07b;
+}

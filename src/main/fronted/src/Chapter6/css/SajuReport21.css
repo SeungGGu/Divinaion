@@ -1,0 +1,123 @@
+/* 전체 컨테이너 */
+.report21-container {
+    background-color: #1e1e1e;
+    color: #f8f8f8;
+    padding: 40px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+}
+
+/* 제목 */
+.report-title {
+    font-size: 2rem;
+    color: #f0c674;
+    margin-bottom: 10px;
+}
+
+.report-subtitle {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+    margin-bottom: 30px;
+}
+
+/* 분석 섹션 */
+.report-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+/* 왼쪽 분석 표 */
+.blessing-analysis-section {
+    flex: 1;
+}
+
+.blessing-analysis-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    background-color: #2a2a2a;
+    border: 1px solid #555;
+}
+
+.blessing-analysis-table th,
+.blessing-analysis-table td {
+    border: 1px solid #555;
+    padding: 15px;
+    text-align: center;
+    font-size: 1rem;
+    height: 50px;
+    word-wrap: break-word;
+    vertical-align: middle;
+}
+
+/* 천간, 지지 색상 */
+.blessing-analysis-table td[colored] {
+    font-weight: bold;
+    color: #f8f8f8;
+    text-align: center;
+}
+
+/* 오른쪽 복 점수 섹션 */
+.blessing-score-section {
+    flex: 1;
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.blessing-score-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px auto;
+    background-color: #2a2a2a;
+    border: 1px solid #555;
+}
+
+.blessing-score-table th,
+.blessing-score-table td {
+    border: 1px solid #555;
+    padding: 15px;
+    text-align: center;
+    font-size: 1rem;
+    height: 50px;
+}
+
+/* 하단 메시지 */
+.footer-section {
+    margin-top: 20px;
+}
+
+.footer-message {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #dcdcdc;
+}
+
+.footer-note {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+/* 버튼 */
+.next-page-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #000;
+    background-color: #f0c674;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.next-page-button:hover {
+    background-color: #e5b960;
+    transform: scale(1.05);
+}

@@ -1,0 +1,71 @@
+/* 전체 컨테이너 */
+.report13-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #1e1e1e;
+    color: #f8f8f8;
+    min-height: 100vh;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* 상단 제목 */
+.header-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+}
+
+/* 이미지 섹션 */
+.image-section {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.main-image {
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* 하단 메시지 */
+.footer-section {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.footer-message {
+    font-size: 1rem;
+    color: #add8e6;
+}
+
+.next-page-button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    background-color: #f0d58c;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.next-page-button:hover {
+    background-color: #e5c07b;
+}

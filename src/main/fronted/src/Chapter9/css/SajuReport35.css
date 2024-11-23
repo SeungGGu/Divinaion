@@ -1,0 +1,87 @@
+/* 전체 컨테이너 */
+.report35-container {
+    background-color: #1e1e1e;
+    color: #f8f8f8;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 제목 및 부제목 스타일 */
+.report-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #f0c674;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.report-subtitle {
+    font-size: 1.3rem;
+    color: #dcdcdc;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* 신살 분석 표 컨테이너 */
+.sinsal-table {
+    width: 100%;
+    max-width: 900px;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+/* 표 스타일 */
+.sinsal-table th {
+    background-color: #a5d6a7; /* 연한 초록 */
+    color: #000;
+    font-size: 1.2rem;
+    padding: 10px;
+    text-align: center;
+}
+
+.sinsal-table td {
+    border: 1px solid #444;
+    padding: 10px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* 신살 이름 */
+.sinsal-table .sinsal-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* 신살 퍼센트 */
+.sinsal-table .sinsal-percentage {
+    font-weight: bold;
+}
+
+/* 강조 스타일 */
+.sinsal-table .highlight {
+    background-color: #f0d58c;
+    color: #000;
+}
+
+/* 하단 버튼 */
+.next-page-button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: #000;
+    background-color: #f0c674;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.next-page-button:hover {
+    background-color: #e5b960;
+    transform: scale(1.05);
+}

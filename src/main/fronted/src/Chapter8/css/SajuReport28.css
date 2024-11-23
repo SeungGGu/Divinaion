@@ -1,0 +1,93 @@
+.report28-container {
+    background-color: #1e1e1e;
+    color: #f8f8f8;
+    padding: 40px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+}
+
+.report28-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #f0c674;
+}
+
+.report28-subtitle {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+    margin-bottom: 30px;
+}
+
+.report28-image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.report28-main-image {
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.report28-analysis-container {
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.report28-analysis-title {
+    font-size: 1.5rem;
+    color: #f0c674;
+    margin-bottom: 15px;
+}
+
+.report28-traits-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.report28-traits-list li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: #dcdcdc;
+}
+
+.report28-question {
+    font-size: 1.1rem;
+    color: #f8f8f8;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.report28-next-button {
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #f0c674;
+    color: #000;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.report28-next-button:hover {
+    background-color: #e5b960;
+}
+
+.report28-footer {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #dcdcdc;
+    text-align: center;
+}

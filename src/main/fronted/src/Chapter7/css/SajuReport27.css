@@ -1,0 +1,95 @@
+.saju-report27-container {
+    background-color: #1e1e1e;
+    color: #f8f8f8;
+    padding: 40px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+}
+
+.saju-report27-title {
+    font-size: 2rem;
+    color: #e57373;
+    margin-bottom: 20px;
+}
+
+.saju-report27-subtitle {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+    margin-bottom: 30px;
+}
+
+.saju-report27-weakness-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.saju-report27-weakness-item {
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    max-width: 800px;
+    width: 100%;
+    text-align: left;
+}
+
+.saju-report27-weakness-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.saju-report27-weakness-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e57373;
+}
+
+.saju-report27-weakness-score {
+    font-size: 1.2rem;
+    background-color: #444;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.saju-report27-weakness-content {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.saju-report27-weakness-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    border: 2px solid #555;
+}
+
+.saju-report27-weakness-description {
+    font-size: 1rem;
+    color: #dcdcdc;
+    line-height: 1.5;
+}
+
+.saju-report27-next-button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    background-color: #f0d58c;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.saju-report27-next-button:hover {
+    background-color: #e5c07b;
+}

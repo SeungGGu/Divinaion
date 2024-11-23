@@ -1,0 +1,113 @@
+/* 전체 컨테이너 */
+.report16-container {
+    background-color: #1e1e1e;
+    color: #f8f8f8;
+    min-height: 100vh;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+}
+
+/* 제목 스타일 */
+.report-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f0c674;
+    margin-bottom: 10px;
+}
+
+.report-subtitle {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* 성향 박스 컨테이너 */
+.mind-improvement-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* 개별 성향 박스 */
+.mind-improvement-box {
+    background-color: #2a2a2a; /* 개별 박스 배경 */
+    border: 1px solid #495057; /* 박스 테두리 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    padding: 20px;
+    width: 300px; /* 고정된 박스 너비 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 박스 그림자 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 호버 효과 */
+.mind-improvement-box:hover {
+    transform: translateY(-5px); /* 살짝 위로 이동 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* 그림자 더 강조 */
+}
+
+/* 성향 제목 */
+.mind-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f0c674;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* 퍼센트 점수 */
+.mind-score {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #61dafb;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* 설명 리스트 */
+.mind-improvement-list {
+    list-style: none;
+    padding: 0;
+    text-align: left; /* 텍스트를 왼쪽 정렬 */
+    color: #dcdcdc; /* 설명 색상 */
+}
+
+.mind-improvement-list li {
+    margin-bottom: 8px; /* 항목 간 간격 */
+    font-size: 0.9rem;
+}
+
+/* 하단 버튼 및 텍스트 */
+.report-footer {
+    margin-top: 40px;
+}
+
+.footer-text {
+    font-size: 1rem;
+    color: #868e96; /* 하단 텍스트 색상 */
+    margin-bottom: 20px;
+}
+
+/* 버튼 스타일 */
+.next-page-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #000;
+    background-color: #f0c674;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.next-page-button:hover {
+    background-color: #e5b960;
+    transform: scale(1.05);
+}

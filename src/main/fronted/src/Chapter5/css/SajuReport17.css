@@ -1,0 +1,70 @@
+/* 컨테이너 스타일 */
+.report17-container {
+    background-color: #1e1e1e;
+    color: #f8f8f8;
+    padding: 40px;
+    text-align: center;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+
+/* 상단 제목 */
+.report17-container .header-section .title {
+    font-size: 2rem;
+    color: #f0c674;
+    margin-bottom: 10px;
+}
+
+.report17-container .header-section .subtitle {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+    margin-bottom: 30px;
+}
+
+/* 메인 콘텐츠 */
+.report17-container .content-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.report17-container .content-section .image-container .main-image {
+    width: 60%;
+    max-width: 400px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.report17-container .content-section .info-container .info-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #f0c674;
+    margin-top: 10px;
+}
+
+/* 하단 메시지 */
+.report17-container .footer-section .footer-message {
+    font-size: 1rem;
+    color: #868e96;
+    margin-bottom: 20px;
+}
+
+/* 버튼 스타일 */
+.report17-container .next-page-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #000;
+    background-color: #f0c674;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.report17-container .next-page-button:hover {
+    background-color: #e5b960;
+    transform: scale(1.05);
+}

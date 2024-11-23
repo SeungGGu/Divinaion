@@ -12,6 +12,10 @@ import SajuReport3 from "./ReportPage/SajuReport3";
 import SajuReport4 from "./ReportPage/SajuReport4";
 import SajuReport5 from "./ReportPage/SajuReport5";
 import SajuReport6 from "./ReportPage/SajuReport6";
+import SajuReport7 from "./ReportPage/SajuReport7";
+import SajuReport8 from "./ReportPage/SajuReport8";
+import SajuReport9 from "./ReportPage/SajuReport9";
+import SajuReport10 from "./ReportPage/SajuReport10";
 
 const Router = () => {
     return (
@@ -29,6 +33,10 @@ const Router = () => {
                 <Route path="/Report4" element={<SajuReport4/>}/>
                 <Route path="/Report5" element={<SajuReport5/>}/>
                 <Route path="/Report6" element={<SajuReport6/>}/>
+                <Route path="/Report7" element={<SajuReport7/>}/>
+                <Route path="/Report8" element={<SajuReport8/>}/>
+                <Route path="/Report9" element={<SajuReport9/>}/>
+                <Route path="/Report10" element={<SajuReport10/>}/>
 
                 <Route path='/*' element={ //*이란? 지정된 페이지 이외의 모든것들을 에러처리
                     <>

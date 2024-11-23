@@ -1,0 +1,149 @@
+/* 컨테이너 스타일 */
+.report9-container {
+    background-color: #1e1e1e;
+    color: #f8f8f8;
+    padding: 40px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Arial', sans-serif;
+}
+
+/* 헤더 스타일 */
+.report9-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.report9-header h1 {
+    font-size: 2.5rem;
+    color: #f0c674;
+    margin-bottom: 10px;
+}
+
+.report9-header p {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+}
+
+/* 메인 콘텐츠 섹션 */
+.report9-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 1200px;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* 이미지 섹션 */
+.treasure-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.treasure-image {
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* 중앙 레이더 차트 */
+.radar-chart-section {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.radar-chart-image {
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+.chart-labels {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transform: translate(-50%, -50%);
+}
+
+.label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #f0c674;
+}
+
+.label.top {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -100%);
+}
+
+.label.top-left {
+    position: absolute;
+    top: 25%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+}
+
+.label.top-right {
+    position: absolute;
+    top: 25%;
+    right: 15%;
+    transform: translate(50%, -50%);
+}
+
+.label.bottom-left {
+    position: absolute;
+    bottom: 25%;
+    left: 15%;
+    transform: translate(-50%, 50%);
+}
+
+.label.bottom-right {
+    position: absolute;
+    bottom: 25%;
+    right: 15%;
+    transform: translate(50%, 50%);
+}
+
+/* 푸터 스타일 */
+.report9-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.report9-footer p {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+    margin-bottom: 20px;
+}
+
+.next-page-button {
+    padding: 10px 20px;
+    background-color: #f0d58c;
+    color: #000;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.next-page-button:hover {
+    background-color: #e5c07b;
+}

@@ -30,7 +30,7 @@ const SajuReport5 = () => {
     // 동적 데이터 매핑
     const analysisData = {
         인성: {
-            title: "${name}님의 인성과 강점을 찾아드립니다",
+            title: name + "님의 인성과 강점을 찾아드립니다",
             strengths: [
                 { title: "변화를 빠르게 받아들여요", description: "상황에 맞게 유연하게 대응합니다." },
                 { title: "체계적으로 일해요", description: "일 처리를 꼼꼼하게 하고 규칙을 잘 지켜요." },
@@ -39,12 +39,12 @@ const SajuReport5 = () => {
                 { title: "협력적으로 일해요", description: "팀과 함께 소통하며 목표를 달성해요." },
             ],
             description:
-                "${name}님은 체계적으로 일 처리를 하고, 빠르게 변화에 적응하며 다양한 의견을 존중합니다. 또한 책임감을 가지고 목표를 완수하는 모습이 돋보입니다.",
+                name + "님은 체계적으로 일 처리를 하고, 빠르게 변화에 적응하며 다양한 의견을 존중합니다. 또한 책임감을 가지고 목표를 완수하는 모습이 돋보입니다.",
             imageAlt: "인성 관계 이미지",
             imageSrc: `${process.env.PUBLIC_URL}/images/teamwork.png`,
         },
         비겁: {
-            title: "${name}님의 비겁 관계를 활용한 강점",
+            title: name + "님의 비겁 관계를 활용한 강점",
             strengths: [
                 { title: "의리가 있어요", description: "친구들과 끈끈한 유대감을 유지합니다." },
                 { title: "솔직해요", description: "직접적이고 명확한 의사소통을 좋아합니다." },
@@ -57,7 +57,7 @@ const SajuReport5 = () => {
             imageSrc: `${process.env.PUBLIC_URL}/images/leader.png`,
         },
         식재관: {
-            title: "${name}님의 식재관 강점을 활용하는 법",
+            title: name + "님의 식재관 강점을 활용하는 법",
             strengths: [
                 { title: "변화를 빠르게 받아들여요", description: "상황에 맞게 유연하게 대응합니다." },
                 { title: "체계적으로 일해요", description: "일 처리를 꼼꼼하게 하고 규칙을 잘 지켜요." },

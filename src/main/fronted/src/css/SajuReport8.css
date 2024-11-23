@@ -1,0 +1,159 @@
+.saju-report2-wrapper {
+    background-color: #1e1e1e;
+    color: #f8f8f8;
+    padding: 40px;
+    text-align: center;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+
+.report-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #f0c674;
+}
+
+.report-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #dcdcdc;
+}
+
+.report-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.sky-symbol-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sky-symbol {
+    font-size: 2rem; /* 텍스트 크기를 조정하여 아이콘 내부에 잘 맞게 함 */
+    font-weight: bold;
+    width: 100px; /* 아이콘 크기 */
+    height: 100px; /* 아이콘 크기 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #f9c74f; /* 기본 배경 색상 */
+    color: black; /* 텍스트 색상 */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+
+.analysis-container {
+    flex: 2;
+    text-align: left;
+    padding: 20px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.analysis-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #f0c674;
+}
+
+.strengths-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.strengths-list li {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #f8f8f8;
+}
+
+.strength-description {
+    color: #dcdcdc;
+}
+
+.analysis-image-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.analysis-image {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    border: 2px solid #555;
+    margin-bottom: 15px;
+}
+
+.analysis-image-description {
+    background-color: #353535;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #dcdcdc;
+    line-height: 1.5;
+    text-align: center;
+    box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.next-page-button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.next-page-button {
+    padding: 10px 20px;
+    background-color: #f0d58c;
+    color: #000;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.next-page-button:hover {
+    background-color: #e5c07b;
+}
+
+.job-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #2a2a2a;
+    color: #f8f8f8;
+}
+
+.job-table td {
+    border: 1px solid #555;
+    padding: 10px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #353535;
+}
+
+.analysis-description {
+    background-color: #353535;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #dcdcdc;
+}

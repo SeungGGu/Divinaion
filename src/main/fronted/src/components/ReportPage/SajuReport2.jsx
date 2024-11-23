@@ -58,7 +58,7 @@ const SajuReport2 = () => {
                 },
             ],
             description:
-                "박승빈님은 안정적이고 믿음직한 성향을 가지고 있습니다. 다른 사람들을 세심하게 챙기며, 언제나 책임감 있게 행동합니다.",
+                name + "님은 안정적이고 믿음직한 성향을 가지고 있습니다. 다른 사람들을 세심하게 챙기며, 언제나 책임감 있게 행동합니다.",
             imageAlt: "튼튼한 산처럼",
             imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
         },

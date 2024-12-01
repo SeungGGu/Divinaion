@@ -32,7 +32,7 @@ const SajuReport27 = () => {
             imageAlt: "소 이미지",
         },
         상관: {
-            description: "원숭이처럼 가벼운 태도로 신뢰를 잃을 수 있어요.",
+            description: "원숭이처럼 말이 앞서고, 준비 없는 행동으로 실수합니다.",
             imageSrc: `${process.env.PUBLIC_URL}/images/monkey.png`,
             imageAlt: "원숭이 이미지",
         },
@@ -42,7 +42,7 @@ const SajuReport27 = () => {
             imageAlt: "독수리 이미지",
         },
         정재: {
-            description: "개미처럼 느려서 중요한 시기를 놓칠 수 있어요.",
+            description: "개미처럼 사소한 일에만 몰두해 큰 그림을 놓치기 쉬워요.",
             imageSrc: `${process.env.PUBLIC_URL}/images/turtle.png`,
             imageAlt: "개미 이미지",
         },
@@ -57,12 +57,12 @@ const SajuReport27 = () => {
             imageAlt: "말 이미지",
         },
         편인: {
-            description: "올빼미처럼 과도한 생각으로 결정을 내리지 못할 때가 있어요.",
+            description: "올빼미처럼 밤에만 활동해 현실 감각이 부족할 수 있어요.",
             imageSrc: `${process.env.PUBLIC_URL}/images/owl.png`,
             imageAlt: "올빼미 이미지",
         },
         정인: {
-            description: "코끼리처럼 지나치게 협동만 추구하여 독립성을 잃을 수 있어요.",
+            description: "코끼리처럼 신중한 나머지 중요한 결정을 미루는 경향이 있어요.",
             imageSrc: `${process.env.PUBLIC_URL}/images/goose.png`,
             imageAlt: "코끼리 이미지",
         },

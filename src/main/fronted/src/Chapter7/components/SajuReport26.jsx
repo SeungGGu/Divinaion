@@ -32,7 +32,7 @@ const SajuReport26 = () => {
             imageAlt: "소 이미지",
         },
         상관: {
-            description: "원숭이처럼 유쾌하고 창의적인 에너지를 발산합니다.",
+            description: "원숭이처럼 유연한 사고와 창의성으로 문제를 해결합니다.",
             imageSrc: `${process.env.PUBLIC_URL}/images/monkey.png`,
             imageAlt: "원숭이 이미지",
         },
@@ -42,7 +42,7 @@ const SajuReport26 = () => {
             imageAlt: "독수리 이미지",
         },
         정재: {
-            description: "개미처럼 성실하고 꾸준히 목표를 향해 나아갑니다.",
+            description: "개미처럼 성실히 협력하며 맡은 역할에 최선을 다합니다.",
             imageSrc: `${process.env.PUBLIC_URL}/images/turtle.png`,
             imageAlt: "개미 이미지",
         },
@@ -57,12 +57,12 @@ const SajuReport26 = () => {
             imageAlt: "말 이미지",
         },
         편인: {
-            description: "올빼미처럼 지혜롭고 통찰력 있는 판단을 합니다.",
+            description: "올빼미처럼 신중하며 지혜롭게 상황을 분석합니다.",
             imageSrc: `${process.env.PUBLIC_URL}/images/owl.png`,
             imageAlt: "올빼미 이미지",
         },
         정인: {
-            description: "코끼리처럼 협동하며 신뢰를 쌓아가며 관계를 유지합니다.",
+            description: "코끼리처럼 온화하고 배려심 깊어 신뢰를 얻습니다.",
             imageSrc: `${process.env.PUBLIC_URL}/images/goose.png`,
             imageAlt: "코끼리 이미지",
         },

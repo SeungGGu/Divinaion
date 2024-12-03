@@ -1,9 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/SajuIntro1.css';
+import {useSaju} from "../../context/SajuContext";
 
 const SajuIntro1 = () => {
     const navigate = useNavigate();
+    const {sajuData} = useSaju();
+    const {name} = sajuData;
 
     function nextPageOnClick() {
         navigate('/Intro2'); // 다음 페이지의 경로로 이동
@@ -23,13 +26,13 @@ const SajuIntro1 = () => {
             {/* 보고서 제목 */}
             <div className="saju-intro1-title">
                 <h1>내 사주</h1>
-                <h2>그것이 알고 싶다</h2>
+                <h2>그것이 궁금하다</h2>
             </div>
 
             {/* 안내 텍스트 */}
             <div className="saju-intro1-text">
-                <p>34가지 분석을 통해 당신의 인생 여정을 시작하세요</p>
-                <p className="saju-intro1-highlight">꼭 봐야 할 내 사주 분석 보고서</p>
+                <p>꼭 봐야 할 {name}님의 사주 분석 보고서</p>
+                <p className="saju-intro1-highlight">{name}님의 특별한 사주 이야기, 지금 확인해보세요!</p>
             </div>
 
             {/* 페이지 넘김 버튼 */}

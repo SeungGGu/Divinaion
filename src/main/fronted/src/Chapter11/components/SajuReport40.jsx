@@ -6,18 +6,14 @@ import "../css/SajuReport40.css";
 const heavenlyStems = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
 const earthlyBranches = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
 
-// 운세 조합 매핑 (120개 작성)
-const fortuneCombinationMap = {
-    "甲": { "子": "편재 운", "丑": "정재 운", "寅": "비견 운", "卯": "겁재 운", "辰": "편관 운", "巳": "정관 운", "午": "상관 운", "未": "식신 운", "申": "편인 운", "酉": "정인 운", "戌": "편재 운", "亥": "정재 운" },
-    "乙": { "子": "비견 운", "丑": "겁재 운", "寅": "편관 운", "卯": "정관 운", "辰": "상관 운", "巳": "식신 운", "午": "편인 운", "未": "정인 운", "申": "편재 운", "酉": "정재 운", "戌": "비견 운", "亥": "겁재 운" },
-    "丙": { "子": "정관 운", "丑": "편관 운", "寅": "상관 운", "卯": "식신 운", "辰": "편인 운", "巳": "정인 운", "午": "편재 운", "未": "정재 운", "申": "비견 운", "酉": "겁재 운", "戌": "정관 운", "亥": "편관 운" },
-    "丁": { "子": "편관 운", "丑": "정관 운", "寅": "식신 운", "卯": "상관 운", "辰": "정인 운", "巳": "편인 운", "午": "정재 운", "未": "편재 운", "申": "겁재 운", "酉": "비견 운", "戌": "편관 운", "亥": "정관 운" },
-    "戊": { "子": "상관 운", "丑": "식신 운", "寅": "편인 운", "卯": "정인 운", "辰": "편재 운", "巳": "정재 운", "午": "비견 운", "未": "겁재 운", "申": "편관 운", "酉": "정관 운", "戌": "상관 운", "亥": "식신 운" },
-    "己": { "子": "식신 운", "丑": "상관 운", "寅": "정인 운", "卯": "편인 운", "辰": "정재 운", "巳": "편재 운", "午": "겁재 운", "未": "비견 운", "申": "정관 운", "酉": "편관 운", "戌": "식신 운", "亥": "상관 운" },
-    "庚": { "子": "편인 운", "丑": "정인 운", "寅": "편재 운", "卯": "정재 운", "辰": "비견 운", "巳": "겁재 운", "午": "편관 운", "未": "정관 운", "申": "상관 운", "酉": "식신 운", "戌": "편인 운", "亥": "정인 운" },
-    "辛": { "子": "정인 운", "丑": "편인 운", "寅": "정재 운", "卯": "편재 운", "辰": "겁재 운", "巳": "비견 운", "午": "정관 운", "未": "편관 운", "申": "식신 운", "酉": "상관 운", "戌": "정인 운", "亥": "편인 운" },
-    "壬": { "子": "편관 운", "丑": "정관 운", "寅": "상관 운", "卯": "식신 운", "辰": "편재 운", "巳": "정재 운", "午": "비견 운", "未": "겁재 운", "申": "편인 운", "酉": "정인 운", "戌": "편관 운", "亥": "정관 운" },
-    "癸": { "子": "정관 운", "丑": "편관 운", "寅": "식신 운", "卯": "상관 운", "辰": "정재 운", "巳": "편재 운", "午": "겁재 운", "未": "비견 운", "申": "정인 운", "酉": "편인 운", "戌": "정관 운", "亥": "편관 운" },
+// 음양 판단 맵
+const yinYangMap = {
+    "甲": "+", "乙": "-", "丙": "+", "丁": "-",
+    "戊": "+", "己": "-", "庚": "+", "辛": "-",
+    "壬": "+", "癸": "-",
+    "子": "-", "丑": "-", "寅": "+", "卯": "-",
+    "辰": "+", "巳": "+", "午": "-", "未": "-",
+    "申": "+", "酉": "-", "戌": "+", "亥": "-",
 };
 
 // 오행 색상 매핑
@@ -29,25 +25,53 @@ const fiveElementColorMap = {
     water: "black",
 };
 
+// 오행 매핑
 const hanjaToElementMap = {
     "甲": "wood", "乙": "wood",
     "丙": "fire", "丁": "fire",
     "戊": "earth", "己": "earth",
     "庚": "metal", "辛": "metal",
     "壬": "water", "癸": "water",
+    "子": "water", "丑": "earth",
     "寅": "wood", "卯": "wood",
-    "巳": "fire", "午": "fire",
-    "辰": "earth", "未": "earth", "戌": "earth", "丑": "earth",
+    "辰": "earth", "巳": "fire",
+    "午": "fire", "未": "earth",
     "申": "metal", "酉": "metal",
-    "亥": "water", "子": "water",
+    "戌": "earth", "亥": "water",
 };
 
-const getElementColor = (hanja) =>
-    fiveElementColorMap[hanjaToElementMap[hanja]] || "#fff";
+const getElementColor = (hanja) => fiveElementColorMap[hanjaToElementMap[hanja]] || "#fff";
+const getTextColor = (bgColor) => (bgColor === "black" ? "white" : "black");
 
-const getTextColor = (hanja) =>
-    hanjaToElementMap[hanja] === "water" ? "#fff" : "#000";
+// 십신 계산 함수
+const calculateRelationship = (dayElement, dayYinYang, branchElement, branchYinYang) => {
+    if (dayElement === branchElement) {
+        return dayYinYang === branchYinYang ? "비견" : "겁재";
+    }
 
+    const relations = {
+        wood: { produces: "fire", controls: "earth", supportedBy: "water" },
+        fire: { produces: "earth", controls: "metal", supportedBy: "wood" },
+        earth: { produces: "metal", controls: "water", supportedBy: "fire" },
+        metal: { produces: "water", controls: "wood", supportedBy: "earth" },
+        water: { produces: "wood", controls: "fire", supportedBy: "metal" },
+    };
+
+    const relation = relations[dayElement];
+    if (relation.produces === branchElement) {
+        return dayYinYang === branchYinYang ? "식신" : "상관";
+    }
+    if (relation.controls === branchElement) {
+        return dayYinYang === branchYinYang ? "편재" : "정재";
+    }
+    if (relation.supportedBy === branchElement) {
+        return dayYinYang === branchYinYang ? "편인" : "정인";
+    }
+
+    return "운세 없음"; // 정의되지 않은 경우
+};
+
+// 연도 계산 로직
 const calculateYearInfo = (year) => {
     const stemIndex = (year - 4) % 10;
     const branchIndex = (year - 4) % 12;
@@ -55,6 +79,16 @@ const calculateYearInfo = (year) => {
         heavenlyStem: heavenlyStems[stemIndex],
         earthlyBranch: earthlyBranches[branchIndex],
     };
+};
+
+// 운세 계산
+const getYearlyFortune = (dayStem, yearBranch) => {
+    const dayElement = hanjaToElementMap[dayStem];
+    const dayYinYang = yinYangMap[dayStem];
+    const branchElement = hanjaToElementMap[yearBranch];
+    const branchYinYang = yinYangMap[yearBranch];
+
+    return calculateRelationship(dayElement, dayYinYang, branchElement, branchYinYang);
 };
 
 const SajuReport40 = () => {
@@ -71,10 +105,8 @@ const SajuReport40 = () => {
     const currentYearInfo = calculateYearInfo(currentYear);
     const nextYearInfo = calculateYearInfo(nextYear);
 
-    const currentFortune =
-        fortuneCombinationMap[result.daySky]?.[currentYearInfo.earthlyBranch] || "운세 없음";
-    const nextFortune =
-        fortuneCombinationMap[result.daySky]?.[nextYearInfo.earthlyBranch] || "운세 없음";
+    const currentFortune = getYearlyFortune(result.daySky, currentYearInfo.earthlyBranch);
+    const nextFortune = getYearlyFortune(result.daySky, nextYearInfo.earthlyBranch);
 
     return (
         <div className="report40-container">
@@ -84,7 +116,6 @@ const SajuReport40 = () => {
             </p>
 
             <div className="report40-content">
-                {/* 첫 번째 표 */}
                 <div className="analysis-table-container">
                     <table className="analysis-table">
                         <thead>
@@ -94,18 +125,12 @@ const SajuReport40 = () => {
                         </thead>
                         <tbody>
                         <tr>
-                            <td>{result.manseTimeSkyRelation}</td>
-                            <td>{name}</td>
-                            <td>{result.manseMonthSkyRelation}</td>
-                            <td>{result.manseYearSkyRelation}</td>
-                        </tr>
-                        <tr>
                             {["timeSky", "daySky", "monthSky", "yearSky"].map((key, index) => (
                                 <td
                                     key={index}
                                     style={{
                                         backgroundColor: getElementColor(result[key]),
-                                        color: getTextColor(result[key]),
+                                        color: getTextColor(getElementColor(result[key])),
                                         fontWeight: "bold",
                                     }}
                                 >
@@ -119,7 +144,7 @@ const SajuReport40 = () => {
                                     key={index}
                                     style={{
                                         backgroundColor: getElementColor(result[key]),
-                                        color: getTextColor(result[key]),
+                                        color: getTextColor(getElementColor(result[key])),
                                         fontWeight: "bold",
                                     }}
                                 >
@@ -127,17 +152,10 @@ const SajuReport40 = () => {
                                 </td>
                             ))}
                         </tr>
-                        <tr>
-                            <td>{result.manseTimeGroundRelation}</td>
-                            <td>{result.manseDayGroundRelation}</td>
-                            <td>{result.manseMonthGroundRelation}</td>
-                            <td>{result.manseYearGroundRelation}</td>
-                        </tr>
                         </tbody>
                     </table>
                 </div>
 
-                {/* 두 번째 표 */}
                 <div className="year-table-container">
                     <table className="year-table">
                         <thead>
@@ -151,7 +169,7 @@ const SajuReport40 = () => {
                             <td
                                 style={{
                                     backgroundColor: getElementColor(currentYearInfo.heavenlyStem),
-                                    color: getTextColor(currentYearInfo.heavenlyStem),
+                                    color: getTextColor(getElementColor(currentYearInfo.heavenlyStem)),
                                 }}
                             >
                                 {currentYearInfo.heavenlyStem}
@@ -159,7 +177,7 @@ const SajuReport40 = () => {
                             <td
                                 style={{
                                     backgroundColor: getElementColor(nextYearInfo.heavenlyStem),
-                                    color: getTextColor(nextYearInfo.heavenlyStem),
+                                    color: getTextColor(getElementColor(nextYearInfo.heavenlyStem)),
                                 }}
                             >
                                 {nextYearInfo.heavenlyStem}
@@ -169,7 +187,7 @@ const SajuReport40 = () => {
                             <td
                                 style={{
                                     backgroundColor: getElementColor(currentYearInfo.earthlyBranch),
-                                    color: getTextColor(currentYearInfo.earthlyBranch),
+                                    color: getTextColor(getElementColor(currentYearInfo.earthlyBranch)),
                                 }}
                             >
                                 {currentYearInfo.earthlyBranch}
@@ -177,7 +195,7 @@ const SajuReport40 = () => {
                             <td
                                 style={{
                                     backgroundColor: getElementColor(nextYearInfo.earthlyBranch),
-                                    color: getTextColor(nextYearInfo.earthlyBranch),
+                                    color: getTextColor(getElementColor(nextYearInfo.earthlyBranch)),
                                 }}
                             >
                                 {nextYearInfo.earthlyBranch}

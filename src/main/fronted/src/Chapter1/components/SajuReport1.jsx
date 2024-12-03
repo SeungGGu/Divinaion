@@ -128,7 +128,7 @@ const SajuReport1 = () => {
                     <table className="analysis-table">
                         <thead>
                         <tr>
-                            <th>출생일과 시간을 통한 사주 해석</th>
+                            <th colSpan='2'>출생일과 시간을 통한 사주 해석</th>
                         </tr>
                         </thead>
                         <tbody>

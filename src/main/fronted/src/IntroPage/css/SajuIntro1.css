@@ -2,52 +2,61 @@
 .saju-intro1-container {
     background-color: #1a1a1a;
     color: #f0f0f0;
-    padding: 20px;
     text-align: center;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden; /* 스크롤 방지 */
+    padding: 0; /* 여백 제거 */
+    position: relative; /* 버튼 위치 설정을 위한 기준 */
 }
 
-/* 오행 아이콘 */
-.saju-intro1-element-icons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.saju-intro1-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-}
-
-.saju-intro1-wood { background-color: #89b798; }
-.saju-intro1-earth { background-color: #f0d58c; }
-.saju-intro1-metal { background-color: #c0c0c0; }
-.saju-intro1-water { background-color: #1a1a1a; color: #f0f0f0; }
-.saju-intro1-fire { background-color: #e57373; }
-
-/* 보고서 제목 */
 .saju-intro1-title h1 {
     font-size: 2.5rem;
     color: #d4a017;
 }
 
-.saju-intro1-title h2 {
-    font-size: 2rem;
-    margin-top: -10px;
+.saju-intro1-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
 }
 
-/* 안내 텍스트 */
+.saju-intro1-left-icons,
+.saju-intro1-right-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.saju-intro1-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #444;
+    color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.saju-intro1-image-container {
+    margin: 0 20px;
+}
+
+.saju-intro1-image-container img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
 .saju-intro1-text {
     margin-top: 15px;
 }
@@ -56,25 +65,23 @@
     font-size: 1.2rem;
 }
 
-.saju-intro1-highlight {
-    font-size: 1.5rem;
-    color: #5bc0de;
-    margin-top: 5px;
-}
-
-/* 다음 페이지 버튼 */
+/* 우측 상단 다음 버튼 */
 .saju-intro1-next-button {
-    background-color: #444;
-    color: #f0f0f0;
-    font-size: 1.2rem;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #4caf50;
+    color: #fff;
+    font-size: 1rem;
     padding: 10px 20px;
-    margin-top: 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .saju-intro1-next-button:hover {
-    background-color: #666;
+    background-color: #45a049;
+    transform: scale(1.05);
 }

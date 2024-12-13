@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSaju } from '../../context/SajuContext';
-import '../css/SajuReport1.css';
 import { useNavigate } from 'react-router-dom';
+import '../css/SajuReport1.css';
 
 // 오행 색상 매핑
 const fiveElementColorMap = {
@@ -28,9 +28,33 @@ const getElementColor = (hanja) => {
 // 텍스트 색상 설정
 const getTextColor = (bgColor) => (bgColor === 'black' ? 'white' : 'black');
 
+// 천간과 지지의 한자-한글 매핑
+const hanjaToHangulMap = {
+    // 천간 (십천간)
+    '甲': '갑', '乙': '을', '丙': '병', '丁': '정',
+    '戊': '무', '己': '기', '庚': '경', '辛': '신',
+    '壬': '임', '癸': '계',
+
+    // 지지 (십이지)
+    '子': '자', '丑': '축', '寅': '인', '卯': '묘',
+    '辰': '진', '巳': '사', '午': '오', '未': '미',
+    '申': '신', '酉': '유', '戌': '술', '亥': '해',
+};
+
+// 한자를 한글로 변환하는 함수
+const convertHanjaToHangul = (hanja) => {
+    return hanja.split('').map(char => hanjaToHangulMap[char] || char).join('');
+};
+
+
 const SajuReport1 = () => {
     const navigate = useNavigate();
     const { sajuData } = useSaju();
+
+    if (!sajuData) {
+        return <p>사주 데이터를 불러오는 중입니다...</p>;
+    }
+
     const { name, result } = sajuData;
 
     const handleNext = () => {
@@ -46,45 +70,31 @@ const SajuReport1 = () => {
 
     return (
         <div className="saju-report1-wrapper">
-            <div className="saju-report1-container">
-                <h1>{name}님의 출생 정보로 보는 성격과 운명 분석</h1>
-                <p>출생 시기와 사주 팔자를 통해 삶의 흐름을 알아보세요</p>
+            {/* 다음 페이지 버튼 */}
+            <button className="saju-report1-next-button" onClick={handleNext}>
+                다음 ▶
+            </button>
 
-                {/* 상단 출생 정보 */}
-                <div className="top-saju-table">
-                    <div className="saju-row">
-                        <div className="saju-cell-header">출생 시</div>
-                        <div className="saju-cell">{birthTime}</div>
-                    </div>
-                    <div className="saju-row">
-                        <div className="saju-cell-header">출생 일</div>
-                        <div className="saju-cell">{birthDay}</div>
-                    </div>
-                    <div className="saju-row">
-                        <div className="saju-cell-header">출생 월</div>
-                        <div className="saju-cell">{birthMonth}</div>
-                    </div>
-                    <div className="saju-row">
-                        <div className="saju-cell-header">출생 년</div>
-                        <div className="saju-cell">{birthYear}</div>
-                    </div>
-                </div>
+            <h1>{name}님의 타고난 성향과 미래 가능성을 알려드립니다</h1>
+            <p>성격, 적성, 대인관계까지 사주로 쉽게 풀어드립니다!</p>
 
-                <div className="saju-report1-tables">
-                    {/* 사주표 */}
+            <div className="saju-report1-layout">
+                {/* 왼쪽: 사주표 */}
+                <div className="saju-report1-left">
                     <table className="saju-table">
                         <thead>
-                        <tr>
-                            <th></th>
-                            <th>생시</th>
-                            <th>생일</th>
-                            <th>생월</th>
-                            <th>생년</th>
-                        </tr>
+                            <tr>
+                                <th colSpan={4}>{name}님의 사주 에너지 구성</th>
+                            </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <th>천간</th>
+                            <td>{birthTime}</td>
+                            <td>{birthDay}일</td>
+                            <td>{birthMonth}월</td>
+                            <td>{birthYear}년</td>
+                        </tr>
+                        <tr>
                             <td style={{
                                 backgroundColor: getElementColor(result.timeSky),
                                 color: getTextColor(getElementColor(result.timeSky))
@@ -103,7 +113,6 @@ const SajuReport1 = () => {
                             }}>{result.yearSky}</td>
                         </tr>
                         <tr>
-                            <th>지지</th>
                             <td style={{
                                 backgroundColor: getElementColor(result.timeGround),
                                 color: getTextColor(getElementColor(result.timeGround))
@@ -121,39 +130,26 @@ const SajuReport1 = () => {
                                 color: getTextColor(getElementColor(result.yearGround))
                             }}>{result.yearGround}</td>
                         </tr>
-                        </tbody>
-                    </table>
-
-                    {/* 해석표 */}
-                    <table className="analysis-table">
-                        <thead>
                         <tr>
-                            <th colSpan='2'>출생일과 시간을 통한 사주 해석</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>출생 년</td>
-                            <td>어린 시절과 운세 영향</td>
-                        </tr>
-                        <tr>
-                            <td>출생 월</td>
-                            <td>사회생활과 부모 관계</td>
-                        </tr>
-                        <tr>
-                            <td>출생 일</td>
-                            <td>성격과 배우자 관계</td>
-                        </tr>
-                        <tr>
-                            <td>출생 시간</td>
-                            <td>노년 운세와 자녀 관계</td>
+                            <td>{`${convertHanjaToHangul(result.timeSky)}${convertHanjaToHangul(result.timeGround)}時`}</td>
+                            <td>{`${convertHanjaToHangul(result.daySky)}${convertHanjaToHangul(result.dayGround)}日`}</td>
+                            <td>{`${convertHanjaToHangul(result.monthSky)}${convertHanjaToHangul(result.monthGround)}月`}</td>
+                            <td>{`${convertHanjaToHangul(result.yearSky)}${convertHanjaToHangul(result.yearGround)}年`}</td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-                <p className="footer-text">출생일과 시간으로 {name}님의 성격과 운명을 깊이 있게 살펴보세요</p>
-                <button className="next-button" onClick={handleNext}>다음 페이지</button>
+
+                {/* 오른쪽: 추가 정보 */}
+                <div className="saju-report1-right">
+                    <div className="info-box">성격과 강점</div>
+                    <div className="info-box">적성 찾기</div>
+                    <div className="info-box">직업 분석</div>
+                    <div className="info-box">대인관계</div>
+                    <div className="info-box">약점 관리</div>
+                </div>
             </div>
+            <p className="footer-text">타고난 사주를 알면 나를 더 깊이 이해할 수 있습니다</p>
         </div>
     );
 };

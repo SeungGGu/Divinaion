@@ -151,7 +151,7 @@ const SajuCalculator = () => {
 
     return (
         <div className="saju-container">
-            <h1>사주팔자 계산기</h1>
+            <h1 className="saju-container-h1">사주팔자 계산기</h1>
             <form className="saju-form" onSubmit={handleSubmit}>
                 {/* 이름 입력란 */}
                 <label className="input-label">이름:</label>

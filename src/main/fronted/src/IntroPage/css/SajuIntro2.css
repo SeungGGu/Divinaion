@@ -1,73 +1,85 @@
-/* SajuIntro2.css */
-
 /* 전체 컨테이너 */
-.saju-intro2-container {
-    background-color: #1a1a1a; /* 어두운 배경색 */
-    color: #e0e0e0;
-    padding: 20px;
-    text-align: center;
-    min-height: 100vh;
+.saju-intro3-container {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    position: relative;
 }
 
-/* 제목 스타일 */
-.saju-intro2-container h1 {
-    font-size: 2rem;
+/* 왼쪽 섹션: 만세력 */
+.saju-intro3-left {
+    flex: 1;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.saju-intro3-left h2 {
+    font-size: 1.8rem;
+    color: #e6b422;
     margin-bottom: 20px;
-    line-height: 1.5;
-    color: #f0f0f0;
 }
 
-/* 카테고리 컨테이너 */
-.saju-intro2-categories {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+/* 사주표 스타일 */
+.saju-table {
     width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
 }
 
-/* 각 카테고리 스타일 */
-.saju-intro2-category {
+.saju-table th, .saju-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    font-size: 1.2rem;
+}
+
+/* 오른쪽 섹션: 보고서 정보 */
+.saju-intro3-right {
+    flex: 1;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 20px;
+    color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    color: #f0f0f0;
-    text-align: center;
-    transition: transform 0.3s;
 }
 
-.saju-intro2-category:hover {
-    transform: scale(1.05);
+.saju-intro3-right h2 {
+    font-size: 1.5rem;
+    color: #f0d58c;
+    margin-bottom: 20px;
 }
 
-/* 각 카테고리 색상 */
-.saju-intro2-green { background-color: #446b54; } /* 어두운 녹색 */
-.saju-intro2-red { background-color: #823d3d; } /* 어두운 빨간색 */
-.saju-intro2-orange { background-color: #7a5e2f; color: #f0f0f0; } /* 어두운 주황색 */
-.saju-intro2-white { background-color: #333333; color: #e0e0e0; } /* 어두운 회색 */
-.saju-intro2-black { background-color: #1a1a1a; color: #e0e0e0; } /* 검은색 */
-.saju-intro2-yellow { background-color: #7a6a3d; color: #f0f0f0; } /* 어두운 노란색 */
-
-/* 다음 페이지 버튼 */
-.saju-intro2-next-button {
-    background-color: #444;
-    color: #f0f0f0;
+.saju-intro3-right p {
     font-size: 1.2rem;
+    margin: 10px 0;
+    color: #a6a6a6;
+}
+
+/* 다음 버튼 */
+.saju-intro3-next-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #4caf50;
+    color: #fff;
+    font-size: 1rem;
     padding: 10px 20px;
-    margin-top: 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-.saju-intro2-next-button:hover {
-    background-color: #666;
+.saju-intro3-next-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
 }

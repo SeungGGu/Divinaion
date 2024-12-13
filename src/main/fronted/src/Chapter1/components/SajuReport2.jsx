@@ -1,7 +1,8 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom'; // useNavigate 추가
 import {useSaju} from '../../context/SajuContext';
-import '../css/SajuReport2.css';
+import '../../css/nextPageButton.css'; // 공통 CSS 파일 Import
+import '../css/SajuReport2.css'; // 컴포넌트 고유 CSS
 
 const SajuReport2 = () => {
     const {sajuData} = useSaju();
@@ -34,56 +35,68 @@ const SajuReport2 = () => {
 
     const analysisData = {
         "甲": {
-            title: "튼튼한 나무처럼",
+            title: "튼튼한 나무",
             strengths: [
-                {title: "리더십이 뛰어나요", description: "팀을 이끌어 목표를 달성해요"},
-                {title: "협력적이에요", description: "함께 힘을 모아 목표를 달성해요."},
-                {title: "결단력이 있어요", description: "빠르게 결정을 내려 문제를 해결해요."},
-                {title: "끈기가 강해요", description: "끝까지 포기하지 않고 도전해요."},
-                {title: "믿음직스러워요", description: "팀에서 든든한 신뢰를 주는 존재예요."},
+                {title: "리더십이 뛰어납니다", description: "중요한 일을 앞장서서 해결합니다"},
+                {title: "협력적입니다", description: "주변 사람들과 잘 어울립니다"},
+                {title: "결단력이 있습니다", description: "빠르게 선택하고 행동합니다"},
+                {title: "믿음직스럽습니다", description: "사람들에게 신뢰를 주는 존재입니다"},
             ],
-            description: "자녀는 목표가 뚜렷하고 성장을 위해 꾸준히 노력하는 아이입니다. 자기 발전에 집중하며 흔들림 없이 앞으로 나아가는 모습을 보여요.",
-            imageAlt: "튼튼한 나무처럼",
+            TitleDescription: "튼튼한 나무처럼 안정된 내면의 힘이 있습니다",
+            subDescription: [
+                {description: "흔들림 없이 삶의 길을 차분히 걸어갑니다"},
+                {description: "당신의 뿌리가 주변에 든든한 신뢰를 전합니다"},
+            ],
+            imageAlt: "튼튼한 나무",
             imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
         },
         "乙": {
-            title: "성장하는 작은 나무처럼",
+            title: "성장하는 작은 나무",
             strengths: [
-                {title: "유연해요", description: "변화에 빠르게 적응해요."},
-                {title: "협력적이에요", description: "함께 프로젝트를 성공적으로 이끌어요."},
-                {title: "끈기가 있어요", description: "끝까지 목표를 달성해요."},
-                {title: "성장 지향적이에요", description: "새로운 기술을 배우고 발전해요."},
-                {title: "세심해요", description: "작은 디테일까지 꼼꼼히 신경 써요."},
+                {title: "유연합니다", description: "변화에 빠르게 적응합니다"},
+                {title: "협력적입니다", description: "함께 프로젝트를 성공적으로 이끕니다"},
+                {title: "끈기가 있습니다", description: "끝까지 목표를 달성합니다"},
+                {title: "세심합니다", description: "작은 디테일까지 꼼꼼히 신경 씁니다"},
             ],
-            description: "자녀는 성실하고 꾸준히 노력하는 성향을 지니고 있습니다. 목표를 향해 한 걸음씩 성장해 나가는 모습을 보여줍니다.",
-            imageAlt: "성장하는 작은 나무처럼",
-            imageSrc: `${process.env.PUBLIC_URL}/images/tree.png`,
+            TitleDescription: "성장하는 작은 나무처럼 꾸준히 내면을 키우세요",
+            subDescription: [
+                {description: "작은 변화에 적응하며 가능성을 확장하세요"},
+                {description: "꾸준함이 목표를 이루는 큰 힘이 됩니다"},
+            ],
+            imageAlt: "성장하는 작은 나무",
+            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
         },
         "丙": {
             title: "따뜻한 햇살처럼",
             strengths: [
-                {title: "열정적이에요", description: "뜨거운 열정으로 팀에 활기를 줘요."},
-                {title: "긍정적이에요", description: "밝은 에너지로 친구들에게 힘을 줘요."},
-                {title: "즉흥적이에요", description: "기회를 빠르게 포착하고 행동해요."},
-                {title: "리더십이 있어요", description: "팀을 이끌고 목표를 달성해요."},
-                {title: "표현력이 풍부해요", description: "감정을 솔직하게 표현해요."},
+                {title: "열정적입니다", description: "뜨거운 열정으로 활기를 더합니다"},
+                {title: "긍정적입니다", description: "밝은 에너지로 주변에 힘을 줍니다"},
+                {title: "리더십이 있습니다", description: "앞장서서 목표를 이룹니다"},
+                {title: "표현력이 뛰어납니다", description: "감정을 솔직하게 표현합니다"},
             ],
-            description: "자녀는 밝고 활기찬 에너지를 가지고 있습니다. 사람들에게 따뜻함을 전하며, 긍정적인 영향력을 널리 퍼뜨립니다.",
-            imageAlt: "따뜻한 햇살처럼",
-            imageSrc: `${process.env.PUBLIC_URL}/images/sun.png`,
+            TitleDescription: "따뜻한 햇살처럼 밝고 긍정적인 내면을 키우세요",
+            subDescription: [
+                {description: "밝은 에너지로 주변에 활력을 전하세요"},
+                {description: "따뜻한 마음으로 깊은 관계를 만들어가세요"},
+            ],
+            imageAlt: "따뜻한 햇살",
+            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
         },
         "丁": {
             title: "활활 타오르는 불꽃처럼",
             strengths: [
-                {title: "따뜻해요", description: "주변에 따뜻한 위로와 힘을 줘요."},
-                {title: "꾸준해요", description: "목표를 향해 포기하지 않아요."},
-                {title: "섬세해요", description: "작은 디테일도 놓치지 않아요."},
-                {title: "솔직해요", description: "감정을 솔직하게 표현해요."},
-                {title: "낙천적이에요", description: "어려운 상황에서도 긍정적인 태도를 유지해요."},
+                {title: "따뜻합니다", description: "주변에 따뜻한 위로와 힘을 줍니다"},
+                {title: "꾸준합니다", description: "목표를 향해 쉽게 포기하지 않습니다"},
+                {title: "섬세합니다", description: "작은 디테일도 놓치지 않습니다"},
+                {title: "솔직합니다", description: "감정을 진심으로 표현합니다"},
             ],
-            description: "자녀는 열정적이고 활기찬 성향을 가지고 있습니다. 하고 싶은 일에 몰두하며, 끝까지 완수하려는 강한 의지가 있습니다.",
-            imageAlt: "활활 타오르는 불꽃처럼",
-            imageSrc: `${process.env.PUBLIC_URL}/images/fire.png`,
+            TitleDescription: "타오르는 불꽃처럼 열정적이고 꾸준한 내면이에요",
+            subDescription: [
+                {description: "당신의 열정이 주변에 힘과 희망을 전합니다"},
+                {description: "섬세한 마음으로 따뜻한 세상을 만들어가세요"},
+            ],
+            imageAlt: "타오르는 불꽃",
+            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
         },
         "戊": {
             title: "튼튼한 산처럼",
@@ -94,74 +107,93 @@ const SajuReport2 = () => {
                 {title: "꾸준해요", description: "인내심을 가지고 목표를 끝까지 이루어요."},
                 {title: "현실적이에요", description: "감정보다 실질적인 결과를 중시해요."},
             ],
-            description: "자녀는 안정적이고 믿음직한 성향을 가지고 있습니다. 다른 사람들을 세심하게 챙기며, 언제나 책임감 있게 행동합니다.",
+            TitleDescription: "튼튼한 산처럼 흔들림 없는 내면의 강점이에요.",
+            subDescription: [
+                {description: "안정적이고 책임감 있는 성향이 신뢰를 줍니다"},
+                {description: "이 강점은 목표를 꾸준히 이루는 힘이 됩니다"},
+            ],
             imageAlt: "튼튼한 산처럼",
             imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
         },
         "己": {
-            title: "넉넉한 대지처럼",
+            title: "넉넉한 대치처럼",
             strengths: [
-                {title: "포용력이 있어요", description: "다양한 생각을 이해하고 존중해요."},
-                {title: "부드러워요", description: "상황에 맞춰 차분히 대응해요."},
-                {title: "꼼꼼해요", description: "작은 일도 놓치지 않고 세심하게 처리해요."},
-                {title: "끈기 있어요", description: "포기하지 않고 끝까지 최선을 다해요."},
-                {title: "배려심이 깊어요", description: "타인의 입장을 헤아리고 진심으로 도와줘요."},
+                {title: "포용력이 뛰어납니다", description: "다양한 생각을 이해하고 존중합니다"},
+                {title: "꼼꼼합니다", description: "작은 일도 놓치지 않고 세심하게 처리합니다"},
+                {title: "끈기가 있습니다", description: "포기하지 않고 끝까지 최선을 다합니다"},
+                {title: "배려심이 깊습니다", description: "타인의 입장을 헤아리고 진심으로 돕습니다"},
             ],
-            description: "자녀는 안정적이고 믿음직한 성향을 가지고 있습니다. 사람들을 잘 챙기고 신뢰받으며, 책임감 있게 행동합니다.",
-            imageAlt: "넉넉한 대지처럼",
-            imageSrc: `${process.env.PUBLIC_URL}/images/earth.png`,
+            TitleDescription: "넉넉한 대지처럼 따뜻하고 포용적인 내면이에요",
+            subDescription: [
+                {description: "깊은 배려심이 주변에 안정감을 전합니다"},
+                {description: "끈기와 꼼꼼함은 목표를 이루는 큰 힘이 됩니다"},
+            ],
+            imageAlt: "넉넉한 대지",
+            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
         },
         "庚": {
-            title: "단단한 금속처럼",
+            title: "단단한 금속",
             strengths: [
-                {title: "결단력이 있어요", description: "빠르게 결정하고 상황을 주도해요."},
-                {title: "직설적이에요", description: "생각을 솔직하고 직접적으로 표현해요."},
-                {title: "단호해요", description: "흔들림 없이 자신의 생각을 지켜요."},
-                {title: "끈기 있어요", description: "목표를 위해 끝까지 포기하지 않아요."},
-                {title: "논리적이에요", description: "상황을 분석하고 합리적인 해결책을 찾아요."},
+                {title: "결단력이 강합니다", description: "빠르게 결정하고 상황을 주도합니다"},
+                {title: "직설적입니다", description: "솔직하고 명확하게 생각을 표현합니다"},
+                {title: "단호합니다", description: "흔들림 없이 자신의 생각을 지킵니다"},
+                {title: "논리적입니다", description: "상황을 분석해 합리적인 해결책을 찾습니다"},
             ],
-            description: "자녀는 강하고 목표가 뚜렷한 성향을 가지고 있습니다. 어려운 상황에서도 흔들리지 않고 꾸준히 목표를 향해 나아가는 강한 결단력을 보여줍니다.",
-            imageAlt: "단단한 금속처럼",
-            imageSrc: `${process.env.PUBLIC_URL}/images/metal.png`,
+            TitleDescription: "단단한 금속처럼 강하고 흔들림 없는 내면이에요",
+            subDescription: [
+                {description: "결단력과 단호함이 신뢰를 줍니다"},
+                {description: "논리적인 사고로 문제를 명확히 해결합니다"},
+            ],
+            imageAlt: "단단한 금속",
+            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
         },
         "辛": {
-            title: "날카로운 금속처럼",
+            title: "날카로운 금속",
             strengths: [
-                {title: "깔끔함을 좋아해요", description: "주위를 정돈하고 깔끔하게 유지해요."},
-                {title: "분석적이에요", description: "세부 사항을 꼼꼼히 분석해 문제를 해결해요."},
-                {title: "융통성이 있어요", description: "상황에 맞춰 유연하게 대처해요."},
-                {title: "섬세해요", description: "타인의 감정을 이해하고 배려해요."},
-                {title: "자기 관리가 철저해요", description: "시간을 철저히 관리하며 꾸준히 성장해요."},
+                {title: "깔끔함을 좋아합니다", description: "주위를 정돈하고 질서를 유지합니다"},
+                {title: "분석적입니다", description: "세부 사항을 꼼꼼히 분석해 문제를 해결합니다"},
+                {title: "섬세합니다", description: "타인의 감정을 이해하고 배려합니다"},
+                {title: "자기 관리가 철저합니다", description: "시간을 철저히 관리하며 꾸준히 성장합니다"},
             ],
-            description: "자녀는 예리한 판단력과 뛰어난 집중력을 가진 아이입니다. 목표를 향해 정확하고 확실하게 나아가며, 결단력 있는 모습을 보여줍니다.",
-            imageAlt: "날카로운 금속처럼",
-            imageSrc: `${process.env.PUBLIC_URL}/images/knife.png`,
+            TitleDescription: "날카로운 금속처럼 세밀하고 정확한 내면이에요",
+            subDescription: [
+                {description: "분석적 사고로 문제를 해결하며 신뢰를 얻습니다"},
+                {description: "깔끔함과 배려로 주변을 편안하게 만듭니다"},
+            ],
+            imageAlt: "날카로운 금속",
+            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
         },
         "壬": {
-            title: "깊고 맑은 물처럼",
+            title: "깊고 맑은 물",
             strengths: [
-                {title: "유연해요", description: "변화에 빠르게 적응하고 상황에 맞게 대처해요."},
-                {title: "호기심이 많아요", description: "새로운 지식과 경험을 즐기며 탐구해요."},
-                {title: "직관적이에요", description: "상황을 빠르게 파악하고 결정을 내립니다."},
-                {title: "자유로워요", description: "독립적이며 틀에 얽매이지 않아요."},
-                {title: "적응력이 뛰어나요", description: "어떤 환경에서도 자연스럽게 적응해요."},
+                {title: "유연합니다", description: "변화에 맞춰 상황을 잘 대처합니다"},
+                {title: "호기심이 많습니다", description: "새로운 지식과 경험을 즐기며 탐구합니다"},
+                {title: "자유롭습니다", description: "독립적이며 틀에 얽매이지 않습니다"},
+                {title: "적응력이 뛰어납니다", description: "어떤 환경에서도 자연스럽게 적응합니다"},
             ],
-            description: "자녀는 차분하고 넓은 시야를 가진 아이입니다. 다양한 상황에서 유연하게 대처하며, 깊이 있는 지혜로 주변에 긍정적인 영향을 줍니다.",
-            imageAlt: "깊고 맑은 물처럼",
-            imageSrc: `${process.env.PUBLIC_URL}/images/water.png`,
+            TitleDescription: "깊고 맑은 물처럼 자유롭고 유연한 내면이에요",
+            subDescription: [
+                {description: "적응력이 어떤 상황에서도 길을 만듭니다"},
+                {description: "호기심과 자유로움이 삶을 풍요롭게 합니다"},
+            ],
+            imageAlt: "깊고 맑은 물",
+            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
         },
         "癸": {
-            title: "맑은 강물처럼",
+            title: "맑은 강물",
             strengths: [
-                {title: "섬세해요", description: "작은 것 하나도 꼼꼼하게 챙겨요."},
-                {title: "감성적이에요", description: "예술적 감각과 풍부한 감정을 지녔어요."},
-                {title: "신중해요", description: "중요한 결정을 신중하게 내려요."},
-                {title: "지혜로워요", description: "상황을 빠르게 파악해 해결책을 찾아요."},
-                {title: "적응력이 좋아요", description: "변화에 능숙하게 적응해요."},
+                {title: "섬세합니다", description: "작은 것도 꼼꼼히 챙깁니다"},
+                {title: "감성적입니다", description: "예술적 감각과 풍부한 감정을 지녔습니다"},
+                {title: "지혜롭습니다", description: "상황을 빠르게 파악해 해결책을 찾습니다"},
+                {title: "적응력이 뛰어납니다", description: "변화에 유연하게 적응합니다"},
             ],
-            description: "자녀는 부드럽고 유연한 성향을 가진 아이입니다. 상황에 맞게 자연스럽게 적응하며, 흐름을 따라 문제를 해결하는 능력이 있습니다.",
-            imageAlt: "맑은 강물처럼",
-            imageSrc: `${process.env.PUBLIC_URL}/images/river.png`,
+            TitleDescription: "맑은 강물처럼 섬세하고 유연한 내면이에요",
+            subDescription: [
+                {description: "지혜롭게 상황을 부드럽게 해결합니다"},
+                {description: "감성과 적응력이 삶에 활력을 더합니다"},
+            ],
+            imageAlt: "맑은 강물",
+            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
         },
     };
 
@@ -179,9 +211,17 @@ const SajuReport2 = () => {
 
     return (
         <div className="saju-report2-wrapper">
-            <h1 className="report-title">2. {name}님의 내면 강점을 발견하세요</h1>
-            <p className="report-subtitle">내면의 성향과 강점을 활용해 긍정적 변화를 만들어 보세요</p>
 
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
+
+            {/* 페이지 제목 */}
+            <h1 className="report-title">1. {name}님의 타고난 성향을 알려드립니다</h1>
+            <p className="report-subtitle">자신의 타고난 성향을 이해하고 더 나은 선택을 하세요</p>
+
+            {/* 콘텐츠 레이아웃 */}
             <div className="report-content">
                 <div className="sky-symbol-container">
                     <div
@@ -194,37 +234,39 @@ const SajuReport2 = () => {
                         {daySky}
                     </div>
                 </div>
-
+                {/* 왼쪽: 성향 분석 */}
                 <div className="analysis-container">
-                    <h2 className="analysis-title">{currentAnalysis.title}</h2>
+                    <h2 className="analysis-title">{name}님의 타고난 성향을 확인하세요</h2>
                     <ul className="strengths-list">
-                        {currentAnalysis.strengths.map((item, index) => (
+                        {currentAnalysis.strengths.map((strength, index) => (
                             <li key={index}>
-                                <strong>{index + 1}. {item.title}</strong>
+                                <strong>{index + 1}. {strength.title}</strong>
                                 <br/>
-                                <span className="strength-description">- {item.description}</span>
+                                <span>{strength.description}</span>
                             </li>
                         ))}
                     </ul>
                 </div>
 
+                {/* 오른쪽: 이미지와 설명 */}
                 <div className="analysis-image-container">
                     <img
                         src={currentAnalysis.imageSrc}
                         alt={currentAnalysis.imageAlt}
                         className="analysis-image"
                     />
-                    <p className="analysis-image-description">{currentAnalysis.description}</p>
+                    <p className="analysis-description">{currentAnalysis.TitleDescription}</p>
+                    <ul className="strengths-list">
+                        {currentAnalysis.subDescription.map((strength, index) => (
+                            <li key={index}>
+                                <strong>👉 {strength.description}</strong>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </div>
-
-            <div className="next-page-button-container">
-                <button className="next-page-button" onClick={handleNextPage}>
-                    다음 페이지로 이동
-                </button>
-            </div>
+            <p className="footer-text">타고난 성향을 이해하면 자신만의 특별한 미래를 설계할 수 있습니다</p>
         </div>
     );
 };
-
 export default SajuReport2;

@@ -1,57 +1,41 @@
 import React from 'react';
-import { useSaju } from '../../context/SajuContext';
-import { useNavigate } from "react-router-dom";
 import '../css/SajuIntro3.css';
+import { useNavigate } from "react-router-dom";
+import {useSaju} from "../../context/SajuContext";
 
 const SajuIntro3 = () => {
     const navigate = useNavigate();
     const { sajuData } = useSaju();
-
-    // sajuData가 없으면 로딩 중 메시지 표시
-    if (!sajuData) {
-        return <p>사주 데이터를 불러오는 중입니다...</p>;
-    }
+    const { name } = sajuData;
 
     function nextPageOnClick() {
-        navigate('/Intro4');
+        navigate('/Intro4'); // 다음 페이지의 경로로 이동
     }
 
-    const { name } = sajuData;
-    const nameArray = name ? [...name.split(''), '님'] : [];
-
     return (
-        <div className="saju-intro3-container">
-            <h1>사주로 발견한 나만의 길을 걸어보세요</h1>
-            <p>사주 보고서를 통해 새로운 길을 제시해 드립니다</p>
-
-            {/* 이름 박스 */}
-            <div className="saju-intro3-name-box-container">
-                {nameArray.map((char, index) => (
-                    <div key={index} className="saju-intro3-name-box">
-                        {char}
-                    </div>
-                ))}
+        <div className="saju-intro2-container">
+            {/* 우측 상단의 다음 버튼 */}
+            <button className="saju-intro2-next-button" onClick={nextPageOnClick}>
+                다음 ▶
+            </button>
+            {/* 페이지 타이틀 */}
+            <h1 className="saju-intro2-title">
+                {name}님의 사주, 언제 어디서나 쉽게 확인하세요<br/>
+                듣는 사주가 아닌, 보이는 사주로 편리하게 확인하세요
+            </h1>
+            {/* 중앙 구조 */}
+            <div className="saju-intro2-main">
+                <div className="saju-intro2-center">보이는 사주</div>
+                <div className="saju-intro2-circle">
+                    <div className="saju-intro2-item" style={{gridArea: '인연'}}>인연</div>
+                    <div className="saju-intro2-item" style={{gridArea: '건강'}}>건강</div>
+                    <div className="saju-intro2-item" style={{gridArea: '직업'}}>직업</div>
+                    <div className="saju-intro2-item" style={{gridArea: '적성'}}>적성</div>
+                    <div className="saju-intro2-item" style={{gridArea: '운세'}}>운세</div>
+                    <div className="saju-intro2-item" style={{gridArea: '재물'}}>재물</div>
+                    <div className="saju-intro2-item" style={{gridArea: '성격'}}>성격</div>
+                </div>
             </div>
-
-            {/* '사 주 팔 자' 고정 표시 */}
-            <div className="saju-intro3-name-box-container">
-                {['사', '주', '팔', '자'].map((char, index) => (
-                    <div key={index} className="saju-intro3-name-box">
-                        {char}
-                    </div>
-                ))}
-            </div>
-
-            {/* 안내 텍스트 */}
-            <p className="saju-intro3-info-text">
-                사주팔자가 알려주는 인생의 나침반을 따라 새로운 길을 열어보세요
-            </p>
-
-            {/* 이미지 */}
-            <div className="saju-intro3-image-container">
-                <img src={`${process.env.PUBLIC_URL}/images/saju.png`} alt="Guiding Path"/>
-            </div>
-            <button className="saju-intro3-next-button" onClick={nextPageOnClick}>다음 페이지로</button>
         </div>
     );
 };

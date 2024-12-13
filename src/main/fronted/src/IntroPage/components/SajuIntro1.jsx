@@ -1,12 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/SajuIntro1.css';
-import {useSaju} from "../../context/SajuContext";
+import { useSaju } from "../../context/SajuContext";
 
 const SajuIntro1 = () => {
     const navigate = useNavigate();
-    const {sajuData} = useSaju();
-    const {name} = sajuData;
+    const { sajuData } = useSaju();
 
     function nextPageOnClick() {
         navigate('/Intro2'); // 다음 페이지의 경로로 이동
@@ -14,29 +13,41 @@ const SajuIntro1 = () => {
 
     return (
         <div className="saju-intro1-container">
-            {/* 상단 오행 아이콘 */}
-            <div className="saju-intro1-element-icons">
-                <div className="saju-intro1-icon saju-intro1-wood">木</div>
-                <div className="saju-intro1-icon saju-intro1-earth">土</div>
-                <div className="saju-intro1-icon saju-intro1-metal">金</div>
-                <div className="saju-intro1-icon saju-intro1-water">水</div>
-                <div className="saju-intro1-icon saju-intro1-fire">火</div>
+            {/* 우측 상단의 다음 버튼 */}
+            <button className="saju-intro1-next-button" onClick={nextPageOnClick}>
+                다음 ▶
+            </button>
+            {/* 중앙 레이아웃 */}
+            <div className="saju-intro1-layout">
+                {/* 왼쪽 아이콘 */}
+                <div className="saju-intro1-left-icons">
+                    <div className="saju-intro1-icon">성향</div>
+                    <div className="saju-intro1-icon">건강</div>
+                    <div className="saju-intro1-icon">진로</div>
+                </div>
+
+                {/* 중앙 이미지 */}
+                <div className="saju-intro1-image-container">
+                    <img src={`${process.env.PUBLIC_URL}/images/wood.png`} alt="Saju Main"/>
+                </div>
+
+                {/* 오른쪽 아이콘 */}
+                <div className="saju-intro1-right-icons">
+                    <div className="saju-intro1-icon">인연</div>
+                    <div className="saju-intro1-icon">운세</div>
+                    <div className="saju-intro1-icon">재물</div>
+                </div>
             </div>
 
-            {/* 보고서 제목 */}
             <div className="saju-intro1-title">
-                <h1>내 사주</h1>
-                <h2>그것이 궁금하다</h2>
+                <h1>나의 사주를</h1>
+                <h1>알고 싶다</h1>
             </div>
 
             {/* 안내 텍스트 */}
             <div className="saju-intro1-text">
-                <p>꼭 봐야 할 {name}님의 사주 분석 보고서</p>
-                <p className="saju-intro1-highlight">{name}님의 특별한 사주 이야기, 지금 확인해보세요!</p>
+                <p>나만의 사주 보고서로 나의 진짜 모습을 찾아보세요!</p>
             </div>
-
-            {/* 페이지 넘김 버튼 */}
-            <button className="saju-intro1-next-button" onClick={nextPageOnClick}>다음 페이지로</button>
         </div>
     );
 };

@@ -10,6 +10,10 @@
     font-family: 'Arial', sans-serif;
 }
 
+.saju-container-h1{
+    color: black;
+}
+
 .saju-form {
     display: flex;
     flex-direction: column;

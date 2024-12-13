@@ -1,44 +1,106 @@
 import React from 'react';
-import '../css/SajuIntro2.css';
+import { useSaju } from '../../context/SajuContext';
 import { useNavigate } from "react-router-dom";
+import '../css/SajuIntro2.css';
+
+// 오행 색상 매핑
+const fiveElementColorMap = {
+    wood: '#89b798',
+    fire: '#e57373',
+    earth: '#f0d58c',
+    metal: '#c0c0c0',
+    water: 'black',
+};
+
+// 오행 색상 설정
+const getElementColor = (hanja) => {
+    const element = {
+        '甲': 'wood', '乙': 'wood', '丙': 'fire', '丁': 'fire',
+        '戊': 'earth', '己': 'earth', '庚': 'metal', '辛': 'metal',
+        '壬': 'water', '癸': 'water', '寅': 'wood', '卯': 'wood',
+        '巳': 'fire', '午': 'fire', '辰': 'earth', '未': 'earth',
+        '戌': 'earth', '丑': 'earth', '申': 'metal', '酉': 'metal',
+        '亥': 'water', '子': 'water',
+    }[hanja] || 'transparent';
+    return fiveElementColorMap[element] || 'transparent';
+};
+
+// 텍스트 색상 설정
+const getTextColor = (bgColor) => (bgColor === 'black' ? 'white' : 'black');
 
 const SajuIntro2 = () => {
     const navigate = useNavigate();
+    const { sajuData } = useSaju();
 
-    function nextPageOnClick() {
-        navigate('/Intro3'); // 다음 페이지의 경로로 이동
+    // sajuData가 없으면 로딩 중 메시지 표시
+    if (!sajuData) {
+        return <p>사주 데이터를 불러오는 중입니다...</p>;
     }
 
+    function nextPageOnClick() {
+        navigate('/Intro3');
+    }
+
+    const { name, result } = sajuData;
+
     return (
-        <div className="saju-intro2-container">
-            <h1>사주를 통해 나의 숨겨진 잠재력을 발견하고,<br />인생의 모든 궁금증을 풀어보세요</h1>
-            <div className="saju-intro2-categories">
-                <div className="saju-intro2-category saju-intro2-green">
-                    <h2>성향</h2>
-                    <p>당신만의 특별한 매력을 어떻게 발휘할 수 있는지 알려드립니다</p>
-                </div>
-                <div className="saju-intro2-category saju-intro2-red">
-                    <h2>건강</h2>
-                    <p>오행의 균형을 통해 건강 상태와 조심할 부분을 미리 알아보세요</p>
-                </div>
-                <div className="saju-intro2-category saju-intro2-orange">
-                    <h2>직업</h2>
-                    <p>꿈을 현실로 만드는, 당신에게 꼭 맞는 직업을 찾아보세요</p>
-                </div>
-                <div className="saju-intro2-category saju-intro2-white">
-                    <h2>인연</h2>
-                    <p>연인과의 궁합부터 주변 인연까지, 인연의 깊이를 파헤쳐 드립니다</p>
-                </div>
-                <div className="saju-intro2-category saju-intro2-black">
-                    <h2>재물</h2>
-                    <p>당신의 재물복은 어느 정도일까요? 사주로 미리 확인해보세요</p>
-                </div>
-                <div className="saju-intro2-category saju-intro2-yellow">
-                    <h2>운세</h2>
-                    <p>인생의 결정적 순간을 위한 타이밍과 조언을 드립니다</p>
-                </div>
+        <div className="saju-intro3-container">
+            {/* 다음 버튼 */}
+            <button className="saju-intro3-next-button" onClick={nextPageOnClick}>
+                다음 ▶
+            </button>
+
+            {/* 왼쪽 섹션: 만세력 */}
+            <div className="saju-intro3-left">
+                <h2>디지털 사주 보고서</h2>
+                <table className="saju-table">
+                    <tbody>
+                    <tr>
+                        <td style={{
+                            backgroundColor: getElementColor(result.timeSky),
+                            color: getTextColor(getElementColor(result.timeSky))
+                        }}>{result.timeSky}</td>
+                        <td style={{
+                            backgroundColor: getElementColor(result.daySky),
+                            color: getTextColor(getElementColor(result.daySky))
+                        }}>{result.daySky}</td>
+                        <td style={{
+                            backgroundColor: getElementColor(result.monthSky),
+                            color: getTextColor(getElementColor(result.monthSky))
+                        }}>{result.monthSky}</td>
+                        <td style={{
+                            backgroundColor: getElementColor(result.yearSky),
+                            color: getTextColor(getElementColor(result.yearSky))
+                        }}>{result.yearSky}</td>
+                    </tr>
+                    <tr>
+                        <td style={{
+                            backgroundColor: getElementColor(result.timeGround),
+                            color: getTextColor(getElementColor(result.timeGround))
+                        }}>{result.timeGround}</td>
+                        <td style={{
+                            backgroundColor: getElementColor(result.dayGround),
+                            color: getTextColor(getElementColor(result.dayGround))
+                        }}>{result.dayGround}</td>
+                        <td style={{
+                            backgroundColor: getElementColor(result.monthGround),
+                            color: getTextColor(getElementColor(result.monthGround))
+                        }}>{result.monthGround}</td>
+                        <td style={{
+                            backgroundColor: getElementColor(result.yearGround),
+                            color: getTextColor(getElementColor(result.yearGround))
+                        }}>{result.yearGround}</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-            <button className="saju-intro2-next-button" onClick={nextPageOnClick}>다음 페이지로</button>
+
+            {/* 오른쪽 섹션: 보고서 정보 */}
+            <div className="saju-intro3-right">
+                <h2>{name}님을 위한 맞춤형 사주 보고서!</h2>
+                <p>사주 분석, 이제 손끝으로 간편하게 확인하세요</p>
+                <p>➡ 33가지 분석으로 나를 이해하고, 삶의 방향을 정리해보세요</p>
+            </div>
         </div>
     );
 };

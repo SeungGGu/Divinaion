@@ -1,22 +1,27 @@
 .saju-report2-wrapper {
-    background-color: #1e1e1e;
+    background-color: #1e1e1e; /* 기존 색상 유지 */
     color: #f8f8f8;
-    padding: 40px;
     text-align: center;
-    min-height: 100vh;
-    font-family: 'Arial', sans-serif;
+    height: 100vh; /* 화면 전체 높이에 맞춤 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* 세로 방향 중앙 정렬 */
+    box-sizing: border-box; /* 내부 패딩 포함 계산 */
+    overflow: hidden; /* 스크롤 방지 */
+    padding: 20px; /* 여백 설정 */
 }
 
 .report-title {
     font-size: 2rem;
-    margin-bottom: 15px;
     color: #f0c674;
+    margin-bottom: 10px; /* 간격 조정 */
 }
 
 .report-subtitle {
     font-size: 1.2rem;
-    margin-bottom: 30px;
     color: #dcdcdc;
+    margin-bottom: 20px; /* 간격 조정 */
 }
 
 .report-content {
@@ -24,30 +29,8 @@
     justify-content: space-between;
     gap: 30px;
     align-items: flex-start;
+    width: 100%;
 }
-
-.sky-symbol-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.sky-symbol {
-    font-size: 2rem; /* 텍스트 크기를 조정하여 아이콘 내부에 잘 맞게 함 */
-    font-weight: bold;
-    width: 100px; /* 아이콘 크기 */
-    height: 100px; /* 아이콘 크기 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: #f9c74f; /* 기본 배경 색상 */
-    color: black; /* 텍스트 색상 */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
-    text-align: center;
-}
-
 
 .analysis-container {
     flex: 2;
@@ -78,17 +61,16 @@
     color: #f8f8f8;
 }
 
-.strength-description {
-    color: #dcdcdc;
-}
-
 .analysis-image-container {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    background-color: #353535;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 .analysis-image {
@@ -100,34 +82,34 @@
     margin-bottom: 15px;
 }
 
-.analysis-image-description {
-    background-color: #353535;
-    padding: 15px;
+.analysis-description {
+    background-color: #444;
+    padding: 10px;
     border-radius: 8px;
     font-size: 1rem;
     color: #dcdcdc;
     line-height: 1.5;
     text-align: center;
-    box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.4);
 }
 
-.next-page-button-container {
-    margin-top: 20px;
-    text-align: center;
+.sky-symbol-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.next-page-button {
-    padding: 10px 20px;
-    background-color: #f0d58c;
-    color: #000;
-    font-size: 1rem;
+.sky-symbol {
+    font-size: 2rem; /* 텍스트 크기를 조정하여 아이콘 내부에 잘 맞게 함 */
     font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.next-page-button:hover {
-    background-color: #e5c07b;
+    width: 100px; /* 아이콘 크기 */
+    height: 100px; /* 아이콘 크기 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #f9c74f; /* 기본 배경 색상 */
+    color: black; /* 텍스트 색상 */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    text-align: center;
 }

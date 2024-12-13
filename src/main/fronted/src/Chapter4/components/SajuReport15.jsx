@@ -14,17 +14,32 @@ const SajuReport15 = () => {
 
     // 성향별 설명 데이터
     const mindDescriptions = {
-        물질적: ["실리를 추구해요", "효율적으로 일해요", "현실적 판단을 해요"],
-        경쟁적: ["도전적이에요", "목표에 집중해요", "열정이 넘쳐요"],
-        내향적: ["꾸준히 노력해요", "안정을 추구해요", "성실히 일해요"],
-        외향적: ["창의적이에요", "자유롭게 생각해요", "활발하게 활동해요"],
-        안정적: ["책임감이 강해요", "신뢰를 얻어요", "성실히 노력해요"],
-        권위적: ["리더십이 있어요", "결단력이 뛰어나요", "목표를 주도해요"],
-        모범적: ["성실히 노력해요", "규칙을 지켜요", "모범적 모습을 보여요"],
-        협력적: ["협력을 잘해요", "함께할 때 즐거워요", "신뢰를 쌓아요"],
-        창의적: ["창의적으로 생각해요", "새로운 시도를 즐겨요", "호기심이 넘쳐요"],
-        지혜적: ["깊이 생각해요", "신중하게 판단해요", "지식을 탐구해요"],
+        물질적: ["목표를 실현하며 자원을 효율적으로 관리합니다"],
+        경쟁적: ["협력하며 타인과 함께 성과를 이룹니다"],
+        내향적: ["창의적이고 유연하게 문제를 해결합니다"],
+        외향적: ["적극적이고 혁신적인 아이디어를 제공합니다"],
+        안정적: ["체계적이고 계획적으로 목표를 달성합니다"],
+        권위적: ["결단력과 리더십이 강한 태도를 가집니다"],
+        모범적: ["규칙을 잘 지키며 성실하게 행동합니다"],
+        협력적: ["독립적이고 자기 주도적으로 행동합니다"],
+        창의적: ["독창적이고 통찰력 있는 사고를 발휘합니다"],
+        지혜적: ["분석적이고 신중하게 지식을 쌓습니다"],
     };
+
+    // 평가 기호 함수
+    const getEvaluationSymbol = (percentage) => {
+        if (percentage === 0) return "❗";
+        if (percentage <= 42) return "👍";
+        return "❗❗";
+    };
+
+    // 가장 높은 %의 성향 찾기
+    const highestMind = Object.entries(mindScores).reduce((highest, [mind, score]) => {
+        if (!highest || score > mindScores[highest]) {
+            return mind;
+        }
+        return highest;
+    }, null);
 
     const handleNextPage = () => {
         navigate('/Report16', { state: { mindScores: mindScores } });
@@ -32,36 +47,37 @@ const SajuReport15 = () => {
 
     return (
         <div className="report15-container">
-            <h1 className="report-title">{name}님의 마음 강점 찾기</h1>
-            <p className="report-subtitle">
-                {name}님의 강점을 활용하여 성장하세요.
-            </p>
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
 
-            {/* 성향 및 설명 박스 */}
-            <div className="mind-summary-container">
+            <h1 className="report-title">11. {name}님의 타고난 마음 성향, 강점을 알려드립니다</h1>
+            <p className="report-subtitle">내면의 강점을 이해하고 삶을 더 풍요롭게 만들어보세요</p>
+
+            <p className="report-subtitle">마음 성향의 강점은 {name}님에게 어떻게 작용하는 지 발견해보세요</p>
+            <div className="report3-content">
                 {Object.entries(mindScores)
                     .filter(([_, score]) => score > 0) // 0% 성향 제외
                     .map(([mind, score]) => (
-                        <div key={mind} className="mind-summary-box">
-                            <h2 className="mind-title">{mind} 성향</h2>
-                            <p className="mind-score">{score}%</p>
-                            <ul className="mind-description">
-                                {mindDescriptions[mind]?.map((desc, index) => (
-                                    <li key={index}>{desc}</li>
-                                ))}
-                            </ul>
+                        <div key={mind} className={`result-section ${mind === highestMind ? 'highlight' : ''}`}>
+                            <div className="result-header">
+                                <span className="result-category">{mind} 성향</span>
+                                <span className="result-score">{getEvaluationSymbol(score)} {score}%</span>
+                            </div>
+                            <div className="result-message">
+                                <ul className="mind-description">
+                                    {mindDescriptions[mind]?.map((desc, index) => (
+                                        <li key={index}>{desc}</li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
                     ))}
             </div>
 
-            {/* 하단 버튼 */}
             <div className="report-footer">
-                <p className="footer-text">
-                    {name}님의 긍정적인 마음 변화를 통해 더 큰 성장을 이루세요.
-                </p>
-                <button className="next-page-button" onClick={handleNextPage}>
-                    다음 페이지로 이동
-                </button>
+                <p className="footer-text">내면의 강점을 활용하면 새로운 목표를 달성하는 데 도움이 됩니다</p>
             </div>
         </div>
     );

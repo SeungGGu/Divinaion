@@ -14,17 +14,33 @@ const SajuReport16 = () => {
 
     // 성향별 개선 방향 설명
     const mindImprovement = {
-        물질적: ["감정 표현이 서툼", "이익만 추구함", "공감 능력 향상 필요"],
-        경쟁적: ["과도한 경쟁 의식", "성급한 결정", "신중한 결정 필요"],
-        내향적: ["지나친 신중함", "변화 수용 어려움", "유연성 필요"],
-        외향적: ["충동적 행동 경향", "규칙에 대한 반항", "차분한 소통 필요"],
-        안정적: ["안정만을 추구함", "유연성이 부족함", "변화에 대한 열린 자세 필요"],
-        권위적: ["타인의 평가에 민감함", "자기 주장 강함", "유연한 소통 필요"],
-        모범적: ["규칙 준수를 집착", "완벽주의 경향", "융통성 발휘 필요"],
-        협력적: ["자신의 주장을 고집", "타인 의견 수용 어려움", "다양한 의견 수용 필요"],
-        창의적: ["독창적 사고", "실행력 부족", "계획 실행력 강화 필요"],
-        지혜적: ["결정에 시간이 걸림", "지나치게 신중함", "실용적 접근 필요"],
+        물질적: ["이익만 추구해 신뢰를 잃을 수 있습니다"],
+        경쟁적: ["지나친 경쟁으로 관계가 불편해질 수 있습니다"],
+        내향적: ["현실만 고집해 창의성이 부족해질 수 있습니다"],
+        외향적: ["자유로움이 지나쳐 반발을 살 수 있습니다"],
+        안정적: ["변화에 소극적이고 보수적일 수 있습니다"],
+        권위적: ["권위적 태도로 독단적이 될 수 있습니다"],
+        모범적: ["규칙에 얽매여 융통성이 부족할 수 있습니다"],
+        협력적: ["자기 주장만 고집해 협력이 어려울 수 있습니다"],
+        창의적: ["과도한 분석으로 소통이 단절될 수 있습니다"],
+        지혜적: ["지나친 신중함으로 기회를 놓칠 수 있습니다"],
     };
+
+    // 약점 평가 기호 함수
+    const getEvaluationSymbol = (percentage, isHighest) => {
+        if (isHighest) return "⚠";
+        if (percentage <= 42) return "❗";
+        if (percentage <= 70) return "‼";
+        return "🚫";
+    };
+
+    // 가장 높은 %의 성향 찾기
+    const highestMind = Object.entries(mindScores).reduce((highest, [mind, score]) => {
+        if (!highest || score > mindScores[highest]) {
+            return mind;
+        }
+        return highest;
+    }, null);
 
     const handleNextPage = () => {
         navigate('/Report17'); // 다음 페이지로 이동
@@ -32,36 +48,44 @@ const SajuReport16 = () => {
 
     return (
         <div className="report16-container">
-            <h1 className="report-title">{name}님의 마음 개선 방향</h1>
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
+
+            <h1 className="report-title">12. {name}님의 마음성향, 약점을 강점으로 만들어보세요</h1>
             <p className="report-subtitle">
-                {name}님의 마음을 이해하고 성장할 수 있는 방향을 찾아보세요.
+                약점을 강점으로 전환하며 새로운 변화를 만들어보세요!
             </p>
 
             {/* 개선 방향 성향 박스 */}
+            <p>마음 성향의 약점이 {name}님의 성장에 어떤 영향을 미치는지 확인하세요</p>
             <div className="mind-improvement-container">
                 {Object.entries(mindScores)
                     .filter(([_, score]) => score > 0) // 0% 성향 제외
-                    .map(([mind, score]) => (
-                        <div key={mind} className="mind-improvement-box">
-                            <h2 className="mind-title">{mind} 성향</h2>
-                            <p className="mind-score">{score}%</p>
-                            <ul className="mind-improvement-list">
-                                {mindImprovement[mind].map((desc, index) => (
-                                    <li key={index}>{desc}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
+                    .map(([mind, score]) => {
+                        const isHighest = mind === highestMind;
+                        return (
+                            <div key={mind} className={`mind-improvement-box ${isHighest ? 'highlight' : ''}`}>
+                                <h2 className="mind-title">{mind} 마음</h2>
+                                <p className="mind-score">
+                                    {getEvaluationSymbol(score, isHighest)} {score}%
+                                </p>
+                                <ul className="mind-improvement-list">
+                                    {mindImprovement[mind].map((desc, index) => (
+                                        <li key={index}>{desc}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        );
+                    })}
             </div>
 
             {/* 하단 버튼 */}
             <div className="report-footer">
                 <p className="footer-text">
-                    {name}님의 약점을 보완하고 성장할 방법을 찾아보세요.
+                    약점을 강점으로 바꾸면 긍정적인 변화를 시작할 수 있습니다.
                 </p>
-                <button className="next-page-button" onClick={handleNextPage}>
-                    다음 페이지로 이동
-                </button>
             </div>
         </div>
     );

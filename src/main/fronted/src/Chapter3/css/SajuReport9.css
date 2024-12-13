@@ -2,13 +2,13 @@
 .report9-container {
     background-color: #1e1e1e;
     color: #f8f8f8;
-    padding: 40px;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     font-family: 'Arial', sans-serif;
+    overflow-y: hidden; /* 스크롤 제거 */
 }
 
 /* 헤더 스타일 */
@@ -36,88 +36,59 @@
     width: 100%;
     max-width: 1200px;
     gap: 40px;
-    flex-wrap: wrap;
 }
 
 /* 이미지 섹션 */
-.treasure-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.treasure-image {
-    max-width: 400px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
-}
-
-/* 중앙 레이더 차트 */
 .radar-chart-section {
     flex: 1;
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .radar-chart-image {
-    max-width: 300px;
+    max-width: 700px; /* 이미지 크기 확대 */
+    height: auto;
     border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-.chart-labels {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    transform: translate(-50%, -50%);
+/* 능력 설명 표 */
+.ability-table {
+    flex: 1;
+    color: #dcdcdc;
+    text-align: left;
+    font-size: 1.1rem;
+    max-width: 800px;
 }
 
-.label {
-    font-size: 1rem;
+.ability-table p {
+    font-size: 1.5rem;
     font-weight: bold;
     color: #f0c674;
+    margin-bottom: 10px;
 }
 
-.label.top {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -100%);
+.ability-table table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.label.top-left {
-    position: absolute;
-    top: 25%;
-    left: 15%;
-    transform: translate(-50%, -50%);
+.ability-table th,
+.ability-table td {
+    border: 1px solid #f0c674;
+    padding: 8px 12px;
+    text-align: left;
 }
 
-.label.top-right {
-    position: absolute;
-    top: 25%;
-    right: 15%;
-    transform: translate(50%, -50%);
+.ability-table th {
+    background-color: #f0c674;
+    color: #1e1e1e;
+    font-weight: bold;
 }
 
-.label.bottom-left {
-    position: absolute;
-    bottom: 25%;
-    left: 15%;
-    transform: translate(-50%, 50%);
-}
-
-.label.bottom-right {
-    position: absolute;
-    bottom: 25%;
-    right: 15%;
-    transform: translate(50%, 50%);
+.ability-table td {
+    color: #dcdcdc;
 }
 
 /* 푸터 스타일 */

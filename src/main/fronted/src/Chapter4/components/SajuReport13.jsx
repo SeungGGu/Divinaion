@@ -14,33 +14,33 @@ const SajuReport13 = () => {
 
     return (
         <div className="report13-container">
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
             {/* 상단 제목 */}
             <div className="header-section">
-                <h1 className="title">{name}님의 타고난 마음 성향 알아보기</h1>
+                <h1 className="title">{name}님의 마음성향에서 발견하는 강점과 가능성</h1>
                 <p className="subtitle">
-                    {name}님의 마음을 깊이 이해하고 올바른 결정을 내리세요
+                    사주로 마음 성향을 분석하고 더 나은 성장은 시작하세요
                 </p>
             </div>
 
             {/* 메인 이미지 섹션 */}
-            <div className="image-section">
+            <div className="image-section2">
                 <img
-                    src={`${process.env.PUBLIC_URL}/images/mountain.png`} // 더미 이미지 경로
+                    src={`${process.env.PUBLIC_URL}/images/mind.png`} // 더미 이미지 경로
                     alt="마음 성향 이미지"
-                    className="main-image"
+                    className="main-image2"
                 />
             </div>
 
             {/* 하단 메시지 */}
             <div className="footer-section">
                 <p className="footer-message">
-                    {name}님의 긍정적인 마음 변화를 통해 더 나은 성장을 이루세요
+                    마음 성향을 이해하면 성장의 기회를 잡을 수 있습니다.
                 </p>
             </div>
-
-            <button className="next-page-button" onClick={handleNextPage}>
-                다음 페이지로 이동
-            </button>
         </div>
     );
 };

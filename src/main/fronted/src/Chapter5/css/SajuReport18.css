@@ -1,16 +1,19 @@
-/* 컨테이너 스타일 */
+/* 전체 컨테이너 */
 .report18-container {
     background-color: #1e1e1e;
     color: #f8f8f8;
-    padding: 40px;
+    padding: 0px 40px;
     text-align: center;
     min-height: 100vh;
     font-family: 'Arial', sans-serif;
+    height: 100vh; /* 화면 높이 고정 */
+    overflow: hidden; /* 스크롤 제거 */
 }
 
-/* 상단 제목 */
+/* 제목 스타일 */
 .report18-container .report-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
     color: #f0c674;
     margin-bottom: 10px;
 }
@@ -21,21 +24,28 @@
     margin-bottom: 30px;
 }
 
-/* 콘텐츠 섹션 */
+/* 분석 섹션 */
 .report18-container .report-content {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
+    gap: 30px;
     margin-bottom: 40px;
 }
 
-/* 복 분석 표 */
+/* 에너지 구성 테이블 섹션 */
 .report18-container .blessing-analysis-section {
     flex: 1;
     background-color: #2a2a2a;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.report18-container .blessing-analysis-section h2 {
+    color: #f0c674;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
 }
 
 .report18-container .blessing-analysis-table {
@@ -43,67 +53,89 @@
     border-collapse: collapse;
     margin-top: 20px;
     color: #f8f8f8;
+    text-align: center;
 }
 
 .report18-container .blessing-analysis-table th,
 .report18-container .blessing-analysis-table td {
     border: 1px solid #555;
     text-align: center;
-    padding: 15px; /* 모든 셀에 일정한 패딩 */
+    padding: 15px;
     font-size: 1rem;
     vertical-align: middle;
-    min-width: 80px; /* 각 셀의 최소 너비 */
-    height: 30px; /* 각 셀의 높이 */
+    min-width: 80px;
+    height: 50px;
 }
 
-/* 복 점수 섹션 */
-.report18-container .blessing-score-section {
-    flex: 1;
-    background-color: #2a2a2a;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
-}
-
-.report18-container .blessing-score-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+.report18-container .blessing-analysis-table td {
+    background-color: #1e1e1e;
     color: #f8f8f8;
 }
 
-.report18-container .blessing-score-table td {
-    padding: 10px;
-    border: 1px solid #555;
-    text-align: left;
+/* 복 점수 섹션 */
+.report18-container .blessing-table-container {
+    flex: 1;
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* 하단 메시지 */
-.report18-container .footer-section .footer-message {
+.report18-container .blessing-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
     font-size: 1rem;
-    color: #868e96;
-    margin-bottom: 20px;
 }
 
-.report18-container .footer-section .footer-note {
-    font-size: 0.9rem;
-    color: #aaa;
+.report18-container .blessing-table-container th,
+.report18-container .blessing-table-container td {
+    border: 1px solid #444;
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.report18-container .blessing-table-container th {
+    background-color: #495057;
+    color: #f0c674;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.report18-container .blessing-table-container td {
+    background-color: #1e1e1e;
+    color: #f8f8f8;
 }
 
 /* 버튼 스타일 */
-.report18-container .next-page-button {
+.nextPage-button {
+    margin-top: 30px;
     padding: 10px 20px;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
     color: #000;
     background-color: #f0c674;
     border: none;
-    border-radius: 5px;
-    font-weight: bold;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
 
-.report18-container .next-page-button:hover {
+.nextPage-button:hover {
     background-color: #e5b960;
     transform: scale(1.05);
+}
+
+/* 하단 메시지 */
+.footer-section {
+    margin-top: 20px;
+    text-align: center;
+    color: #868e96;
+}
+
+.footer-message {
+    font-size: 1rem;
+    color: #bbb;
+    margin-bottom: 20px;
 }

@@ -24,8 +24,8 @@ const SajuReport10 = () => {
         자신감: ['비견', '겁재'],
         창의력: ['식신', '상관'],
         경제력: ['편재', '정재'],
-        직업능력: ['편관', '정관'],
-        지적능력: ['편인', '정인'],
+        성취력: ['편관', '정관'],
+        사고력: ['편인', '정인'],
     };
 
     // 관계 매핑 함수
@@ -44,8 +44,8 @@ const SajuReport10 = () => {
             자신감: 0,
             창의력: 0,
             경제력: 0,
-            직업능력: 0,
-            지적능력: 0,
+            성취력: 0,
+            사고력: 0,
         };
 
         Object.entries(relationsPercentage).forEach(([key, percentage]) => {
@@ -65,6 +65,20 @@ const SajuReport10 = () => {
     const handleNextPage = () => {
         navigate('/Report11', { state: { scores } });
     };
+
+    const getEvaluation = (score, isHighest) => {
+        if (score === 0) return "❗약해요";
+        if (score >= 1 && score <= 42) return isHighest ? "👍좋아요" : "좋아요";
+        return "넘쳐요";
+    };
+
+    // 가장 높은 1~42% 값 찾기
+    const highestKey = Object.keys(scores).reduce((highest, key) => {
+        if (scores[key] >= 1 && scores[key] <= 42 && (!highest || scores[key] > scores[highest])) {
+            return key;
+        }
+        return highest;
+    }, null);
 
     // 오행 색상 매핑
     const fiveElementColorMap = {
@@ -92,46 +106,31 @@ const SajuReport10 = () => {
 
     return (
         <div className="report10-container">
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
+
             <h1 className="report-title">
-                {name}님의 잠재력 분석과 재능 발휘 전략
+                7. {name}님의 타고난 능력, 사주로 분석합니다
             </h1>
             <p className="report-subtitle">
-                부족한 부분은 보완하고, 강점은 극대화하는 방법을 안내합니다.
+                타고난 능력과 가능성을 사주 에너지로 발견해보세요!
             </p>
-
-            {/* 추가된 상단 정보 */}
-            <div className="extra-section">
-                <h2 className="extra-title">추가 분석 정보</h2>
-                <p>
-                    {name}님의 사주팔자에 나타난 천간과 지지를 기반으로, 각 능력에 대한 비율과
-                    관계를 분석합니다.
-                </p>
-            </div>
 
             <div className="report-content">
                 {/* 기존 재능 분석표 */}
                 <div className="analysis-section">
-                    <h2 className="section-title">{name}님의 사주팔자 재능 분석</h2>
+                    <h2 className="section-title">{name}님의 사주 에너지 구성</h2>
                     <table className="saju-table">
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th>생시</th>
-                            <th>생일</th>
-                            <th>생월</th>
-                            <th>생년</th>
-                        </tr>
-                        </thead>
                         <tbody>
                         <tr>
-                            <th>관계</th>
-                            <td>{getRelation(result.manseTimeSkyRelation)}</td>
+                            <td>{result.manseTimeSkyRelation}</td>
                             <td>{name}</td>
-                            <td>{getRelation(result.manseMonthSkyRelation)}</td>
-                            <td>{getRelation(result.manseYearSkyRelation)}</td>
+                            <td>{result.manseMonthSkyRelation}</td>
+                            <td>{result.manseYearSkyRelation}</td>
                         </tr>
                         <tr>
-                            <th>천간</th>
                             <td style={{
                                 backgroundColor: getElementColor(result.timeSky),
                                 color: getTextColor(getElementColor(result.timeSky)),
@@ -158,7 +157,6 @@ const SajuReport10 = () => {
                             </td>
                         </tr>
                         <tr>
-                            <th>지지</th>
                             <td style={{
                                 backgroundColor: getElementColor(result.timeGround),
                                 color: getTextColor(getElementColor(result.timeGround)),
@@ -185,11 +183,10 @@ const SajuReport10 = () => {
                             </td>
                         </tr>
                         <tr>
-                            <th>관계</th>
-                            <td>{getRelation(result.manseTimeGroundRelation)}</td>
-                            <td>{getRelation(result.manseDayGroundRelation)}</td>
-                            <td>{getRelation(result.manseMonthGroundRelation)}</td>
-                            <td>{getRelation(result.manseYearGroundRelation)}</td>
+                            <td>{result.manseTimeGroundRelation}</td>
+                            <td>{result.manseDayGroundRelation}</td>
+                            <td>{result.manseMonthGroundRelation}</td>
+                            <td>{result.manseYearGroundRelation}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -197,48 +194,34 @@ const SajuReport10 = () => {
 
                 {/* 퍼센티지 결과 */}
                 <div className="percentage-section">
-                    <h2 className="section-title">{name}님의 타고난 재능과 능력</h2>
+                    <h2 className="section-title">사주로 알아보는 {name}님의 타고난 재능과 능력</h2>
                     <table className="percentage-table">
+                        <thead>
+                        <tr>
+                            <th>사주 에너지</th>
+                            <th>타고난 능력</th>
+                            <th>어때요?</th>
+                        </tr>
+                        </thead>
                         <tbody>
-                        <tr>
-                        <td>자신감</td>
-                            <td>{scores.자신감}%</td>
-                        </tr>
-                        <tr>
-                            <td>창의력</td>
-                            <td>{scores.창의력}%</td>
-                        </tr>
-                        <tr>
-                            <td>경제력</td>
-                            <td>{scores.경제력}%</td>
-                        </tr>
-                        <tr>
-                            <td>직업능력</td>
-                            <td>{scores.직업능력}%</td>
-                        </tr>
-                        <tr>
-                            <td>지적능력</td>
-                            <td>{scores.지적능력}%</td>
-                        </tr>
+                        {Object.entries(scores).map(([key, score]) => (
+                            <tr key={key}>
+                                <td>{relationGroups[key].join('/')}</td>
+                                <td>{key} - {score}%</td>
+                                <td>{getEvaluation(score, highestKey === key)}</td>
+                            </tr>
+                        ))}
                         </tbody>
                     </table>
+                    <div className="extra-footer">
+                        <p>비율이 낮으면 에너지가 부족합니다</p>
+                        <p>높은 비율은 강점이지만, 지나치면 단점이 될 수 있어요</p>
+                    </div>
                 </div>
             </div>
 
-            {/* 추가된 하단 정보 */}
-            <div className="extra-footer">
-                <h2>추가 분석 요약</h2>
-                <p>
-                    {name}님의 사주팔자 분석을 통해 강점과 약점을 명확히 하고, 재능을 발휘할 수
-                    있는 방향성을 제공합니다.
-                </p>
-            </div>
-
             <div className="footer">
-                <p>{name}님의 재능을 발휘해 더 큰 성과를 이루어 보세요.</p>
-                <button className="next-page-button" onClick={handleNextPage}>
-                    다음 페이지로 이동
-                </button>
+                <p>강점을 살리고 약점을 보완하면 원하는 목표를 달성할 수 있습니다.</p>
             </div>
         </div>
     );

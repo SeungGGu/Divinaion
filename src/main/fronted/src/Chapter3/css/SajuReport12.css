@@ -1,8 +1,8 @@
 .report12-container {
     background-color: #1e1e1e;
     color: #f8f8f8;
-    padding: 40px;
-    min-height: 100vh;
+    height: 100vh; /* 화면 높이 고정 */
+    overflow: hidden; /* 스크롤 제거 */
     text-align: center;
     font-family: 'Arial', sans-serif;
 }

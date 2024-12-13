@@ -91,8 +91,13 @@ const SajuReport5 = () => {
 
     return (
         <div className="saju-report2-wrapper">
-            <h1 className="report-title">5. {name}님의 대인 관계 강점을 찾아드립니다</h1>
-            <p className="report-subtitle">대인 관계에서 {name}님의 강점을 발휘해 보세요</p>
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
+
+            <h1 className="report-title">4. {name}님의 대인 관계 강점을 찾아드립니다</h1>
+            <p className="report-subtitle">강점을 바탕으로 더 나은 대인관계를 만들어보세요</p>
 
             <div className="report-content">
                 <div className="sky-symbol-container">
@@ -113,7 +118,7 @@ const SajuReport5 = () => {
                         {currentAnalysis.strengths.map((item, index) => (
                             <li key={index}>
                                 <strong>{index + 1}. {item.title}</strong>
-                                <br />
+                                <br/>
                                 <span className="strength-description">- {item.description}</span>
                             </li>
                         ))}
@@ -136,12 +141,7 @@ const SajuReport5 = () => {
                     </ul>
                 </div>
             </div>
-
-            <div className="next-page-button-container">
-                <button className="next-page-button" onClick={handleNextPage}>
-                    다음 페이지로 이동
-                </button>
-            </div>
+            <p className="footer-text">강점을 활용하면 조화로운 협력과 소통의 길을 열 수 있습니다</p>
         </div>
     );
 };

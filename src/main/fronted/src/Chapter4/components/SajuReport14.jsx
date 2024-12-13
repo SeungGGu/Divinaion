@@ -85,32 +85,53 @@ const SajuReport14 = () => {
 
     const mindScores = calculateMindScores();
 
+    // 사주 에너지 중복 제거 및 mindGroups에 포함된 항목만 필터링
+    const uniqueEnergies = Object.values(result)
+        .filter((relation, index, self) => self.indexOf(relation) === index && mindGroups[relation]);
+
+    // 평가 기호 함수
+    const getEvaluation = (percentage, isHighest) => {
+        if (percentage === 0) return '약해요';
+        if (percentage <= 42) return isHighest ? '👍 좋아요' : '좋아요';
+        return '강해요';
+    };
+
+    // 가장 높은 "좋아요" 비율 찾기
+    const highestMind = Object.keys(mindScores).reduce((highest, key) => {
+        if (mindScores[key] <= 42 && (!highest || mindScores[key] > mindScores[highest])) {
+            return key;
+        }
+        return highest;
+    }, null);
+
     const handleNextPage = () => {
         navigate('/Report15', { state: { mindScores: mindScores } });
     };
 
     return (
         <div className="report14-container">
-            <h1 className="report-title">{name}님의 타고난 마음 성향 분석</h1>
-            <p className="report-subtitle">
-                {name}님의 마음을 이해하고 긍정적인 변화와 행동으로 이끌어 보세요.
-            </p>
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
 
+            <h1 className="report-title">10. {name}님의 타고난 마음 성향, 사주로 분석합니다</h1>
+            <p className="report-subtitle">
+                자신의 마음 성향을 이해하고 삶에 활용할 실천 방안을 제시합니다
+            </p>
             <div className="report-content">
                 {/* 왼쪽 분석 표 */}
                 <div className="mind-analysis-section">
-                    <h2 className="section-title">{name}님의 사주팔자 마음성향 분석</h2>
+                    <h2 className="section-title">{name}님의 사주에너지 구성</h2>
                     <table className="mind-analysis-table">
                         <tbody>
                         <tr>
-                            <th>관계</th>
-                            <td>{mindGroups[result.manseTimeSkyRelation]}</td>
+                            <td>{result.manseTimeSkyRelation}</td>
                             <td>{name}</td>
-                            <td>{mindGroups[result.manseMonthSkyRelation]}</td>
-                            <td>{mindGroups[result.manseYearSkyRelation]}</td>
+                            <td>{result.manseMonthSkyRelation}</td>
+                            <td>{result.manseYearSkyRelation}</td>
                         </tr>
                         <tr>
-                            <th>천간</th>
                             <td style={{
                                 backgroundColor: getElementColor(result.timeSky),
                                 color: getTextColor(getElementColor(result.timeSky)),
@@ -137,7 +158,6 @@ const SajuReport14 = () => {
                             </td>
                         </tr>
                         <tr>
-                            <th>지지</th>
                             <td style={{
                                 backgroundColor: getElementColor(result.timeGround),
                                 color: getTextColor(getElementColor(result.timeGround)),
@@ -163,35 +183,49 @@ const SajuReport14 = () => {
                                 {result.yearGround}
                             </td>
                         </tr>
+                        <tr>
+                            <td>{result.manseTimeGroundRelation}</td>
+                            <td>{result.manseDayGroundRelation}</td>
+                            <td>{result.manseMonthGroundRelation}</td>
+                            <td>{result.manseYearGroundRelation}</td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
 
                 {/* 오른쪽 마음 성향 표 */}
                 <div className="mind-score-section">
-                    <h2 className="section-title">{name}님의 타고난 마음 성향</h2>
+                    <h2 className="section-title">사주로 알아보는 {name}님의 타고난 마음 성향</h2>
                     <table className="mind-score-table">
+                        <thead>
+                        <tr>
+                            <th>사주 에너지</th>
+                            <th>마음 성향</th>
+                            <th>어때요?</th>
+                        </tr>
+                        </thead>
                         <tbody>
-                        {Object.entries(mindScores)
-                            .filter(([_, score]) => score > 0) // 0% 제거
-                            .map(([mind, score]) => (
-                                <tr key={mind}>
-                                    <td>{mind}</td>
-                                    <td>{score}%</td>
+                        {uniqueEnergies.map((energy) => {
+                            const mind = mindGroups[energy];
+                            const percentage = mindScores[mind] || 0;
+                            return (
+                                <tr key={energy}>
+                                    <td>{energy}</td>
+                                    <td>{mind} - {percentage}%</td>
+                                    <td>{getEvaluation(percentage, highestMind === mind)}</td>
                                 </tr>
-                            ))}
+                            );
+                        })}
                         </tbody>
                     </table>
+                    <p>높은 비율은 강점이지만, 지나치면 단점이 될 수 있어요</p>
                 </div>
             </div>
 
             <div className="report-footer">
                 <p className="footer-text">
-                    {name}님의 마음을 이해하고 긍정적인 감정과 행동으로 이끌어 보세요.
+                    마음의 성향을 이해하고 강점을 실천하면 더 큰 성장을 이룰 수 있습니다.
                 </p>
-                <button className="next-page-button" onClick={handleNextPage}>
-                    다음 페이지로 이동
-                </button>
             </div>
         </div>
     );

@@ -6,9 +6,9 @@
     justify-content: center;
     background-color: #1e1e1e;
     color: #f8f8f8;
-    min-height: 100vh;
-    padding: 20px;
     font-family: 'Arial', sans-serif;
+    height: 100vh; /* 화면 높이 고정 */
+    overflow: hidden; /* 스크롤 제거 */
 }
 
 /* 상단 제목 */
@@ -30,18 +30,19 @@
 }
 
 /* 이미지 섹션 */
-.image-section {
+.image-section2 {
     display: flex;
     justify-content: center;
     margin: 20px 0;
 }
 
-.main-image {
-    max-width: 300px;
-    height: auto;
+.main-image2 {
+    max-width: 600px; /* 이미지 최대 너비 축소 */
+    height: auto; /* 비율 유지 */
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
+
 
 /* 하단 메시지 */
 .footer-section {
@@ -52,20 +53,4 @@
 .footer-message {
     font-size: 1rem;
     color: #add8e6;
-}
-
-.next-page-button {
-    margin-top: 30px;
-    padding: 15px 30px;
-    background-color: #f0d58c;
-    color: #000;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.next-page-button:hover {
-    background-color: #e5c07b;
 }

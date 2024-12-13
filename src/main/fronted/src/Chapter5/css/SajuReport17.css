@@ -2,10 +2,14 @@
 .report17-container {
     background-color: #1e1e1e;
     color: #f8f8f8;
-    padding: 40px;
     text-align: center;
-    min-height: 100vh;
+    height: 100vh; /* 화면 높이 고정 */
+    overflow: hidden; /* 스크롤 제거 */
     font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* 상단 제목 */
@@ -24,31 +28,67 @@
 /* 메인 콘텐츠 */
 .report17-container .content-section {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 40px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* 이미지 섹션 */
+.report17-container .content-section .image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .report17-container .content-section .image-container .main-image {
-    width: 60%;
+    width: 80%;
     max-width: 400px;
-    margin-bottom: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.report17-container .content-section .info-container .info-text {
-    font-size: 1.2rem;
-    font-weight: bold;
+/* 설명 섹션 */
+.report17-container .content-section .description-container {
+    flex: 1;
+    text-align: left;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+}
+
+.report17-container .content-section .description-container .description-title {
+    font-size: 1.4rem;
     color: #f0c674;
-    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.report17-container .content-section .description-container .description-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #dcdcdc;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.report17-container .content-section .description-container .description-list li {
+    margin-bottom: 10px;
+}
+
+.report17-container .content-section .description-container .description-list li strong {
+    color: #f0c674;
 }
 
 /* 하단 메시지 */
 .report17-container .footer-section .footer-message {
     font-size: 1rem;
     color: #868e96;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 /* 버튼 스타일 */

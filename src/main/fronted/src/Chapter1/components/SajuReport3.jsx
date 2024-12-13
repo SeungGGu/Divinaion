@@ -128,7 +128,6 @@ const SajuReport3 = () => {
                 { title: "규칙을 잘 지켜요", description: "질서를 중시하며 약속을 꼭 지켜요." },
                 { title: "꾸준히 노력해요", description: "목표를 포기하지 않고 지속적으로 나아가요." },
                 { title: "안정을 중시해요", description: "변화를 싫어하고 평온함을 유지해요." },
-                { title: "도덕적으로 행동해요", description: "모범이 되어 도덕성을 지켜요." },
             ],
             TitleDescription: "말처럼 빠르고 책임감 있게 일하세요",
             subDescription: [
@@ -239,7 +238,7 @@ const SajuReport3 = () => {
                     </ul>
                 </div>
             </div>
-            <p className="footer-text">타고난 성향을 이해하면 자신만의 특별한 미래를 설계할 수 있습니다</p>
+            <p className="footer-text">사회적 강점을 발휘하면 신뢰와 성공을 쌓을 수 있습니다</p>
         </div>
     );
 };

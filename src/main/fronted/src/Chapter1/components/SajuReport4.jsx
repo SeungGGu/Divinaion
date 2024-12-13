@@ -135,7 +135,7 @@ const SajuReport4 = () => {
                 { description: "말처럼 균형을 유지하며 지혜롭게 나아가세요" },
             ],
             imageAlt: "말",
-            imageSrc: `${process.env.PUBLIC_URL}/images/horse_negative.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/horse.png`,
         },
         "편인": {
             title: name + "님의 사회적 성향과 약점을 확인하세요",
@@ -214,7 +214,7 @@ const SajuReport4 = () => {
                         {currentAnalysis.weaknesses.map((item, index) => (
                             <li key={index}>
                                 <strong>{index + 1}. {item.title}</strong>
-                                <br />
+                                <br/>
                                 <span className="strength-description">- {item.description}</span>
                             </li>
                         ))}
@@ -237,6 +237,7 @@ const SajuReport4 = () => {
                     </ul>
                 </div>
             </div>
+            <p className="footer-text">보완점을 개선하면 균현 잡힌 관계와 성장을 이룰 수 있습니다</p>
         </div>
     );
 };

@@ -101,11 +101,10 @@ const SajuReport2 = () => {
         "戊": {
             title: "튼튼한 산처럼",
             strengths: [
-                {title: "신뢰할 수 있어요", description: "맡은 일을 끝까지 책임감 있게 해내요."},
-                {title: "안정적이에요", description: "익숙한 환경에서 안정감을 유지해요."},
-                {title: "책임감이 강해요", description: "중요한 일에 책임감을 가지고 임해요."},
-                {title: "꾸준해요", description: "인내심을 가지고 목표를 끝까지 이루어요."},
-                {title: "현실적이에요", description: "감정보다 실질적인 결과를 중시해요."},
+                {title: "신뢰할 수 있습니다", description: "맡은 일을 끝까지 책임감 있게 해냅니다"},
+                {title: "안정적입니다", description: "익숙한 환경에서 안정감을 유지합니다"},
+                {title: "책임감이 뛰어납니다", description: "중요한 일에 책임감을 가지고 임합니다"},
+                {title: "꾸준합니다", description: "인내심을 가지고 목표를 끝까지 이룹니다"},
             ],
             TitleDescription: "튼튼한 산처럼 흔들림 없는 내면의 강점이에요.",
             subDescription: [

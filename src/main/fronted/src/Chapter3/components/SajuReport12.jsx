@@ -1,8 +1,11 @@
 import React from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import '../css/SajuReport12.css';
+import {useSaju} from "../../context/SajuContext";
 
 const SajuReport12 = () => {
+    const {sajuData} = useSaju();
+    const {name} = sajuData;
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -21,29 +24,29 @@ const SajuReport12 = () => {
     const getMessage = (category, percentage) => {
         const messages = {
             자신감: {
-                0: "타인의 의견에 휘둘려 결정을 내리기 어렵습니다",
-                42: "자신감을 가지고 자신의 잠재력을 최대한 발휘합니다",
-                56: "지나친 자신감으로 실수를 반복할 수 있습니다"
+                0: "자신감을 키워 스스로를 믿는 연습이 필요합니다",
+                42: "균형 잡힌 자신감으로 목표를 책임감 있게 달성합니다",
+                56: "자신감이 많으면 때로는 실수로 이어질 수 있습니다"
             },
             창의력: {
-                0: "새로운 접근법이 부족해 문제 해결에 어려움을 겪습니다",
-                42: "협력과 소통으로 창의적으로 문제를 해결해 갑니다",
-                56: "창의적이지만 실현 어려운 아이디어를 고집합니다"
+                0: "아이디어를 탐구하며 창의력을 키워야 합니다",
+                42: "창의력으로 새로운 아이디어를 실현합니다",
+                56: "창의력이 과하면 현실성을 잃을 수 있습니다"
             },
             경제력: {
-                0: "경제 감각이 부족해 재정 관리에 어려움을 겪습니다",
-                42: "재정을 안정적으로 관리하며 경제적 안정을 찾습니다",
-                56: "지나친 욕심이 재정적 리스크를 초래할 수 있습니다"
+                0: "자원을 효율적으로 관리하는 연습이 필요합니다",
+                42: "안정적으로 자원을 관리하며 목표를 달성합니다",
+                56: "이익만 추구하면 인간관계가 소홀해질 수 있습니다"
             },
-            직업능력: {
-                0: "조직에서 성과 내기가 어려워 만족감이 낮습니다",
-                42: "꾸준한 노력으로 자신의 목표를 성실히 이룹니다",
-                56: "독단적인 태도로 협력 부족과 갈등을 유발합니다"
+            성취력: {
+                0: "목표를 설정하며 노력하는 습관을 키워보세요",
+                42: "성취력으로 목표를 완성하며 즐거움을 얻습니다",
+                56: "성취욕이 지나치면 스트레스를 받을 수 있습니다"
             },
-            지적능력: {
-                0: "문제 분석과 해결책 찾기에 어려움을 겪을 수 있습니다",
-                42: "지식이 풍부하여 문제를 효율적으로 해결합니다",
-                56: "복잡하게 사고하여 문제 해결이 어려워질 수 있습니다"
+            사고력: {
+                0: "문제를 분석하는 연습으로 사고력을 키워보세요",
+                42: "사고력으로 문제를 분석해 해답을 찾아냅니다",
+                56: "고민이 길어지면 결단력이 떨어질 수 있습니다"
             }
         };
 
@@ -52,29 +55,40 @@ const SajuReport12 = () => {
         return messages[category][56];
     };
 
+    // 평가 기호 함수
+    const getEvaluationSymbol = (percentage) => {
+        if (percentage === 0) return "❗";
+        if (percentage <= 42) return "👍";
+        return "❗❗";
+    };
+
     const handleNextPage = () => {
         navigate('/Report13');
     };
 
     return (
         <div className="report12-container">
-            <h1 className="report-title">맞춤형 성공 전략</h1>
-            <p className="report-subtitle">각 능력에 따른 조언과 방향성을 확인하세요</p>
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
+            <h1 className="report-title">9. {name}님의 타고난 능력, 삶에 어떻게 작용할까요?</h1>
+            <p className="report-subtitle">강점은 키우고 약점을 보완하는 방법을 알려드립니다</p>
 
             {/* 분석 결과 렌더링 */}
+            <p>타고난 능력이 {name}님에게 어떻게 작용하는지 확인하세요</p>
             {Object.entries(scores).map(([key, value]) => (
                 <div className="result-section" key={key}>
                     <div className="result-header">
                         <span className="result-category">{key}</span>
-                        <span className="result-score">{value}%</span>
+                        <span className="result-score">{getEvaluationSymbol(value)} {value}%</span>
                     </div>
                     <div className="result-message">{getMessage(key, value)}</div>
                 </div>
             ))}
-
-            <button className="next-page-button" onClick={handleNextPage}>
-                다음 페이지로 이동
-            </button>
+            <div className="report-footer">
+                <p>능력의 강점을 활용하고 약점을 보완하면 구체적인 목표를 실현할 수 있습니다.</p>
+            </div>
         </div>
     );
 };

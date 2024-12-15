@@ -15,50 +15,53 @@ const SajuReport33 = () => {
     // 신살 데이터
     const sinsalData = [
         {
-            type: '활동적인 역마살',
-            description: '자유롭게 어디라도 떠나고 싶어하는 성향이에요!',
-            image: `${process.env.PUBLIC_URL}/images/horse.png`, // 역마살 이미지
+            type: '활동적인 역마살이 있다면',
+            description: '말처럼 변화를 즐기고 자유로움을 추구하는 성격이에요',
+            image: `${process.env.PUBLIC_URL}/images/sinsal/horse.png`, // 역마살 이미지
         },
         {
-            type: '매력적인 도화살',
-            description: '사람들을 매료시키는 자연스러운 매력의 소유자예요!',
-            image: `${process.env.PUBLIC_URL}/images/peacock.png`, // 도화살 이미지
+            type: '매력적인 도화살이 있다면',
+            description: '공작처럼 매력을 발휘해 사람들의 관심을 끌고 신뢰를 얻어요',
+            image: `${process.env.PUBLIC_URL}/images/sinsal/peacock.png`, // 도화살 이미지
         },
         {
-            type: '철학적인 화개살',
-            description: '깊은 사색과 예술을 사랑하는 철학자 같은 성향이에요!',
-            image: `${process.env.PUBLIC_URL}/images/dragon.png`, // 화개살 이미지
+            type: '창의적인 화개살이 있다면',
+            description: '거북이처럼 깊은 생각과 예술적 재능이 돋보이는 성격이에요',
+            image: `${process.env.PUBLIC_URL}/images/turtle.png`, // 화개살 이미지
         },
     ];
 
     return (
         <div className="report33-container">
-            <h1 className="report-title">{name}님의 신살로 알아보는 성격과 장점</h1>
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
+
+            <h1 className="report-title">{name}님의 타고난 매력, 사주로 알 수 있어요</h1>
             <p className="report-subtitle">
-                {name}님의 신살 특성을 이해하고 성장의 기회를 발견해 보세요
+                사주로 숨겨진 매력을 확인하고 나만의 스타일을 만들어보세요!
             </p>
 
             <div className="sinsal-summary-container">
                 {sinsalData.map((sinsal, index) => (
                     <div className="sinsal-card" key={index}>
-                        <h2 className="sinsal-type">{sinsal.type}</h2>
-                        <p className="sinsal-description">{sinsal.description}</p>
                         <img
                             src={sinsal.image}
                             alt={sinsal.type}
                             className="sinsal-image"
                         />
+                        <div className="sinsal-content">
+                            <h2 className="sinsal-type">{sinsal.type}</h2>
+                            <p className="sinsal-description">{sinsal.description}</p>
+                        </div>
                     </div>
                 ))}
             </div>
 
             <footer className="report33-footer">
-                <p>{name}님의 신살 의미를 이해하고, 더 밝은 미래를 만들어 보세요!</p>
+                <p>신살의 숨겨진 매력을 이해하면 삶에 새로운 가능성을 열 수 있습니다.</p>
             </footer>
-
-            <button className="next-page-button" onClick={handleNextPage}>
-                다음 페이지로 이동
-            </button>
         </div>
     );
 };

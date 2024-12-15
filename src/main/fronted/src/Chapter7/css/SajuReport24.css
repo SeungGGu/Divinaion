@@ -1,9 +1,10 @@
 .report24-container {
     background-color: #1e1e1e;
     color: #f8f8f8;
-    padding: 40px;
+    padding: 0px 40px;
     text-align: center;
-    min-height: 100vh;
+    height: 100vh; /* 화면 높이 고정 */
+    overflow: hidden; /* 스크롤 제거 */
     font-family: 'Arial', sans-serif;
 }
 
@@ -19,17 +20,32 @@
     color: #dcdcdc;
 }
 
-.image-section {
+.image24-section {
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
 }
 
-.main-image {
-    max-width: 100%;
-    height: auto;
+.main24-image {
+    max-width: 40%; /* 이미지의 최대 너비를 50%로 설정 */
+    height: auto; /* 높이를 자동으로 조정 */
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.text24-box {
+    background-color: #2e2e2e; /* 배경색 추가 */
+    padding: 10px; /* 내부 여백 추가 */
+    border-radius: 10px; /* 모서리 둥글게 */
+    width: 90%; /* 텍스트 박스 너비 설정 */
+    max-width: 300px; /* 최대 너비 제한 */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.text24-content {
+    font-size: 1rem;
+    line-height: 1.6; /* 줄 간격 설정 */
+    color: #f8f8f8;
 }
 
 .footer-message {
@@ -38,18 +54,8 @@
     margin-bottom: 20px;
 }
 
-.next-page-button {
-    padding: 10px 20px;
-    background-color: #f0c674;
-    color: #000;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.next-page-button:hover {
-    background-color: #e5c07b;
+.main24-section {
+    display: flex;
+    flex-direction: row; /* 이미지와 텍스트를 세로로 배치 */
+    align-items: center;
 }

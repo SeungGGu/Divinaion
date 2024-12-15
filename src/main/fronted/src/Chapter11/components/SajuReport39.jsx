@@ -14,8 +14,13 @@ const SajuReport39 = () => {
 
     return (
         <div className="report39-container">
-            <h1 className="report39-title">{name}님의 운세를 통해 미래 계획을 세워보세요</h1>
-            <p className="report39-subtitle">운세 분석을 바탕으로 올바른 결정을 준비하세요!</p>
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
+
+            <h1 className="report39-title">{name}님, 운의 흐름을 따라 최적의 결정을 내려보세요!</h1>
+            <p className="report39-subtitle">운의 흐름을 활용해 올해의 목표와 미래의 방향을 계획하세요!</p>
 
             <div className="report39-image-section">
                 <div className="image-container">
@@ -28,11 +33,7 @@ const SajuReport39 = () => {
             </div>
 
             <footer className="report39-footer">
-                <p>운세의 흐름을 읽고, {name}님의 목표에 맞춘 전략을 세워보세요!</p>
-
-                <button className="next-button" onClick={handleNextPage}>
-                    다음 페이지로 이동
-                </button>
+                <p>운과 흐름을 따르면 성장과 성공을 계획할 수 있습니다.</p>
             </footer>
         </div>
     );

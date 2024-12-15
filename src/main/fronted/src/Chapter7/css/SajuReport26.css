@@ -1,95 +1,85 @@
 .report26-container {
     background-color: #1e1e1e;
     color: #f8f8f8;
-    padding: 40px;
+    padding: 0px 20px; /* 전체 여백 조정 */
     text-align: center;
     font-family: 'Arial', sans-serif;
-    min-height: 100vh;
+    height: 100vh; /* 화면 높이 고정 */
+    display: flex;
+    flex-direction: column;
 }
 
 .report-title {
-    font-size: 2rem;
+    font-size: 1.8rem; /* 제목 크기 줄임 */
     color: #f0c674;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .report-subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem; /* 부제 크기 줄임 */
     color: #dcdcdc;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .energy-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3열 고정 */
+    gap: 20px; /* 카드 간의 간격 줄임 */
+    justify-items: center;
+    max-width: 900px; /* 최대 너비 설정 */
+    margin: 0 auto; /* 중앙 정렬 */
 }
 
 .energy-item {
     background-color: #2a2a2a;
-    padding: 20px;
+    padding: 15px; /* 내부 여백 줄임 */
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    max-width: 800px;
-    width: 100%;
-    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%; /* 부모 그리드에 맞춤 */
+    max-width: 250px; /* 카드 최대 너비 줄임 */
+    text-align: center;
+    transition: transform 0.3s ease;
 }
 
-.energy-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.energy-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #f0d58c;
-}
-
-.energy-score {
-    font-size: 1.2rem;
-    background-color: #444;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
+.energy-item:hover {
+    transform: scale(1.03);
 }
 
 .energy-content {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
     align-items: center;
+    gap: 8px;
 }
 
 .energy-image {
-    width: 100px;
-    height: 100px;
+    width: 80px; /* 이미지 크기 축소 */
+    height: 80px;
     border-radius: 50%;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
-    border: 2px solid #555;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    border: 2px solid #444;
+}
+
+.energy-title {
+    font-size: 1rem; /* 글자 크기 축소 */
+    color: #f0c674;
+}
+
+.energy-score {
+    font-size: 0.9rem; /* 점수 글자 크기 줄임 */
+    background-color: #444;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 5px;
 }
 
 .energy-description {
-    font-size: 1rem;
+    font-size: 0.8rem; /* 설명 글자 크기 줄임 */
     color: #dcdcdc;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
-.next-page-button {
-    margin-top: 30px;
-    padding: 15px 30px;
-    background-color: #f0d58c;
-    color: #000;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.next-page-button:hover {
-    background-color: #e5c07b;
+.footer-section {
+    font-size: 0.9rem;
+    color: #dcdcdc;
 }

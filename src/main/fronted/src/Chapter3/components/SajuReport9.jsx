@@ -6,7 +6,7 @@ import { useSaju } from "../../context/SajuContext"; // Report9 전용 스타일
 const SajuReport9 = () => {
     const navigate = useNavigate();
     const { sajuData } = useSaju();
-    const { result, name } = sajuData;
+    const { name } = sajuData;
 
     const handleNextPage = () => {
         navigate('/Report10'); // 다음 페이지로 이동
@@ -31,7 +31,7 @@ const SajuReport9 = () => {
                 {/* 중앙 레이더 차트 */}
                 <div className="radar-chart-section">
                     <img
-                        src={`${process.env.PUBLIC_URL}/images/radar-chart.png`}
+                        src={`${process.env.PUBLIC_URL}/images/mainPicture/radar-chart.png`}
                         alt="성장 능력 레이더 차트"
                         className="radar-chart-image"
                     />

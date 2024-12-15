@@ -1,24 +1,45 @@
 import React from 'react';
-import {useLocation, useNavigate} from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../css/SajuReport35.css';
-import {useSaju} from "../../context/SajuContext";
+import { useSaju } from "../../context/SajuContext";
 
 const SajuReport35 = () => {
     const { sajuData } = useSaju();
-    const { name } = sajuData;
+    const { name } = sajuData || {};
     const location = useLocation();
-    const {state} = location || {};
-    const {sinsalPercentages} = state || {};
+    const { state } = location || {};
+    const { sinsalPercentages } = state || {};
     const navigate = useNavigate();
 
     if (!sinsalPercentages) {
         return <div>데이터가 없습니다. 이전 페이지로 돌아가세요.</div>;
     }
 
-    const descriptions = {
-        역마살: '새로운 사람을 만나고 다양한 경험을 쌓는 것을 좋아합니다. 역마살이 강하면 도전과 변화를 즐기며 성장에 대한 욕구가 큽니다.',
-        도화살: '사람들의 관심을 자연스럽게 끌고 매력을 발산하는 성향입니다. 도화살이 있으면 사회적 관계에서 주목받고 인기를 얻기 쉬워요.',
-        화개살: '깊이 있는 대화와 철학적 주제를 즐기는 성향이에요. 화개살이 강하면 내면을 탐구하며 삶의 지혜를 추구하는 경향입니다.',
+    // 신살별 고정된 이미지 경로와 설명 데이터
+    const sinsalData = {
+        역마살: {
+            image: `${process.env.PUBLIC_URL}/images/sinsal/horse.png`,
+            description: "변화를 즐기고 도전을 통해 성장하는 성격이에요\n여행, 무역, 창업 등 활동적인 분야에서 잘 어울려요",
+        },
+        도화살: {
+            image: `${process.env.PUBLIC_URL}/images/sinsal/peacock.png`,
+            description: "타인의 관심을 얻거나 신뢰를 쌓는 데 어려움이 있어요\n대인관계에서 매력을 발휘하기 힘들 수 있어요",
+        },
+        화개살: {
+            image: `${process.env.PUBLIC_URL}/images/sinsal/turtle.png`,
+            description: "깊은 사고와 창의적인 아이디어가 돋보여요\n예술, 철학, 교육 분야에서 두각을 나타낼 수 있어요",
+        },
+    };
+
+    // 비율을 개수로 변환하는 함수
+    const calculateCount = (percentage) => Math.round(percentage / 25);
+
+    // 개수에 따른 메시지 반환
+    const getMessage = (count) => {
+        if (count === 0) return '약해요';
+        if (count === 1) return '좋아요';
+        if (count >= 2) return '강해요';
+        return '';
     };
 
     const handleNextPage = () => {
@@ -27,52 +48,52 @@ const SajuReport35 = () => {
 
     return (
         <div className="report35-container">
-            <h1 className="report-title">세 가지 신살로 보는 {state?.name}님의 성격과 성장 잠재력</h1>
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
+
+            <h1 className="report-title">26. {name}님의 매력과 진로, 신살로 알려드립니다</h1>
             <p className="report-subtitle">
-                신살의 특성을 통해 성장과 가능성을 알아보세요.
+                신살 에너지를 활용해 진로의 방향과 가능성을 찾아보세요!
             </p>
 
             <table className="sinsal-table">
                 <thead>
                 <tr>
-                    <th colSpan="3">{name}님의 세 가지 신살로 본 성격과 잠재력</th>
+                    <th colSpan="3">신살을 활용해 매력과 진로를 연결하세요</th>
                 </tr>
                 </thead>
                 <tbody>
-                {Object.keys(sinsalPercentages).map((sinsal) => (
-                    <tr key={sinsal}>
-                        <td
-                            className="sinsal-name"
-                            style={{
-                                backgroundColor: sinsal === '역마살' ? '#7fa8ff' : sinsal === '도화살' ? '#ff8a8a' : '#8fdb8f',
-                                color: '#fff',
-                            }}
-                        >
-                            {sinsal}
-                        </td>
-                        <td
-                            className={`sinsal-percentage ${
-                                sinsalPercentages[sinsal] === '0' ? 'highlight' : ''
-                            }`}
-                        >
-                            {sinsalPercentages[sinsal]}%
-                        </td>
-                        <td>{descriptions[sinsal]}</td>
-                    </tr>
-                ))}
+                {Object.entries(sinsalData).map(([sinsal, data]) => {
+                    const count = calculateCount(sinsalPercentages[sinsal] || 0);
+                    return (
+                        <tr key={sinsal}>
+                            <td>
+                                <img
+                                    src={data.image}
+                                    alt={sinsal}
+                                    className="sinsal-percentage-image"
+                                />
+                            </td>
+                            <td>
+                                <div>
+                                    {sinsal} : {count}개
+                                </div>
+                                <div className="highlight-message">{getMessage(count)}</div>
+                            </td>
+                            <td>{data.description}</td>
+                        </tr>
+                    );
+                })}
                 </tbody>
             </table>
 
             <footer className="report35-footer">
-                <p>신살의 힘이 0%이면 해당 에너지의 활동성이 부족하다고 판단하시면 됩니다.</p>
+                <p>신살의 에너지를 활용하면 강점을 키우고 약점을 보완할 수 있습니다.</p>
             </footer>
-
-            <button className="next-button" onClick={handleNextPage}>
-                다음 페이지로 이동
-            </button>
         </div>
     );
 };
-
 
 export default SajuReport35;

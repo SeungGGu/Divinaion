@@ -1,10 +1,11 @@
 .report33-container {
     background-color: #1e1e1e;
     color: #f8f8f8;
-    padding: 40px;
-    min-height: 100vh;
+    padding: 0px 40px;
     text-align: center;
     font-family: 'Arial', sans-serif;
+    height: 100vh; /* 화면 높이 고정 */
+    overflow: hidden; /* 스크롤 제거 */
 }
 
 .report-title {
@@ -36,9 +37,22 @@
     text-align: left;
     width: 100%;
     max-width: 700px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    display: flex; /* 가로 배치 */
+    align-items: center; /* 이미지와 텍스트 세로 정렬 */
+    gap: 20px; /* 이미지와 텍스트 간격 */
+}
+
+.sinsal-image {
+    width: 120px; /* 이미지 크기 */
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0; /* 이미지 크기 고정 */
+}
+
+.sinsal-content {
+    flex-grow: 1; /* 텍스트가 남은 공간을 채움 */
+    text-align: left; /* 텍스트 왼쪽 정렬 */
 }
 
 .sinsal-type {
@@ -51,36 +65,11 @@
 .sinsal-description {
     font-size: 1rem;
     color: #dcdcdc;
-    margin-bottom: 10px;
-}
-
-.sinsal-image {
-    width: 100px;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
-    flex-shrink: 0;
+    margin-bottom: 0;
 }
 
 .report33-footer {
     margin-top: 30px;
     font-size: 1rem;
     color: #dcdcdc;
-}
-
-.next-page-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #f0d58c;
-    color: #000;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.next-page-button:hover {
-    background-color: #e5c07b;
 }

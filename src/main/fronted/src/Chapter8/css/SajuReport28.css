@@ -1,12 +1,18 @@
+/* 전체 컨테이너 스타일 */
 .report28-container {
     background-color: #1e1e1e;
     color: #f8f8f8;
-    padding: 40px;
+    padding: 0px 40px;
     text-align: center;
     font-family: 'Arial', sans-serif;
-    min-height: 100vh;
+    height: 100vh; /* 화면 높이 고정 */
+    overflow: hidden; /* 스크롤 제거 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* 상하 정렬 */
 }
 
+/* 제목 섹션 */
 .report28-title {
     font-size: 2rem;
     margin-bottom: 10px;
@@ -19,75 +25,73 @@
     margin-bottom: 30px;
 }
 
+/* 메인 콘텐츠 섹션 */
+.report28-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; /* 이미지와 텍스트 박스 사이 간격 */
+    flex-wrap: wrap; /* 화면 크기에 따라 콘텐츠가 줄바꿈되도록 설정 */
+    max-width: 1000px;
+    margin: 0 auto; /* 중앙 정렬 */
+}
+
+/* 이미지 섹션 */
 .report28-image-container {
+    flex: 1;
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
+    align-items: center;
 }
 
 .report28-main-image {
-    max-width: 400px;
-    height: auto;
-    border-radius: 10px;
+    max-width: 350px; /* 이미지 최대 너비 제한 */
+    height: auto; /* 비율 유지 */
+    border-radius: 10px; /* 이미지 모서리 둥글게 */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-.report28-analysis-container {
+/* 텍스트 박스 */
+.report28-text-box {
+    flex: 1;
     background-color: #2a2a2a;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: left;
-}
-
-.report28-analysis-title {
-    font-size: 1.5rem;
-    color: #f0c674;
-    margin-bottom: 15px;
-}
-
-.report28-traits-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.report28-traits-list li {
-    font-size: 1rem;
-    margin-bottom: 10px;
-    line-height: 1.5;
-    color: #dcdcdc;
-}
-
-.report28-question {
-    font-size: 1.1rem;
     color: #f8f8f8;
-    margin-top: 15px;
-    text-align: center;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.report28-next-button {
-    margin-top: 30px;
-    padding: 10px 20px;
-    background-color: #f0c674;
-    color: #000;
-    font-size: 1rem;
+.report28-text-title {
+    font-size: 1.5rem;
     font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    color: #f0c674;
+    margin-bottom: 10px;
 }
 
-.report28-next-button:hover {
-    background-color: #e5b960;
+.report28-text-subtitle {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+    margin-bottom: 20px;
 }
 
-.report28-footer {
+.report28-text-description {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* 하단 메시지 섹션 */
+.footer-section {
     margin-top: 20px;
+}
+
+.footer-message {
     font-size: 1rem;
     color: #dcdcdc;
+    margin-bottom: 20px;
+    line-height: 1.5;
     text-align: center;
 }

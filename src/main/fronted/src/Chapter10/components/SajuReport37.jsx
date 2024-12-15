@@ -1,11 +1,11 @@
 import React from 'react';
-import { useSaju } from '../../context/SajuContext';
+import {useSaju} from '../../context/SajuContext';
 import '../css/SajuReport37.css';
 import {useNavigate} from "react-router-dom";
 
 const SajuReport37 = () => {
-    const { sajuData } = useSaju();
-    const { name, result } = sajuData || {};
+    const {sajuData} = useSaju();
+    const {name, result} = sajuData || {};
     const navigate = useNavigate();
 
     if (!result) {
@@ -64,34 +64,37 @@ const SajuReport37 = () => {
         hanjaToElementMap[hanja] === "water" ? "#fff" : "#000";
 
     const skyElements = [
-        { label: "시", value: result.timeSky },
-        { label: "일", value: result.daySky },
-        { label: "월", value: result.monthSky },
-        { label: "년", value: result.yearSky },
+        {label: "시", value: result.timeSky},
+        {label: "일", value: result.daySky},
+        {label: "월", value: result.monthSky},
+        {label: "년", value: result.yearSky},
     ];
 
     const groundElements = [
-        { label: "시", value: result.timeGround },
-        { label: "일", value: result.dayGround },
-        { label: "월", value: result.monthGround },
-        { label: "년", value: result.yearGround },
+        {label: "시", value: result.timeGround},
+        {label: "일", value: result.dayGround},
+        {label: "월", value: result.monthGround},
+        {label: "년", value: result.yearGround},
     ];
 
-    const benefactorStatus = benefactors.map((benefactor) =>
-        groundElements.some((element) => element.value === benefactor) ? "있어요" : "없어요"
+    const hasBenefactor = benefactors.some((benefactor) =>
+        groundElements.includes(benefactor)
     );
 
     const handleNextPage = () => {
-        navigate('/Report38', { state: { benefactors } }); // 다음 페이지로 이동
+        navigate('/Report38', {state: {benefactors}}); // 다음 페이지로 이동
     };
 
     return (
         <div className="report37-container">
-            <h1 className="report37-title">{name}님의 사주에서 귀인 에너지를 찾아보세요</h1>
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
+
+            <h1 className="report37-title">27. {name}님의 타고난 귀인, 사주로 분석합니다</h1>
             <p className="report37-description">
-                {name}님의 사주에서 귀인의 힘을 발견하고 기회를 만드세요.<br/>
-                해당하는 귀인은 <strong>{benefactors[0]}</strong>과 <strong>{benefactors[1]}</strong>입니다.
-                귀인이 있는지 확인해보세요!
+                귀인을 통해 삶의 방향을 찾고 중요한 기회를 만들어보세요!
             </p>
 
             <div className="report37-content">
@@ -139,10 +142,10 @@ const SajuReport37 = () => {
                             ))}
                         </tr>
                         <tr>
-                            <th>{`${result.timeSky}${result.timeGround} 시`}</th>
-                            <th>{`${result.daySky}${result.dayGround} 일`}</th>
-                            <th>{`${result.monthSky}${result.monthGround} 월`}</th>
-                            <th>{`${result.yearSky}${result.yearGround} 년`}</th>
+                            {/* 귀인 에너지 유무 표시 */}
+                            <td colSpan={4} style={{fontWeight: "bold", color: "#f0c674"}}>
+                                {hasBenefactor ? "귀인 에너지가 있습니다" : "귀인 에너지가 없습니다"}
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -153,27 +156,46 @@ const SajuReport37 = () => {
                     <table className="benefactor-status-table">
                         <thead>
                         <tr>
-                            <th colSpan="2">귀인</th>
+                            <th colSpan="3">
+                                {name}님의 타고난 귀인 찾기<br/>
+                                {name}님에게 해당하는 귀인은&nbsp;
+                                <span style={{fontWeight: 'bold', color: '#f0c674', fontSize: '1.2rem'}}>
+                                    {benefactors[0]}
+                                </span>
+                                과&nbsp;
+                                <span style={{fontWeight: 'bold', color: '#f0c674', fontSize: '1.2rem'}}>
+                                    {benefactors[1]}
+                                </span>
+                                입니다.<br/>
+                                어려운 순간에 든든한 지원을 제공할 수 있어요
+                            </th>
+
                         </tr>
                         <tr>
                             <th>{benefactors[0]}</th>
+                            <th>귀인<br/>에너지</th>
                             <th>{benefactors[1]}</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            {benefactorStatus.map((status, index) => (
-                                <td key={index}>{status}</td>
-                            ))}
+                            <td colSpan={3}>
+                                귀인은 중요한 순간에 결정을 도와주고<br/>
+                                새로운 기회를 열어줍니다
+                            </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-
-            <button className="report37-next-button" onClick={handleNextPage}>
-                다음 페이지로 이동
-            </button>
+            {/* 하단 메시지 */}
+            <div className="footer-section">
+                <p className="footer-message">
+                    {hasBenefactor
+                        ? "귀인의 도움으로 새로운 기회를 발견하고 도전에 성공할 가능성이 높습니다."
+                        : "귀인이 없을 때는 내 주변의 사람들과 협력하여 기회를 찾을 수 있습니다."}
+                </p>
+            </div>
         </div>
     );
 };

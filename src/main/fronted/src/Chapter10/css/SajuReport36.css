@@ -3,12 +3,13 @@
     background-color: #1e1e1e;
     color: #f8f8f8;
     font-family: 'Arial', sans-serif;
-    min-height: 100vh;
-    padding: 40px 20px;
+    padding: 0px 20px;
+    text-align: center;
+    height: 100vh; /* 화면 높이 고정 */
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    text-align: center;
 }
 
 /* 제목 스타일 */
@@ -16,7 +17,6 @@
     font-size: 2.5rem;
     font-weight: bold;
     color: #f0c674;
-    margin-bottom: 20px;
 }
 
 /* 부제목 스타일 */
@@ -26,13 +26,22 @@
     margin-bottom: 40px;
 }
 
+/* 이미지와 박스를 가로 정렬 */
+.report36-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    max-width: 1200px;
+}
+
 /* 이미지 컨테이너 */
 .report36-image-container {
     background-color: #3a3a3a;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    max-width: 800px;
+    max-width: 1000px;
 }
 
 .report36-main-image {
@@ -40,28 +49,31 @@
     border-radius: 10px;
 }
 
-/* 하단 푸터 스타일 */
+/* 설명 박스 스타일 */
+.report36-text-box {
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    max-width: 800px;
+}
+
+.text-line {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    color: #dcdcdc;
+}
+
+.highlight {
+    color: #f0c674;
+    font-weight: bold;
+}
+
+/* 푸터 스타일 */
 .report36-footer {
     margin-top: 30px;
     font-size: 1.2rem;
     color: #bbb;
     text-align: center;
-}
-
-.report36-next-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #000;
-    background-color: #f0c674;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.report36-next-button:hover {
-    background-color: #e5b960;
-    transform: translateY(-2px);
 }

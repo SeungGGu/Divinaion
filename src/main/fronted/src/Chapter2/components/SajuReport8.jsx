@@ -25,7 +25,7 @@ const SajuReport8 = () => {
                 {description: "흔들림 없이 성장하는 모습을 보여주세요"},
             ],
             imageAlt: "늑대처럼 책임감을 발휘하는 직장 생활",
-            imageSrc: `${process.env.PUBLIC_URL}/images/wolf.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/wolf.png`,
         },
         겁재: {
             title: name + '님의 직장 생활 성공 전략을 알려드립니다.',
@@ -42,7 +42,7 @@ const SajuReport8 = () => {
                 {description: "꾸준히 노력해 더 큰 성과를 만들어보세요"},
             ],
             imageAlt: "호랑이처럼 목표를 세우고 빠르게 성취하세요",
-            imageSrc: `${process.env.PUBLIC_URL}/images/tiger.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/tiger.png`,
         },
         식신: {
             title: name + '님의 직장 생활 성공 전략을 알려드립니다.',
@@ -59,7 +59,7 @@ const SajuReport8 = () => {
                 {description: "흔들림 없는 모습이 신뢰를 만들어갈 거예요"},
             ],
             imageAlt: "소처럼 성실하고 끈기 있게 일하세요",
-            imageSrc: `${process.env.PUBLIC_URL}/images/cow.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/cow.png`,
         },
         상관: {
             title: name + '님의 직장 생활 성공 전략을 알려드립니다.',
@@ -77,7 +77,7 @@ const SajuReport8 = () => {
                 {description: "새롭게 접근하며 해결하는 모습이 돋보여요"},
             ],
             imageAlt: "원숭이처럼 유연하게 문제를 해결해요",
-            imageSrc: `${process.env.PUBLIC_URL}/images/monkey.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/monkey.png`,
         },
         편재: {
             title: name + '님의 직장 생활 성공 전략을 알려드립니다.',
@@ -94,7 +94,7 @@ const SajuReport8 = () => {
                 {description: "목표를 향해 힘차게 나아가는 모습이 돋보여요"},
             ],
             imageAlt: "독수리처럼 높은 목표를 향해 도전해요",
-            imageSrc: `${process.env.PUBLIC_URL}/images/eagle.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/eagle.png`,
         },
         정재: {
             title: name + '님의 직장 생활 성공 전략을 알려드립니다.',
@@ -111,7 +111,7 @@ const SajuReport8 = () => {
                 {description: "함께 이룬 성과가 큰 힘으로 돌아올 거예요"},
             ],
             imageAlt: "개미처럼 부지런하고 끈기 있게 일하세요",
-            imageSrc: `${process.env.PUBLIC_URL}/images/eagle.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/ant.png`,
         },
         편관: {
             title: name + '님의 직장 생활 성공 전략을 알려드립니다.',
@@ -128,7 +128,7 @@ const SajuReport8 = () => {
                 {description: "목표를 향해 흔들림 없이 나아가세요"},
             ],
             imageAlt: "사자",
-            imageSrc: `${process.env.PUBLIC_URL}/images/eagle.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/lion.png`,
         },
         정관: {
             title: name + '님의 직장 생활 성공 전략을 알려드립니다.',
@@ -145,7 +145,7 @@ const SajuReport8 = () => {
                 {description: "흔들림 없이 목표를 향해 나아가 보세요"},
             ],
             imageAlt: "말처럼 자유롭게 도전하고 앞으로 나아가세요",
-            imageSrc: `${process.env.PUBLIC_URL}/images/horse.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/horse.png`,
         },
         편인: {
             title: name + '님의 직장 생활 성공 전략을 알려드립니다.',
@@ -162,7 +162,7 @@ const SajuReport8 = () => {
                 {description: "상황을 통찰하며 최선의 선택을 찾아보세요"},
             ],
             imageAlt: "올빼미",
-            imageSrc: `${process.env.PUBLIC_URL}/images/eagle.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/owl.png`,
         },
         정인: {
             title: name + '님의 직장 생활 성공 전략을 알려드립니다.',
@@ -179,7 +179,7 @@ const SajuReport8 = () => {
                 {description: "코끼리처럼 흔들림 없이 성과를 만드세요"},
             ],
             imageAlt: "코끼리",
-            imageSrc: `${process.env.PUBLIC_URL}/images/eagle.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/elephant.png`,
         },
     };
 

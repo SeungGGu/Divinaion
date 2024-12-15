@@ -1,11 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/SajuIntro1.css';
-import { useSaju } from "../../context/SajuContext";
 
 const SajuIntro1 = () => {
     const navigate = useNavigate();
-    const { sajuData } = useSaju();
 
     function nextPageOnClick() {
         navigate('/Intro2'); // 다음 페이지의 경로로 이동
@@ -28,7 +26,7 @@ const SajuIntro1 = () => {
 
                 {/* 중앙 이미지 */}
                 <div className="saju-intro1-image-container">
-                    <img src={`${process.env.PUBLIC_URL}/images/wood.png`} alt="Saju Main"/>
+                    <img src={`${process.env.PUBLIC_URL}/images/mainPicture/saju.webp`} alt="Saju Main"/>
                 </div>
 
                 {/* 오른쪽 아이콘 */}

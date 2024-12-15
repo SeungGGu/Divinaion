@@ -7,8 +7,9 @@
     justify-content: space-between;
     align-items: center;
     height: 100vh;
-    padding: 20px;
+    padding: 0px 20px;
     position: relative;
+    overflow: hidden; /* 스크롤 제거 */
 }
 
 /* 왼쪽 섹션: 만세력 */

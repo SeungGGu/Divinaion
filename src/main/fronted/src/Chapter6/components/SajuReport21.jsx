@@ -81,33 +81,54 @@ const SajuReport21 = () => {
 
     const blessingScores = calculateBlessingScores();
 
+    // 가장 높은 1~42% 퍼센트를 찾기
+    const highestLowScore = Object.entries(blessingScores)
+        .filter(([_, score]) => score >= 1 && score <= 42) // 1~42% 필터링
+        .reduce((highest, [key, score]) => {
+            if (!highest || score > highest.score) {
+                return { key, score };
+            }
+            return highest;
+        }, null);
+
+    // 퍼센트에 따라 결과값 반환
+    const getEvaluation = (blessing, percentage) => {
+        if (percentage === 0) return '❗ 약해요';
+        if (percentage >= 1 && percentage <= 42) {
+            return highestLowScore?.key === blessing ? '👍 좋아요' : '좋아요';
+        }
+        return '넘쳐요';
+    };
+
     const handleNextPage = () => {
         navigate('/Report22', { state: { blessingScores } });
     };
 
     return (
         <div className="report21-container">
-            <h1 className="report-title">{name}님의 5대 덕을 통해 인생의 성장을 발견하세요</h1>
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
+            <h1 className="report-title">15. {name}님의 타고난 5대 덕, 사주로 분석합니다</h1>
             <p className="report-subtitle">
-                5대 덕 분석을 통해 긍정적인 변화를 이끌어 보세요.
+                5덕의 비율로 인연의 의미를 이해하고 더 나은 관계를 만들어보세요
             </p>
 
             {/* 분석 표 */}
             <div className="report-content">
                 {/* 왼쪽 덕 분석 */}
                 <div className="blessing-analysis-section">
-                    <h2 className="section-title">{name}님의 사주팔자 5덕 분석</h2>
+                    <h2 className="section-title">{name}님의 사주 에너지 구성</h2>
                     <table className="blessing-analysis-table">
                         <tbody>
                         <tr>
-                            <th>덕</th>
-                            <td>{getBlessingByRelation(result.manseTimeSkyRelation)} 덕</td>
+                            <td>{result.manseTimeSkyRelation}</td>
                             <td>{name}</td>
-                            <td>{getBlessingByRelation(result.manseMonthSkyRelation)} 덕</td>
-                            <td>{getBlessingByRelation(result.manseYearSkyRelation)} 덕</td>
+                            <td>{result.manseMonthSkyRelation}</td>
+                            <td>{result.manseYearSkyRelation}</td>
                         </tr>
                         <tr>
-                            <th>천간</th>
                             {['timeSky', 'daySky', 'monthSky', 'yearSky'].map((key) => (
                                 <td
                                     key={key}
@@ -121,7 +142,6 @@ const SajuReport21 = () => {
                             ))}
                         </tr>
                         <tr>
-                            <th>지지</th>
                             {['timeGround', 'dayGround', 'monthGround', 'yearGround'].map((key) => (
                                 <td
                                     key={key}
@@ -135,11 +155,10 @@ const SajuReport21 = () => {
                             ))}
                         </tr>
                         <tr>
-                            <th>덕</th>
-                            <td>{getBlessingByRelation(result.manseTimeGroundRelation)} 덕</td>
-                            <td>{getBlessingByRelation(result.manseDayGroundRelation)} 덕</td>
-                            <td>{getBlessingByRelation(result.manseMonthGroundRelation)} 덕</td>
-                            <td>{getBlessingByRelation(result.manseYearGroundRelation)} 덕</td>
+                            <td>{result.manseTimeGroundRelation}</td>
+                            <td>{result.manseDayGroundRelation}</td>
+                            <td>{result.manseMonthGroundRelation}</td>
+                            <td>{result.manseYearGroundRelation}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -147,13 +166,29 @@ const SajuReport21 = () => {
 
                 {/* 오른쪽 덕 점수 */}
                 <div className="blessing-score-section">
-                    <h2 className="section-title">{name}님의 타고난 5대 덕</h2>
+                    <h2 className="section-title">사주로 알아보는 {name}님의 타고난 5대 덕</h2>
                     <table className="blessing-score-table">
+                        <thead>
+                        <tr>
+                            <th>사주 에너지</th>
+                            <th>5대 덕</th>
+                            <th>어때요?</th>
+                        </tr>
+                        </thead>
                         <tbody>
-                        {Object.entries(blessingScores).map(([blessing, score]) => (
-                            <tr key={blessing}>
-                                <td>{blessing} 덕</td>
-                                <td>{score > 0 ? `${score}% 가졌어요` : '0% 가졌어요'}</td>
+                        {Object.entries(blessingScores).map(([blessing, score], index) => (
+                            <tr key={index}>
+                                <td>
+                                    {blessing === '인' && '비견 / 겁재'}
+                                    {blessing === '처가' && '식신 / 상관'}
+                                    {blessing === '자식' && '편관 / 정관'}
+                                    {blessing === '여자' && '편재 / 정재'}
+                                    {blessing === '남자' && '편관 / 정관'}
+                                    {blessing === '부모' && '편인 / 정인'}
+                                    {blessing === '시댁' && '편재 / 정재'}
+                                </td>
+                                <td>{`${blessing} 덕 - ${score}%`}</td>
+                                <td>{getEvaluation(blessing, score)}</td>
                             </tr>
                         ))}
                         </tbody>
@@ -164,14 +199,8 @@ const SajuReport21 = () => {
             {/* 하단 메시지 */}
             <div className="footer-section">
                 <p className="footer-message">
-                    {name}님의 덕을 활용해 관계를 강화하고 안정된 삶을 만들어보세요.
+                    5대 덕의 비율을 활용하면 더 나은 관계와 의미를 설계할 수 있습니다
                 </p>
-                <p className="footer-note">
-                    사주에 덕이 없어도, 운이 좋을 때 덕이 발휘되어 긍정적 변화를 이끌어냅니다.
-                </p>
-                <button className="next-page-button" onClick={handleNextPage}>
-                    다음 페이지로 이동
-                </button>
             </div>
         </div>
     );

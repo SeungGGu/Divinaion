@@ -14,31 +14,44 @@ const SajuReport20 = () => {
 
     return (
         <div className="report20-container">
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
             {/* 상단 제목 */}
             <div className="header-section">
-                <h1 className="title">{name}님의 배우자 인연과 덕을 깊이 있게 분석합니다</h1>
+                <h1 className="title">{name}님의 인연과 관련된 5가지 덕(德)</h1>
                 <p className="subtitle">
-                    결혼 후 {name}님의 배우자 덕을 알아보고 인연을 쌓아보세요
+                    5덕의 의미를 이해하고 인연의 균형을 찾아보세요
                 </p>
             </div>
 
-            {/* 메인 이미지 섹션 */}
-            <div className="image-section">
-                <img
-                    src={`${process.env.PUBLIC_URL}/images/mountain.png`} // 이미지 경로
-                    alt="배우자 운 이미지"
-                    className="main-image"
-                />
+            {/* 메인 섹션 */}
+            <div className="main-section">
+                {/* 이미지 */}
+                <div className="image-section">
+                    <img
+                        src={`${process.env.PUBLIC_URL}/images/mainPicture/mountain.png`} // 이미지 경로
+                        alt="배우자 운 이미지"
+                        className="main-image"
+                    />
+                </div>
+
+                {/* 글 박스 */}
+                <div className="text-box">
+                    <p className="text-content">
+                        <strong>5대 덕(德)</strong>은<br />
+                        {name}님의 인연에 영향을 미치며<br />
+                        다양한 가능성을 제공합니다
+                    </p>
+                </div>
             </div>
 
             {/* 하단 메시지 및 버튼 */}
             <div className="footer-section">
                 <p className="footer-message">
-                    {name}님의 배우자 덕으로 더 나은 미래를 설계해보세요
+                    5대 덕을 활용하면 인연의 가치를 발견하고 행복한 삶을 만들 수 있습니다
                 </p>
-                <button className="next-page-button" onClick={handleNextPage}>
-                    다음 페이지로 이동
-                </button>
             </div>
         </div>
     );

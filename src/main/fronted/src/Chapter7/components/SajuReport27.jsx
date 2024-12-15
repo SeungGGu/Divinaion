@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../css/SajuReport27.css';
-import {useSaju} from "../../context/SajuContext";
+import { useSaju } from "../../context/SajuContext";
 
 const SajuReport27 = () => {
     const { sajuData } = useSaju();
@@ -17,53 +17,53 @@ const SajuReport27 = () => {
     // 약점별 메시지와 동물 이미지 매핑
     const weaknessMessages = {
         비견: {
-            description: "늑대처럼 자기 영역을 침범 당하면 강하게 반발해요.",
-            imageSrc: `${process.env.PUBLIC_URL}/images/wolf.png`,
+            description: "늑대처럼 고집이 강하면 협력이 어려워질 수 있어요.",
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/wolf.png`,
             imageAlt: "늑대 이미지",
         },
         겁재: {
-            description: "호랑이처럼 힘을 과시하려다 무리와 충돌할 수 있어요.",
-            imageSrc: `${process.env.PUBLIC_URL}/images/tiger.png`,
+            description: "호랑이처럼 충동적으로 행동하면 갈등을 초래할 수 있어요.",
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/tiger.png`,
             imageAlt: "호랑이 이미지",
         },
         식신: {
-            description: "소처럼 익숙한 길만 가려 하여 새로운 시도를 꺼려해요.",
-            imageSrc: `${process.env.PUBLIC_URL}/images/cow.png`,
+            description: "소처럼 고집이 지나치면 변화에 적응하기 어려울 수 있어요.",
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/cow.png`,
             imageAlt: "소 이미지",
         },
         상관: {
-            description: "원숭이처럼 말이 앞서고, 준비 없는 행동으로 실수합니다.",
-            imageSrc: `${process.env.PUBLIC_URL}/images/monkey.png`,
+            description: "원숭이처럼 말이 앞서 준비 없이 행동하다 실수할 수 있어요.",
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/monkey.png`,
             imageAlt: "원숭이 이미지",
         },
         편재: {
-            description: "독수리처럼 높이만 보고 중요한 기회를 지나칠 수 있어요.",
-            imageSrc: `${process.env.PUBLIC_URL}/images/eagle.png`,
+            description: "독수리처럼 높이만 보다가 중요한 기회를 놓칠 수 있어요.",
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/eagle.png`,
             imageAlt: "독수리 이미지",
         },
         정재: {
-            description: "개미처럼 사소한 일에만 몰두해 큰 그림을 놓치기 쉬워요.",
-            imageSrc: `${process.env.PUBLIC_URL}/images/turtle.png`,
+            description: "개미처럼 작은 일에만 집착해 큰 목표를 놓칠 수 있어요.",
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/ant.png`,
             imageAlt: "개미 이미지",
         },
         편관: {
-            description: "사자처럼 자신만의 리더십을 고집해 타인을 배려하지 않아요.",
-            imageSrc: `${process.env.PUBLIC_URL}/images/lion.png`,
+            description: "사자처럼 리더십만 고집하다가 소통이 어려울 수 있어요.",
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/lion.png`,
             imageAlt: "사자 이미지",
         },
         정관: {
-            description: "말처럼 자신의 길을 고집해 다른 사람과 충돌할 때가 있어요.",
-            imageSrc: `${process.env.PUBLIC_URL}/images/horse.png`,
+            description: "말처럼 자신의 길만 고집하다가 갈등이 생길 수 있어요.",
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/horse.png`,
             imageAlt: "말 이미지",
         },
         편인: {
             description: "올빼미처럼 밤에만 활동해 현실 감각이 부족할 수 있어요.",
-            imageSrc: `${process.env.PUBLIC_URL}/images/owl.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/owl.png`,
             imageAlt: "올빼미 이미지",
         },
         정인: {
-            description: "코끼리처럼 신중한 나머지 중요한 결정을 미루는 경향이 있어요.",
-            imageSrc: `${process.env.PUBLIC_URL}/images/goose.png`,
+            description: "코끼리처럼 책임감이 과하면 효율성이 떨어질 수 있어요.",
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/elephant.png`,
             imageAlt: "코끼리 이미지",
         },
     };
@@ -74,35 +74,37 @@ const SajuReport27 = () => {
 
     return (
         <div className="saju-report27-container">
-            <h1 className="saju-report27-title">사주의 약점을 분석해 성장의 길을 찾아보세요</h1>
-            <p className="saju-report27-subtitle">{name}님의 약점을 동물의 이미지로 쉽게 이해해보세요.</p>
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
+            <h1 className="saju-report27-title">20. {name}님의 약점, 동물 이미지로 풀어보세요</h1>
+            <p className="saju-report27-subtitle">동물 이미지를 통해 사주 속 약점을 쉽게 이해하세요</p>
 
-            <div className="saju-report27-weakness-section">
+            <p>동물 이미지로 본 {name}님의 약점과 극복 방법을 확인하세요</p>
+            <div className="saju-report27-weakness-grid">
                 {Object.entries(energyScores)
-                    .filter(([_, score]) => score > 0) // 0% 약점은 표시하지 않음
+                    .filter(([_, score]) => score > 0)
                     .map(([weakness, score]) => (
-                        <div key={weakness} className="saju-report27-weakness-item">
-                            <div className="saju-report27-weakness-header">
-                                <h2 className="saju-report27-weakness-title">{weakness} 약점</h2>
-                                <span className="saju-report27-weakness-score">{score}%</span>
-                            </div>
-                            <div className="saju-report27-weakness-content">
-                                <img
-                                    src={weaknessMessages[weakness]?.imageSrc}
-                                    alt={weaknessMessages[weakness]?.imageAlt}
-                                    className="saju-report27-weakness-image"
-                                />
-                                <p className="saju-report27-weakness-description">
-                                    {weaknessMessages[weakness]?.description}
-                                </p>
-                            </div>
+                        <div key={weakness} className="saju-report27-weakness-card">
+                            <img
+                                src={weaknessMessages[weakness]?.imageSrc}
+                                alt={weaknessMessages[weakness]?.imageAlt}
+                                className="saju-report27-weakness-image"
+                            />
+                            <h2 className="saju-report27-weakness-title">{weakness}</h2>
+                            <p className="saju-report27-weakness-score">👍 {score}%</p>
+                            <p className="saju-report27-weakness-description">
+                                {weaknessMessages[weakness]?.description}
+                            </p>
                         </div>
                     ))}
             </div>
 
-            <button className="saju-report27-next-button" onClick={handleNextPage}>
-                다음 페이지로 이동
-            </button>
+            <div className="footer-section">
+                <p className="footer-message">
+                    동물 이미지를 통해 약점을 이해하면 더 나은 자신으로 변화할 수 있습니다
+                </p>
+            </div>
         </div>
     );
 };

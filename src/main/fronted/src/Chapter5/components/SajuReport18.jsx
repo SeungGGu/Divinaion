@@ -45,7 +45,7 @@ const SajuReport18 = () => {
 
     // 관계에 따른 복의 구분
     const blessingGroups = {
-        인복: ['비견', '겁재'],
+        인: ['비견', '겁재'],
         재능: ['식신', '상관'],
         재물: ['편재', '정재'],
         직장: ['편관', '정관'],
@@ -62,7 +62,7 @@ const SajuReport18 = () => {
     // 복의 점수 계산
     const calculateBlessingScores = () => {
         const blessingScores = {
-            인복: 0,
+            인: 0,
             재능: 0,
             재물: 0,
             직장: 0,
@@ -82,10 +82,22 @@ const SajuReport18 = () => {
 
     const blessingScores = calculateBlessingScores();
 
+    // 가장 높은 1~42% 점수 찾기
+    const highestLowScore = Object.entries(blessingScores)
+        .filter(([_, score]) => score > 0 && score <= 42) // 1~42% 필터링
+        .reduce((highest, [key, score]) => {
+            if (!highest || score > highest.score) {
+                return { key, score };
+            }
+            return highest;
+        }, null);
+
     // 어때요 평가
-    const getEvaluation = (percentage) => {
-        if (percentage === 0) return '약해요';
-        if (percentage <= 42) return '좋아요';
+    const getEvaluation = (blessing, percentage) => {
+        if (percentage === 0) return '❗약해요';
+        if (percentage <= 42) {
+            return highestLowScore?.key === blessing ? '👍좋아요' : '좋아요';
+        }
         return '넘쳐요';
     };
 
@@ -209,14 +221,14 @@ const SajuReport18 = () => {
                         {Object.entries(blessingScores).map(([blessing, score], index) => (
                             <tr key={index}>
                                 <td>
-                                    {blessing === '인복' && '비견 / 겁재'}
+                                    {blessing === '인' && '비견 / 겁재'}
                                     {blessing === '재능' && '식신 / 상관'}
                                     {blessing === '재물' && '편재 / 정재'}
                                     {blessing === '직장' && '편관 / 정관'}
                                     {blessing === '명예' && '편인 / 정인'}
                                 </td>
                                 <td>{blessing} 복 - {score}%</td>
-                                <td>{getEvaluation(score)}</td>
+                                <td>{getEvaluation(blessing, score)}</td>
                             </tr>
                         ))}
                         </tbody>

@@ -4,10 +4,12 @@
     color: #f8f8f8;
     font-family: 'Arial', sans-serif;
     min-height: 100vh;
-    padding: 40px 20px;
+    padding: 0px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100vh; /* 화면 높이 고정 */
+    overflow: hidden; /* 스크롤 제거 */
 }
 
 /* 제목 및 부제목 스타일 */
@@ -32,11 +34,12 @@
     max-width: 900px;
     border-collapse: collapse;
     margin-bottom: 30px;
+    white-space: pre-wrap;
 }
 
 /* 표 스타일 */
 .sinsal-table th {
-    background-color: #a5d6a7; /* 연한 초록 */
+    background-color: #f0d58c;
     color: #000;
     font-size: 1.2rem;
     padding: 10px;
@@ -67,21 +70,10 @@
     color: #000;
 }
 
-/* 하단 버튼 */
-.next-page-button {
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    color: #000;
-    background-color: #f0c674;
-    border: none;
-    border-radius: 8px;
+.highlight-message {
+    font-size: 1rem;
     font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.next-page-button:hover {
-    background-color: #e5b960;
-    transform: scale(1.05);
+    color: #f0d58c; /* 강조 색상 */
+    margin-top: 5px;
+    text-align: center;
 }

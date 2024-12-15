@@ -1,6 +1,7 @@
 import React from "react";
 import { useSaju } from "../../context/SajuContext";
 import "../css/SajuReport40.css";
+import {useNavigate} from "react-router-dom";
 
 // 천간과 지지 매핑
 const heavenlyStems = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"];
@@ -38,6 +39,20 @@ const hanjaToElementMap = {
     "午": "fire", "未": "earth",
     "申": "metal", "酉": "metal",
     "戌": "earth", "亥": "water",
+};
+
+// 운세 설명 매핑
+const fortuneDescriptions = {
+    "비견": "변화를 수용하는 해",
+    "겁재": "도전을 이끄는 해",
+    "식신": "안정을 추구하는 해",
+    "상관": "창의력을 발휘하는 해",
+    "편재": "기회를 잡는 해",
+    "정재": "신뢰를 쌓는 해",
+    "편관": "리더쉽을 발휘하는 해",
+    "정관": "책임을 다하는 해",
+    "편인": "내면의 성장을 배우는 해",
+    "정인": "인정을 받는 해",
 };
 
 const getElementColor = (hanja) => fiveElementColorMap[hanjaToElementMap[hanja]] || "#fff";
@@ -94,6 +109,7 @@ const getYearlyFortune = (dayStem, yearBranch) => {
 const SajuReport40 = () => {
     const { sajuData } = useSaju();
     const { name, result } = sajuData || {};
+    const navigate = useNavigate();
 
     if (!result) {
         return <div>데이터가 없습니다. 이전 페이지로 돌아가세요.</div>;
@@ -108,8 +124,24 @@ const SajuReport40 = () => {
     const currentFortune = getYearlyFortune(result.daySky, currentYearInfo.earthlyBranch);
     const nextFortune = getYearlyFortune(result.daySky, nextYearInfo.earthlyBranch);
 
+    const handleNextPage = () => {
+        navigate('/Report41', {
+            state: {
+                currentFortune,
+                nextFortune,
+                currentYear,
+                nextYear,
+                name
+            }
+        });
+    };
+
     return (
         <div className="report40-container">
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
             <h1 className="report40-title">{name}님의 운세로 미래 계획을 구체화하세요</h1>
             <p className="report40-subtitle">
                 운세 흐름을 분석하여 구체적인 목표와 방향을 설정해보세요!
@@ -124,6 +156,12 @@ const SajuReport40 = () => {
                         </tr>
                         </thead>
                         <tbody>
+                        <tr>
+                            <td>{result.manseTimeSkyRelation}</td>
+                            <td>{name}</td>
+                            <td>{result.manseMonthSkyRelation}</td>
+                            <td>{result.manseYearSkyRelation}</td>
+                        </tr>
                         <tr>
                             {["timeSky", "daySky", "monthSky", "yearSky"].map((key, index) => (
                                 <td
@@ -152,6 +190,12 @@ const SajuReport40 = () => {
                                 </td>
                             ))}
                         </tr>
+                        <tr>
+                            <td>{result.manseTimeGroundRelation}</td>
+                            <td>{result.manseDayGroundRelation}</td>
+                            <td>{result.manseMonthGroundRelation}</td>
+                            <td>{result.manseYearGroundRelation}</td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -160,8 +204,8 @@ const SajuReport40 = () => {
                     <table className="year-table">
                         <thead>
                         <tr>
-                            <th>올해</th>
-                            <th>내년</th>
+                            <th>{currentYear}년</th>
+                            <th>{nextYear}년</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -202,8 +246,14 @@ const SajuReport40 = () => {
                             </td>
                         </tr>
                         <tr>
-                            <td>{currentFortune}</td>
-                            <td>{nextFortune}</td>
+                            <td>{currentFortune} 운</td>
+                            <td>{nextFortune} 운</td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>{currentYear}년 : {fortuneDescriptions[currentFortune]}</td>
+                        </tr>
+                        <tr>
+                            <td colSpan={2}>{nextYear}년 : {fortuneDescriptions[nextFortune]}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -211,13 +261,9 @@ const SajuReport40 = () => {
             </div>
 
             <footer className="report40-footer">
-                <p>운세가 열어주는 기회를 포착하고, 성공을 위한 계획을 구체화하세요!</p>
-                <button
-                    className="report40-next-button"
-                    onClick={() => console.log("다음 페이지로 이동")}
-                >
-                    다음 페이지로 이동
-                </button>
+                <p>
+                    운의 흐름을 활용하면 {currentYear}년과 {nextYear}년을 더 의미 있는 시간으로 계획할 수 있습니다.
+                </p>
             </footer>
         </div>
     );

@@ -34,85 +34,97 @@ const SajuReport32 = () => {
             type: '목 에너지',
             percentage: percentages.wood,
             description: ['간장', '쓸개', '두통', '조울증', '신경계'],
-            image: `${process.env.PUBLIC_URL}/images/wood.png`,
+            image: `${process.env.PUBLIC_URL}/images/fiveEnengy/wood.png`,
         },
         {
             type: '화 에너지',
             percentage: percentages.fire,
             description: ['눈', '심장', '소장', '혈압', '순환계'],
-            image: `${process.env.PUBLIC_URL}/images/fire.png`,
+            image: `${process.env.PUBLIC_URL}/images/fiveEnengy/fire.png`,
         },
         {
             type: '토 에너지',
             percentage: percentages.earth,
             description: ['비장', '위장', '당뇨', '피부', '근육계'],
-            image: `${process.env.PUBLIC_URL}/images/earth.png`,
+            image: `${process.env.PUBLIC_URL}/images/fiveEnengy/earth.png`,
         },
         {
             type: '금 에너지',
             percentage: percentages.metal,
             description: ['폐', '대장', '호흡기', '기관지', '골격계'],
-            image: `${process.env.PUBLIC_URL}/images/metal.png`,
+            image: `${process.env.PUBLIC_URL}/images/fiveEnengy/metal.png`,
         },
         {
             type: '수 에너지',
             percentage: percentages.water,
             description: ['신장', '방광', '우울증', '비뇨기', '혈액계'],
-            image: `${process.env.PUBLIC_URL}/images/water.png`,
+            image: `${process.env.PUBLIC_URL}/images/fiveEnengy/water.png`,
         },
     ];
 
     return (
         <div className="report32-container">
-            <h1 className="report-title">오행 에너지로 {name}님의 건강 상태를 분석해 보세요</h1>
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
+
+            <h1 className="report-title">24. {name}님의 오행, 건강과 균형을 알아봅니다</h1>
             <p className="report-subtitle">
-                오행 균형을 통해 {name}님의 건강을 관리하고 성장하세요.
+                오행 에너지를 활용해 건강을 알아보고 관리하세요
             </p>
 
             <div className="health-summary-container">
-                {fiveElements.map((element) => (
-                    <div className="health-card" key={element.type}>
-                        <div
-                            style={{
-                                backgroundColor: fiveElementColorMap[element.type.split(' ')[0]], // 오행 색상 매핑
-                                color: element.type === '수 에너지' ? 'white' : 'black', // 수 에너지일 경우 텍스트 흰색
-                                fontWeight: 'bold', // 텍스트 강조
-                                padding: '5px',
-                                borderRadius: '5px',
-                            }}
-                        >
-                            {element.type}
+                {fiveElements.map((element) => {
+                    let statusText = "강해요"; // 기본값
+                    const numericPercentage = parseFloat(element.percentage);
+
+                    if (numericPercentage === 0) {
+                        statusText = "❗ 약해요";
+                    } else if (numericPercentage >= 50) {
+                        statusText = "🚫 주의 필요";
+                    }
+
+                    return (
+                        <div className="health-card" key={element.type}>
+                            <ul className="health-description">
+                                {element.description.map((desc, index) => (
+                                    <li key={index}>{desc}</li>
+                                ))}
+                            </ul>
+                            <img
+                                src={element.image}
+                                alt={element.type}
+                                className="health-image"
+                            />
+                            <div
+                                style={{
+                                    backgroundColor: fiveElementColorMap[element.type.split(' ')[0]],
+                                    color: element.type === '수 에너지' ? 'white' : 'black',
+                                    fontWeight: 'bold',
+                                    padding: '5px',
+                                    borderRadius: '5px',
+                                }}
+                            >
+                                {element.type}
+                            </div>
+                            <div
+                                className="health-header"
+                                style={{
+                                    backgroundColor: numericPercentage === 0 || numericPercentage >= 50 ? "#f4a460" : "#444",
+                                    color: numericPercentage === 0 || numericPercentage >= 50 ? "#000" : "#fff",
+                                }}
+                            >
+                                {statusText}
+                            </div>
                         </div>
-                        <div
-                            className="health-header"
-                            style={{
-                                backgroundColor: element.percentage === "0.0" || element.percentage === "50.0" ? "#f4a460" : "#444",
-                                color: element.percentage === "0.0" || element.percentage === "50.0" ? "#000" : "#fff",
-                            }}
-                        >
-                            {element.percentage}%
-                        </div>
-                        <img
-                            src={element.image}
-                            alt={element.type}
-                            className="health-image"
-                        />
-                        <ul className="health-description">
-                            {element.description.map((desc, index) => (
-                                <li key={index}>{desc}</li>
-                            ))}
-                        </ul>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
 
             <footer className="report32-footer">
-                <p>{name}님의 오행 균형을 활용해 건강을 관리하세요!</p>
+                <p>오행의 균형을 맞추면 건강한 일상을 만들 수 있습니다</p>
             </footer>
-
-            <button className="next-page-button" onClick={handleNextPage}>
-                다음 페이지로 이동
-            </button>
         </div>
     );
 };

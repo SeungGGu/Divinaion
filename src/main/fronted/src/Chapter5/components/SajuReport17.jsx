@@ -30,7 +30,7 @@ const SajuReport17 = () => {
             <div className="content-section">
                 <div className="image-container">
                     <img
-                        src={`${process.env.PUBLIC_URL}/images/fivebok.png`} // 더미 이미지 경로
+                        src={`${process.env.PUBLIC_URL}/images/mainPicture/fivebok.png`} // 더미 이미지 경로
                         alt="5대 복 이미지"
                         className="main-image"
                     />

@@ -88,9 +88,14 @@ const SajuReport30 = () => {
 
     return (
         <div className="report30-container">
-            <h1 className="report-title">오행으로 {name}님의 성격과 건강 관계를 확인하세요</h1>
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
+
+            <h1 className="report-title">22. {name}님의 타고난 성향, 오행 에너지로 분석합니다</h1>
             <p className="report-subtitle">
-                오행의 균형을 통해 {name}님의 건강과 성격을 알아보세요.
+                오행 비율을 통해 당신의 강점과 성장을 발견하세요!
             </p>
 
             <div className="five-element-container">
@@ -175,39 +180,68 @@ const SajuReport30 = () => {
                 <div className="table-container">
                     <table className="energy-summary-table">
                         <thead>
+                        <td colSpan={3}>타고난 오행 비율로 본 {name}님의 성향</td>
                         <tr>
                             <th>오행</th>
-                            <th>에너지 비율</th>
+                            <th>오행의 성향</th>
+                            <th>비율</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {Object.entries(percentages).map(([element, percentage]) => (
-                            <tr key={element}>
-                                <td style={{
-                                    backgroundColor: fiveElementColorMap[element],
-                                    color: 'white',
-                                    textAlign: 'center',
-                                }}>
-                                    {element === 'wood' ? '목(木)' :
-                                        element === 'fire' ? '화(火)' :
-                                            element === 'earth' ? '토(土)' :
-                                                element === 'metal' ? '금(金)' : '수(水)'}
-                                </td>
-                                <td>{percentage}% 가졌어요</td>
-                            </tr>
-                        ))}
+                        {(() => {
+                            const maxElement = Object.entries(percentages)
+                                .filter(([_, percentage]) => percentage > 0 && percentage < 50) // 1% ~ 49% 범위 필터
+                                .reduce((prev, current) => (parseFloat(prev[1]) > parseFloat(current[1]) ? prev : current), [null, 0]);
+
+                            return Object.entries(percentages).map(([element, percentage]) => {
+                                const numericPercentage = parseFloat(percentage);
+                                const isMax = maxElement[0] === element; // 가장 높은 비율인지 확인
+                                const isZeroOrHigh = numericPercentage === 0 || numericPercentage >= 50;
+
+                                // 소수점 제거
+                                const formattedPercentage = numericPercentage % 1 === 0
+                                    ? numericPercentage.toFixed(0) // 소수점이 0일 경우 정수 형태로 표시
+                                    : numericPercentage.toFixed(1); // 소수점이 있을 경우 한 자리까지 표시
+
+                                return (
+                                    <tr key={element}>
+                                        <td style={{
+                                            backgroundColor: fiveElementColorMap[element],
+                                            color: 'white',
+                                            textAlign: 'center',
+                                        }}>
+                                            {element === 'wood' ? '목(木)' :
+                                                element === 'fire' ? '화(火)' :
+                                                    element === 'earth' ? '토(土)' :
+                                                        element === 'metal' ? '금(金)' : '수(水)'}
+                                        </td>
+                                        <td>
+                                            {element === 'wood' ? '성장, 창의력' :
+                                                element === 'fire' ? '열정, 도전적' :
+                                                    element === 'earth' ? '안정, 책임감' :
+                                                        element === 'metal' ? '결단, 통찰력' : '지혜, 감성적'}
+                                        </td>
+                                        <td>
+                                            {isZeroOrHigh ? '❗ ' : ''}{isMax ? '👍 ' : ''}{formattedPercentage}%
+                                        </td>
+                                    </tr>
+                                );
+                            });
+                        })()}
+                        <tr>
+                            <td colSpan={3}>비율이 낮으면 오행 에너지가 부족합니다</td>
+                        </tr>
+                        <tr>
+                            <td colSpan={3}>높은 비율은 강점이지만, 지나치면 단점이 될 수 있어요</td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
             <footer className="five-element-footer">
-                <p>{name}님의 오행 균형을 활용해 건강한 마음과 성격을 키워보세요!</p>
+                <p>오행의 강점과 약점을 활용하면 균형 있는 성장을 만들 수 있습니다</p>
             </footer>
-
-            <button className="next-page-button" onClick={handleNextPage}>
-                다음 페이지로 이동
-            </button>
         </div>
     );
 };

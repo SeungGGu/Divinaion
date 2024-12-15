@@ -46,6 +46,11 @@ import SajuReport37 from "./Chapter10/components/SajuReport37";
 import SajuReport38 from "./Chapter10/components/SajuReport38";
 import SajuReport39 from "./Chapter11/components/SajuReport39";
 import SajuReport40 from "./Chapter11/components/SajuReport40";
+import SajuReport41 from "./Chapter11/components/SajuReport41";
+import SajuReport42 from "./Chapter11/components/SajuReport42";
+import SajuReport43 from "./Chapter11/components/SajuReport43";
+import SajuReport44 from "./Chapter11/components/SajuReport44";
+import OuttroPage1 from "./OuttroPage/components/OuttroPage1";
 
 const Router = () => {
     return (
@@ -108,6 +113,12 @@ const Router = () => {
                 {/*챕터11*/}
                 <Route path="/Report39" element={<SajuReport39/>}/>
                 <Route path="/Report40" element={<SajuReport40/>}/>
+                <Route path="/Report41" element={<SajuReport41/>}/>
+                <Route path="/Report42" element={<SajuReport42/>}/>
+                <Route path="/Report43" element={<SajuReport43/>}/>
+                <Route path="/Report44" element={<SajuReport44/>}/>
+                {/*아웃트로*/}
+                <Route path="/Outtro1" element={<OuttroPage1/>}/>
 
                 <Route path='/*' element={ //*이란? 지정된 페이지 이외의 모든것들을 에러처리
                     <>

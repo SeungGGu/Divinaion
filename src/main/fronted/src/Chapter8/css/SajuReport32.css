@@ -1,10 +1,11 @@
 .report32-container {
     background-color: #1e1e1e;
     color: #f8f8f8;
-    padding: 40px;
+    padding: 0px 40px;
     text-align: center;
     font-family: 'Arial', sans-serif;
-    min-height: 100vh;
+    height: 100vh; /* 화면 높이 고정 */
+    overflow: hidden; /* 스크롤 제거 */
 }
 
 .report-title {
@@ -53,7 +54,7 @@
     font-size: 0.9rem;
     color: #dcdcdc;
     line-height: 1.5;
-    text-align: left;
+    text-align: center; /* 가운데 정렬 추가 */
     list-style: none;
 }
 

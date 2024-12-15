@@ -29,7 +29,7 @@ const SajuReport13 = () => {
             {/* 메인 이미지 섹션 */}
             <div className="image-section2">
                 <img
-                    src={`${process.env.PUBLIC_URL}/images/mind.png`} // 더미 이미지 경로
+                    src={`${process.env.PUBLIC_URL}/images/mainPicture/mind.png`} // 더미 이미지 경로
                     alt="마음 성향 이미지"
                     className="main-image2"
                 />

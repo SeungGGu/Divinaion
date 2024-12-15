@@ -23,6 +23,20 @@ const SajuReport25 = () => {
         manseTimeGroundRelation: 14,
     };
 
+    // 사주 에너지별 강점 매핑
+    const energyToStrength = {
+        비견: '협력/팀워크',
+        겁재: '독립적/강인함',
+        식신: '창의력/아이디어',
+        상관: '표현력/설득력',
+        편재: '기회 탐구/실리 추구',
+        정재: '성실/재물 관리',
+        편관: '리더십/도전',
+        정관: '신뢰/책임감',
+        편인: '독창적/문제 탐구',
+        정인: '체계적/지식 쌓기',
+    };
+
     // 오행 색상 매핑
     const fiveElementColorMap = {
         wood: '#89b798',
@@ -47,32 +61,22 @@ const SajuReport25 = () => {
 
     const getTextColor = (bgColor) => (bgColor === '#000000' ? '#ffffff' : '#000000');
 
-    // 에너지를 동적으로 계산
+    // 에너지를 동적으로 계산 (중복된 값은 합산)
     const calculateEnergyScores = () => {
-        const energyScores = {
-            비견: 0,
-            겁재: 0,
-            식신: 0,
-            상관: 0,
-            편재: 0,
-            정재: 0,
-            편관: 0,
-            정관: 0,
-            편인: 0,
-            정인: 0,
-        };
-
+        const energyScores = {};
         Object.entries(relationsPercentage).forEach(([key, percentage]) => {
             const relation = result[key];
-            if (energyScores[relation] !== undefined) {
-                energyScores[relation] += percentage;
+            if (relation) {
+                energyScores[relation] = (energyScores[relation] || 0) + percentage;
             }
         });
-
         return energyScores;
     };
 
     const energyScores = calculateEnergyScores();
+
+    // 가장 높은 비율 찾기
+    const highestPercentage = Math.max(...Object.values(energyScores));
 
     const handleNextPage = () => {
         navigate('/Report26', { state: { energyScores } });
@@ -80,25 +84,33 @@ const SajuReport25 = () => {
 
     return (
         <div className="report25-container">
-            <h1 className="report-title">{name}님의 사주 에너지로 더 큰 성장을 이루세요</h1>
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
+
+            <h1 className="report-title">18. {name}님의 타고난 강점, 사주로 분석합니다</h1>
             <p className="report-subtitle">
-                사주 에너지를 통해 성장하는 길을 기대해 보세요.
+                사주로 당신의 강점을 발견하고 더 나은 방향을 설정해보세요!
             </p>
 
             <div className="report-content">
                 {/* 왼쪽 에너지 분석 */}
                 <div className="energy-analysis-section">
-                    <h2 className="section-title">{name}님의 사주팔자 에너지 분석</h2>
                     <table className="energy-analysis-table">
+                        <thead>
+                        <tr>
+                            <th colSpan={4}>{name}님의 사주 에너지 구성</th>
+                        </tr>
+                        </thead>
                         <tbody>
                         <tr>
-                            <th>관계</th>
-                            {['manseTimeSkyRelation', 'manseDaySkyRelation', 'manseMonthSkyRelation', 'manseYearSkyRelation'].map((key) => (
-                                <td key={key}>{result[key]}</td>
-                            ))}
+                            <td>{result.manseTimeSkyRelation}</td>
+                            <td>{name}</td>
+                            <td>{result.manseMonthSkyRelation}</td>
+                            <td>{result.manseYearSkyRelation}</td>
                         </tr>
                         <tr>
-                            <th>천간</th>
                             {['timeSky', 'daySky', 'monthSky', 'yearSky'].map((key) => (
                                 <td
                                     key={key}
@@ -112,7 +124,6 @@ const SajuReport25 = () => {
                             ))}
                         </tr>
                         <tr>
-                            <th>지지</th>
                             {['timeGround', 'dayGround', 'monthGround', 'yearGround'].map((key) => (
                                 <td
                                     key={key}
@@ -126,7 +137,6 @@ const SajuReport25 = () => {
                             ))}
                         </tr>
                         <tr>
-                            <th>관계</th>
                             {['manseTimeGroundRelation', 'manseDayGroundRelation', 'manseMonthGroundRelation', 'manseYearGroundRelation'].map((key) => (
                                 <td key={key}>{result[key]}</td>
                             ))}
@@ -137,30 +147,41 @@ const SajuReport25 = () => {
 
                 {/* 오른쪽 에너지 점수 */}
                 <div className="energy-score-section">
-                    <h2 className="section-title">{name}님의 타고난 사주 에너지</h2>
                     <table className="energy-score-table">
+                        <thead>
+                        <tr>
+                            <th colSpan={3}>사주로 알아보는 {name}님의 타고난 강점</th>
+                        </tr>
+                        <tr>
+                            <th>사주 에너지</th>
+                            <th>타고난 강점</th>
+                            <th>비율</th>
+                        </tr>
+                        </thead>
                         <tbody>
-                        {Object.entries(energyScores)
-                            .filter(([_, score]) => score > 0) // 0% 점수는 표시하지 않음
-                            .map(([energy, score]) => (
-                                <tr key={energy}>
-                                    <td>{energy} 에너지</td>
-                                    <td>{`${score}% 가졌어요`}</td>
-                                </tr>
-                            ))}
+                        {Object.entries(energyScores).map(([energy, percentage]) => (
+                            <tr key={energy}>
+                                <td>{energy}</td>
+                                <td>
+                                    {percentage === highestPercentage && '👍 '}
+                                    {energyToStrength[energy]}
+                                </td>
+                                <td>
+                                    {`${percentage}%`}
+                                </td>
+                            </tr>
+                        ))}
                         </tbody>
                     </table>
+                    <p>높은 비율은 강점이지만, 지나치면 단점이 될 수 있어요</p>
                 </div>
             </div>
 
             {/* 하단 메시지 */}
             <div className="footer-section">
                 <p className="footer-message">
-                    {name}님의 사주 에너지를 활용해 목표를 달성하는 방법을 알아보세요.
+                    뛰어난 강점을 바탕으로 목표를 세우면 더 나은 방향으로 나아갈 수 있습니다
                 </p>
-                <button className="next-page-button" onClick={handleNextPage}>
-                    다음 페이지로 이동
-                </button>
             </div>
         </div>
     );

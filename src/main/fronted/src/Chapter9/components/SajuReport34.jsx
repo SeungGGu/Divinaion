@@ -77,11 +77,16 @@ const SajuReport34 = () => {
 
     return (
         <div className="saju-report34-container">
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
+
             <h1 className="saju-title">
-                {name}님의 신살 에너지로 잠재력과 강점을 발견하세요
+                25. {name}님의 타고난 매력, 신살로 분석합니다
             </h1>
             <p className="saju-subtitle">
-                {name}님의 신살 에너지를 활용해 특별한 강점을 찾아보세요.
+                타고난 신살로 삶의 방향을 찾아보세요
             </p>
 
             <div className="saju-content">
@@ -89,6 +94,7 @@ const SajuReport34 = () => {
                 <div className="sinsal-table-container">
                     <table className="sinsal-analysis-table">
                         <thead>
+                        <td colSpan={4}>{name}님의 신살에너지 구성</td>
                         <tr>
                             <th>{birthTime}</th>
                             <th>{birthDay}일</th>
@@ -144,10 +150,15 @@ const SajuReport34 = () => {
                         </thead>
                         <tbody>
                         <tr>
-                            {['horse', '도화살', '화개살'].map((sinsal, index) => (
+                            <td>역마살</td>
+                            <td>도화살</td>
+                            <td>화개살</td>
+                        </tr>
+                        <tr>
+                            {['horse', 'peacock', 'turtle'].map((sinsal, index) => (
                                 <td key={index}>
                                     <img
-                                        src={`${process.env.PUBLIC_URL}/images/${sinsal}.png`}
+                                        src={`${process.env.PUBLIC_URL}/images/sinsal/${sinsal}.png`}
                                         alt={sinsal}
                                         className="sinsal-percentage-image"
                                     />
@@ -159,17 +170,11 @@ const SajuReport34 = () => {
                                 <td
                                     key={index}
                                     style={{
-                                        backgroundColor:
-                                            sinsalPercentages[sinsal] === 0 || sinsalPercentages[sinsal] === 50
-                                                ? '#f0d58c'
-                                                : '#444',
-                                        color:
-                                            sinsalPercentages[sinsal] === 0 || sinsalPercentages[sinsal] === 50
-                                                ? '#000'
-                                                : '#fff',
+                                        backgroundColor: sinsalCount[sinsal] === 0 ? '#f0d58c' : '#444',
+                                        color: sinsalCount[sinsal] === 0 ? '#000' : '#fff',
                                     }}
                                 >
-                                    {sinsalPercentages[sinsal]}%
+                                    {sinsalCount[sinsal]}개 있어요
                                 </td>
                             ))}
                         </tr>
@@ -177,10 +182,6 @@ const SajuReport34 = () => {
                     </table>
                 </div>
             </div>
-
-            <button className="next-button" onClick={handleNextPage}>
-                다음 페이지로 이동
-            </button>
         </div>
     );
 };

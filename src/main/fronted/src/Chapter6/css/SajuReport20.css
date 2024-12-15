@@ -1,10 +1,11 @@
 .report20-container {
     background-color: #1e1e1e; /* 어두운 배경 */
     color: #f8f8f8; /* 밝은 텍스트 */
-    padding: 40px;
+    padding: 0px 40px;
     text-align: center;
     font-family: 'Arial', sans-serif;
-    min-height: 100vh;
+    height: 100vh; /* 화면 높이 고정 */
+    overflow: hidden; /* 스크롤 제거 */
 }
 
 .header-section .title {
@@ -20,14 +21,43 @@
     margin-bottom: 30px;
 }
 
+/* 메인 섹션 레이아웃 */
+.main-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* 이미지와 글 간격 */
+}
+
 .image-section .main-image {
-    max-width: 80%;
+    max-width: 50%;
     height: auto;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    margin-bottom: 30px;
 }
 
+/* 글 박스 스타일 */
+.text-box {
+    max-width: 40%;
+    padding: 20px;
+    border: 2px solid #f0c674; /* 테두리 색상 */
+    border-radius: 10px;
+    background-color: #2a2a2a; /* 박스 배경색 */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* 박스 그림자 */
+    text-align: left;
+}
+
+.text-box .text-content {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #f8f8f8;
+}
+
+.text-box strong {
+    color: #f0c674; /* 강조된 텍스트 색상 */
+}
+
+/* 하단 메시지 */
 .footer-section {
     margin-top: 20px;
 }

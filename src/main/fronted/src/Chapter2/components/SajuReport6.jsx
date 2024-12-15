@@ -26,7 +26,7 @@ const SajuReport6 = () => {
             <div className="report6-content">
                 <div className="report6-image">
                     <img
-                        src={`${process.env.PUBLIC_URL}/images/professions.png`}
+                        src={`${process.env.PUBLIC_URL}/images/mainPicture/professions.png`}
                         alt="적성에 맞는 직업"
                         className="profession-image"
                     />

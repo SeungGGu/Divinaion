@@ -30,7 +30,7 @@ const SajuReport7 = () => {
                 {description: "목표를 향해 함께 나아가 성과를 만드세요"},
             ],
             imageAlt: "늑대",
-            imageSrc: `${process.env.PUBLIC_URL}/images/wolf.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/wolf.png`,
         },
         겁재: {
             title: name + '님의 직업, 사주로 추천 드립니다',
@@ -53,7 +53,7 @@ const SajuReport7 = () => {
                 {description: "목표 속 즐거움을 찾을 직업을 선택하세요"},
             ],
             imageAlt: "호랑이",
-            imageSrc: `${process.env.PUBLIC_URL}/images/tiger.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/tiger.png`,
         },
         식신: {
             title: name + '님의 직업, 사주로 추천 드립니다',
@@ -76,7 +76,7 @@ const SajuReport7 = () => {
                 {description: "차분히 목표를 이루는 직업이 어울려요"},
             ],
             imageAlt: "소",
-            imageSrc: `${process.env.PUBLIC_URL}/images/ox.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/cow.png`,
         },
         상관: {
             title: name + '님의 직업, 사주로 추천 드립니다',
@@ -99,7 +99,7 @@ const SajuReport7 = () => {
                 {description: "유연한 사고와 아이디어로 빛날 환경이에요"},
             ],
             imageAlt: "원숭이",
-            imageSrc: `${process.env.PUBLIC_URL}/images/ox.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/monkey.png`,
         },
         편재: {
             title: name + '님의 직업, 사주로 추천 드립니다',
@@ -122,7 +122,7 @@ const SajuReport7 = () => {
                 {description: "문제 해결과 목표 달성으로 빛나는 분야예요"},
             ],
             imageAlt: "독수리",
-            imageSrc: `${process.env.PUBLIC_URL}/images/ox.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/eagle.png`,
         },
         정재: {
             title: name + '님의 직업, 사주로 추천 드립니다',
@@ -145,7 +145,7 @@ const SajuReport7 = () => {
                 {description: "규칙적인 환경에서 꾸준히 노력하며 빛나세요"},
             ],
             imageAlt: "개미",
-            imageSrc: `${process.env.PUBLIC_URL}/images/ox.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/ant.png`,
         },
         편관: {
             title: name + '님의 직업, 사주로 추천 드립니다',
@@ -168,7 +168,7 @@ const SajuReport7 = () => {
                 {description: "책임감을 가지고 앞장서는 직무가 어울려요"},
             ],
             imageAlt: "사자",
-            imageSrc: `${process.env.PUBLIC_URL}/images/ox.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/lion.png`,
         },
         정관: {
             title: name + '님의 직업, 사주로 추천 드립니다',
@@ -191,7 +191,7 @@ const SajuReport7 = () => {
                 {description: "균형과 책임감을 발휘하며 재능을 빛내세요"},
             ],
             imageAlt: "말",
-            imageSrc: `${process.env.PUBLIC_URL}/images/horse.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/horse.png`,
         },
         편인: {
             title: name + '님의 직업, 사주로 추천 드립니다',
@@ -214,7 +214,7 @@ const SajuReport7 = () => {
                 {description: "통찰력을 발휘하며 돋보일 수 있는 분야예요"},
             ],
             imageAlt: "올빼미",
-            imageSrc: `${process.env.PUBLIC_URL}/images/horse.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/owl.png`,
         },
         정인: {
             title: name + '님의 직업, 사주로 추천 드립니다',
@@ -237,7 +237,7 @@ const SajuReport7 = () => {
                 {description: "신뢰받고 조화롭게 일할 역할이 맞아요"},
             ],
             imageAlt: "코끼리",
-            imageSrc: `${process.env.PUBLIC_URL}/images/horse.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/elephant.png`,
         },
     };
 

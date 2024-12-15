@@ -50,7 +50,8 @@ const SajuReport29 = () => {
     const getElementColor = (hanja) => fiveElementColorMap[hanjaToElementMap[hanja]] || 'transparent';
     const getTextColor = (bgColor) => (bgColor === 'black' ? 'white' : 'black');
 
-    const calculateYinYangPercentage = () => {
+    // 음양 에너지 카운트 계산
+    const calculateYinYangCounts = () => {
         let yinCount = 0;
         let yangCount = 0;
 
@@ -74,14 +75,21 @@ const SajuReport29 = () => {
             }
         });
 
-        const total = yinCount + yangCount;
-        return {
-            yin: Math.round((yinCount / total) * 100),
-            yang: Math.round((yangCount / total) * 100),
-        };
+        return { yinCount, yangCount };
     };
 
-    const {yin, yang} = calculateYinYangPercentage();
+    const { yinCount, yangCount } = calculateYinYangCounts();
+
+    // 음양 메시지 결정
+    const getYinYangMessage = () => {
+        if (yangCount > yinCount) {
+            return `${name}님의 양 에너지가 높아 활동적으로 도전적인 성향이 강합니다.`;
+        } else if (yinCount > yangCount) {
+            return `${name}님의 음 에너지가 높아 신중하고 내면을 중시하는 성향이 강합니다.`;
+        } else {
+            return `${name}님의 음과 양이 균형을 이루어 조화롭고 균형 잡힌 성향을 보입니다.`;
+        }
+    };
 
     const handleNextPage = () => {
         navigate('/Report30');
@@ -89,11 +97,16 @@ const SajuReport29 = () => {
 
     return (
         <div className="report29-container">
+            {/* 다음 페이지 버튼 */}
+            <button className="nextPage-button" onClick={handleNextPage}>
+                다음 ▶
+            </button>
+
             <h1 className="report-title">
-                음양 에너지를 통한 {name}님의 균형 상태 분석
+                21. {name}님의 타고난 성격, 음양 에너지로 분석합니다
             </h1>
             <p className="report-subtitle">
-                {name}님의 음양 에너지를 분석해 성장할 방향을 찾아보세요.
+                음양 에너지로 당신만의 성향과 균형을 찾아보세요!
             </p>
 
             <div className="yin-yang-container">
@@ -101,6 +114,7 @@ const SajuReport29 = () => {
                 <div className="table-container">
                     <table className="yin-yang-table">
                         <thead>
+                        <td colSpan={4}>{name}님의 음양 에너지 구성</td>
                         <tr>
                             <th>{birthTime}</th>
                             <th>{birthDay}일</th>
@@ -177,6 +191,7 @@ const SajuReport29 = () => {
                 <div className="table-container">
                     <table className="yin-yang-summary-table">
                         <thead>
+                        <td colSpan={2}>사주로 알아보는 음양 에너지의 특징</td>
                         <tr>
                             <th>음기운 에너지</th>
                             <th>양기운 에너지</th>
@@ -184,24 +199,23 @@ const SajuReport29 = () => {
                         </thead>
                         <tbody>
                         <tr>
-                            <td>소극적이다</td>
-                            <td>적극적이다</td>
+                            <td>차분하고 신중하다</td>
+                            <td>열정적이고 도전적이다</td>
                         </tr>
                         <tr>
-                            <td>수동적이다</td>
-                            <td>능동적이다</td>
+                            <td>한 발 물러서 생각한다</td>
+                            <td>스스로 나서서 행동한다</td>
                         </tr>
                         <tr>
-                            <td>내향적이다</td>
-                            <td>외향적이다</td>
+                            <td>마음이 차분하다</td>
+                            <td>활발하고 활기차다</td>
                         </tr>
                         <tr>
-                            <td>여성적이다</td>
-                            <td>남성적이다</td>
+                            <td>부드럽고 섬세하다</td>
+                            <td>강인하고 자신감 있다</td>
                         </tr>
                         <tr>
-                            <td>{yin}% 가졌어요</td>
-                            <td>{yang}% 가졌어요</td>
+                            <td colSpan={2}>{getYinYangMessage()}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -210,13 +224,9 @@ const SajuReport29 = () => {
 
             <footer className="yin-yang-footer">
                 <p>
-                    {name}님의 음양 에너지를 조화롭게 활용해 강점을 키워보세요!
+                    음양 에너지의 균형을 찾으면 나만의 강점으로 만들 수 있습니다
                 </p>
             </footer>
-
-            <button className="next-page-button" onClick={handleNextPage}>
-                다음 페이지로 이동
-            </button>
         </div>
     );
 };

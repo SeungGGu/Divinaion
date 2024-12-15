@@ -1,0 +1,68 @@
+.report41-container {
+    background-color: #1e1e1e;
+    color: #f8f8f8;
+    text-align: center;
+    padding: 0px 40px;
+    font-family: 'Arial', sans-serif;
+    height: 100vh; /* 화면 높이 고정 */
+    overflow: hidden; /* 스크롤 제거 */
+}
+
+.report41-title {
+    font-size: 2rem;
+    color: #f0c674;
+    margin-bottom: 15px;
+}
+
+.report41-subtitle {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+    margin-bottom: 30px;
+}
+
+.yearly-fortune-section {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.year-box {
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 400px;
+    text-align: left;
+}
+
+.year-title {
+    font-size: 1.5rem;
+    color: #f0c674;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.caution-item, .advice-item {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #333;
+    color: #f8f8f8;
+}
+
+.item-title {
+    font-size: 1.2rem;
+    color: #f4a89a;
+    margin-bottom: 5px;
+}
+
+.item-content {
+    font-size: 1rem;
+    color: #ddd;
+}
+
+.report41-footer {
+    margin-top: 30px;
+    font-size: 1rem;
+    color: #bbb;
+}

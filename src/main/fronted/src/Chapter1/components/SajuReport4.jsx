@@ -23,7 +23,7 @@ const SajuReport4 = () => {
                 { description: "친구들의 조언이 큰 힘이 될 거예요" },
             ],
             imageAlt: "늑대",
-            imageSrc: `${process.env.PUBLIC_URL}/images/wolf_negative.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/wolf.png`,
         },
         "겁재": {
             title: name + "님의 사회적 성향과 약점을 확인하세요",
@@ -39,7 +39,7 @@ const SajuReport4 = () => {
                 { description: "친구들의 조언을 받아 성장의 기회로 삼아보세요" },
             ],
             imageAlt: "호랑이",
-            imageSrc: `${process.env.PUBLIC_URL}/images/tiger_negative.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/tiger.png`,
         },
         "식신": {
             title: name + "님의 사회적 성향과 약점을 확인하세요",
@@ -55,7 +55,7 @@ const SajuReport4 = () => {
                 { description: "목표를 잃지 않고 기회를 잡아보세요" },
             ],
             imageAlt: "소",
-            imageSrc: `${process.env.PUBLIC_URL}/images/cow_negative.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/cow.png`,
         },
         "상관": {
             title: name + "님의 사회적 성향과 약점을 확인하세요",
@@ -71,7 +71,7 @@ const SajuReport4 = () => {
                 { description: "배려하는 마음으로 관계를 다듬어 보세요" },
             ],
             imageAlt: "원숭이",
-            imageSrc: `${process.env.PUBLIC_URL}/images/monkey_negative.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/monkey.png`,
         },
         "편재": {
             title: name + "님의 사회적 성향과 약점을 확인하세요",
@@ -87,7 +87,7 @@ const SajuReport4 = () => {
                 { description: "때로는 가까운 곳에 집중하는 지혜도 가져보세요" },
             ],
             imageAlt: "독수리",
-            imageSrc: `${process.env.PUBLIC_URL}/images/eagle_negative.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/eagle.png`,
         },
         "정재": {
             title: name + "님의 사회적 성향과 약점을 확인하세요",
@@ -103,7 +103,7 @@ const SajuReport4 = () => {
                 { description: "휴식을 통해 에너지를 재충전하세요" },
             ],
             imageAlt: "개미",
-            imageSrc: `${process.env.PUBLIC_URL}/images/ant_negative.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/ant.png`,
         },
         "편관": {
             title: name + "님의 사회적 성향과 약점을 확인하세요",
@@ -119,7 +119,7 @@ const SajuReport4 = () => {
                 { description: "사자처럼 배려로 균형 있게 이끌어 보세요" },
             ],
             imageAlt: "사자",
-            imageSrc: `${process.env.PUBLIC_URL}/images/lion_negative.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/lion.png`,
         },
         "정관": {
             title: name + "님의 사회적 성향과 약점을 확인하세요",
@@ -135,7 +135,7 @@ const SajuReport4 = () => {
                 { description: "말처럼 균형을 유지하며 지혜롭게 나아가세요" },
             ],
             imageAlt: "말",
-            imageSrc: `${process.env.PUBLIC_URL}/images/horse.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/horse.png`,
         },
         "편인": {
             title: name + "님의 사회적 성향과 약점을 확인하세요",
@@ -151,7 +151,7 @@ const SajuReport4 = () => {
                 { description: "고민이 길어지지 않게 적절한 타이밍을 잡아요" },
             ],
             imageAlt: "올빼미",
-            imageSrc: `${process.env.PUBLIC_URL}/images/owl_negative.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/owl.png`,
         },
         "정인": {
             title: name + "님의 사회적 성향과 약점을 확인하세요",
@@ -167,7 +167,7 @@ const SajuReport4 = () => {
                 { description: "중요한 순간을 놓치지 말고 과감히 나아가세요" },
             ],
             imageAlt: "코끼리",
-            imageSrc: `${process.env.PUBLIC_URL}/images/elephant_negative.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/animals/elephant.png`,
         },
     };
 

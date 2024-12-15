@@ -9,7 +9,7 @@ const SajuIntro3 = () => {
     const { name } = sajuData;
 
     function nextPageOnClick() {
-        navigate('/Intro4'); // 다음 페이지의 경로로 이동
+        navigate('/Report1'); // 다음 페이지의 경로로 이동
     }
 
     return (

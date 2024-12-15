@@ -6,11 +6,16 @@ import { useSaju } from '../../context/SajuContext'; // SajuContext 가져오기
 const SajuReport20 = () => {
     const navigate = useNavigate();
     const { sajuData } = useSaju();
-    const { name } = sajuData || {}; // SajuContext에서 데이터 가져오기
+    const { name, gender } = sajuData || {}; // SajuContext에서 데이터 가져오기
 
     const handleNextPage = () => {
         navigate('/Report21'); // 다음 페이지로 이동
     };
+
+    // gender에 따른 이미지 경로 설정
+    const imageSrc = gender === 'FEMALE'
+        ? `${process.env.PUBLIC_URL}/images/mainPicture/female.png`
+        : `${process.env.PUBLIC_URL}/images/mainPicture/male.png`;
 
     return (
         <div className="report20-container">
@@ -28,10 +33,10 @@ const SajuReport20 = () => {
 
             {/* 메인 섹션 */}
             <div className="main-section">
-                {/* 이미지 */}
+                {/* gender에 따른 이미지 */}
                 <div className="image-section">
                     <img
-                        src={`${process.env.PUBLIC_URL}/images/mainPicture/mountain.png`} // 이미지 경로
+                        src={imageSrc} // gender에 따라 이미지 경로 설정
                         alt="배우자 운 이미지"
                         className="main-image"
                     />

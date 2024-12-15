@@ -27,7 +27,7 @@ const SajuReport33 = () => {
         {
             type: '창의적인 화개살이 있다면',
             description: '거북이처럼 깊은 생각과 예술적 재능이 돋보이는 성격이에요',
-            image: `${process.env.PUBLIC_URL}/images/turtle.png`, // 화개살 이미지
+            image: `${process.env.PUBLIC_URL}/images/sinsal/turtle.png`, // 화개살 이미지
         },
     ];
 

@@ -3,13 +3,14 @@
     background-color: #1e1e1e;
     color: #f8f8f8;
     font-family: 'Arial', sans-serif;
-    padding: 0px 20px;
+    padding: 20px;
     text-align: center;
     height: 100vh; /* 화면 높이 고정 */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between; /* 상단, 중단, 하단 균등 분포 */
     align-items: center;
+    box-sizing: border-box; /* 패딩 포함 높이 계산 */
 }
 
 /* 제목 스타일 */
@@ -17,13 +18,14 @@
     font-size: 2.5rem;
     font-weight: bold;
     color: #f0c674;
+    margin-bottom: 10px;
 }
 
 /* 부제목 스타일 */
 .report36-subtitle {
     font-size: 1.4rem;
     color: #dcdcdc;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 /* 이미지와 박스를 가로 정렬 */
@@ -31,32 +33,37 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
+    flex-wrap: wrap; /* 화면이 좁아질 때 줄바꿈 */
     max-width: 1200px;
+    height: auto;
 }
 
 /* 이미지 컨테이너 */
 .report36-image-container {
     background-color: #3a3a3a;
     border-radius: 15px;
-    padding: 20px;
+    padding: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    max-width: 1000px;
+    max-width: 45%; /* 이미지 컨테이너 너비 제한 */
+    height: auto;
 }
 
 .report36-main-image {
-    max-width: 100%;
+    max-width: 100%; /* 이미지의 너비를 컨테이너에 맞춤 */
+    max-height: 300px; /* 이미지 최대 높이 제한 */
+    height: auto; /* 비율 유지 */
     border-radius: 10px;
 }
 
 /* 설명 박스 스타일 */
 .report36-text-box {
     background-color: #2a2a2a;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     text-align: left;
-    max-width: 800px;
+    max-width: 45%; /* 텍스트 박스 너비 제한 */
 }
 
 .text-line {
@@ -72,7 +79,7 @@
 
 /* 푸터 스타일 */
 .report36-footer {
-    margin-top: 30px;
+    margin-top: 10px;
     font-size: 1.2rem;
     color: #bbb;
     text-align: center;

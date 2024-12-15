@@ -60,9 +60,7 @@ const getTextColor = (bgColor) => (bgColor === "black" ? "white" : "black");
 
 // 십신 계산 함수
 const calculateRelationship = (dayElement, dayYinYang, branchElement, branchYinYang) => {
-    if (dayElement === branchElement) {
-        return dayYinYang === branchYinYang ? "비견" : "겁재";
-    }
+    if (!dayElement || !branchElement) return "운세 없음";
 
     const relations = {
         wood: { produces: "fire", controls: "earth", supportedBy: "water" },
@@ -72,19 +70,42 @@ const calculateRelationship = (dayElement, dayYinYang, branchElement, branchYinY
         water: { produces: "wood", controls: "fire", supportedBy: "metal" },
     };
 
-    const relation = relations[dayElement];
-    if (relation.produces === branchElement) {
+    // 비견/겁재: 일간과 동일한 오행
+    if (dayElement === branchElement) {
+        return dayYinYang === branchYinYang ? "비견" : "겁재";
+    }
+
+    // 식신/상관: 내가 생하는 오행
+    if (relations[dayElement]?.produces === branchElement) {
         return dayYinYang === branchYinYang ? "식신" : "상관";
     }
-    if (relation.controls === branchElement) {
+
+    // 편재/정재: 내가 극하는 오행
+    if (relations[dayElement]?.controls === branchElement) {
         return dayYinYang === branchYinYang ? "편재" : "정재";
     }
-    if (relation.supportedBy === branchElement) {
+
+    // 편인/정인: 나를 생하는 오행
+    if (relations[dayElement]?.supportedBy === branchElement) {
         return dayYinYang === branchYinYang ? "편인" : "정인";
+    }
+
+    // 편관/정관: 나를 극하는 오행
+    const controlledRelations = {
+        fire: "water",
+        wood: "metal",
+        earth: "wood",
+        metal: "fire",
+        water: "earth",
+    };
+
+    if (controlledRelations[dayElement] === branchElement) {
+        return dayYinYang === branchYinYang ? "편관" : "정관";
     }
 
     return "운세 없음"; // 정의되지 않은 경우
 };
+
 
 // 연도 계산 로직
 const calculateYearInfo = (year) => {

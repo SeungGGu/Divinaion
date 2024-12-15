@@ -48,7 +48,7 @@ const SajuReport2 = () => {
                 {description: "당신의 뿌리가 주변에 든든한 신뢰를 전합니다"},
             ],
             imageAlt: "튼튼한 나무",
-            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/tendency/bigTree.png`,
         },
         "乙": {
             title: "성장하는 작은 나무",
@@ -64,7 +64,7 @@ const SajuReport2 = () => {
                 {description: "꾸준함이 목표를 이루는 큰 힘이 됩니다"},
             ],
             imageAlt: "성장하는 작은 나무",
-            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/tendency/smallTree.png`,
         },
         "丙": {
             title: "따뜻한 햇살처럼",
@@ -80,7 +80,7 @@ const SajuReport2 = () => {
                 {description: "따뜻한 마음으로 깊은 관계를 만들어가세요"},
             ],
             imageAlt: "따뜻한 햇살",
-            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/tendency/tendency/sun.png`,
         },
         "丁": {
             title: "활활 타오르는 불꽃처럼",
@@ -96,7 +96,7 @@ const SajuReport2 = () => {
                 {description: "섬세한 마음으로 따뜻한 세상을 만들어가세요"},
             ],
             imageAlt: "타오르는 불꽃",
-            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/tendency/fire.png`,
         },
         "戊": {
             title: "튼튼한 산처럼",
@@ -112,7 +112,7 @@ const SajuReport2 = () => {
                 {description: "이 강점은 목표를 꾸준히 이루는 힘이 됩니다"},
             ],
             imageAlt: "튼튼한 산처럼",
-            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/tendency/mountain.png`,
         },
         "己": {
             title: "넉넉한 대치처럼",
@@ -128,7 +128,7 @@ const SajuReport2 = () => {
                 {description: "끈기와 꼼꼼함은 목표를 이루는 큰 힘이 됩니다"},
             ],
             imageAlt: "넉넉한 대지",
-            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/tendency/ground.png`,
         },
         "庚": {
             title: "단단한 금속",
@@ -144,7 +144,7 @@ const SajuReport2 = () => {
                 {description: "논리적인 사고로 문제를 명확히 해결합니다"},
             ],
             imageAlt: "단단한 금속",
-            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/tendency/metal.png`,
         },
         "辛": {
             title: "날카로운 금속",
@@ -160,7 +160,7 @@ const SajuReport2 = () => {
                 {description: "깔끔함과 배려로 주변을 편안하게 만듭니다"},
             ],
             imageAlt: "날카로운 금속",
-            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/tendency/sword.png`,
         },
         "壬": {
             title: "깊고 맑은 물",
@@ -176,7 +176,7 @@ const SajuReport2 = () => {
                 {description: "호기심과 자유로움이 삶을 풍요롭게 합니다"},
             ],
             imageAlt: "깊고 맑은 물",
-            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/tendency/water.png`,
         },
         "癸": {
             title: "맑은 강물",
@@ -192,7 +192,7 @@ const SajuReport2 = () => {
                 {description: "감성과 적응력이 삶에 활력을 더합니다"},
             ],
             imageAlt: "맑은 강물",
-            imageSrc: `${process.env.PUBLIC_URL}/images/mountain.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/tendency/river.png`,
         },
     };
 

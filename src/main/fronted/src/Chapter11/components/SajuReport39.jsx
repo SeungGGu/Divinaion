@@ -25,7 +25,7 @@ const SajuReport39 = () => {
             <div className="report39-image-section">
                 <div className="image-container">
                     <img
-                        src={`${process.env.PUBLIC_URL}/images/signpost.png`}
+                        src={`${process.env.PUBLIC_URL}/images/mainPicture/signpost.png`}
                         alt="이정표"
                         className="main-image"
                     />

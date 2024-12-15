@@ -26,7 +26,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px; /* 이미지와 글 간격 */
+    gap: 10px; /* 이미지와 글 간격 */
+}
+/* 이미지 섹션 스타일 */
+.image-section {
+    flex: 0 0 60%; /* 이미지 섹션의 너비를 고정 */
+    display: flex;
+    justify-content: center; /* 이미지 가운데 정렬 */
+    align-items: center;
 }
 
 .image-section .main-image {

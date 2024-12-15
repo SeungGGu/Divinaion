@@ -30,7 +30,7 @@ const SajuReport36 = () => {
                 {/* 이미지 */}
                 <div className="report36-image-container">
                     <img
-                        src={`${process.env.PUBLIC_URL}/images/benefactor.png`}
+                        src={`${process.env.PUBLIC_URL}/images/mainPicture/benefactor.png`}
                         alt="귀인의 긍정적인 변화"
                         className="report36-main-image"
                     />

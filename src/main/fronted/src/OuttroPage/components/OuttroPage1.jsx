@@ -19,9 +19,9 @@ const OuttroPage = () => {
 
             <div className="outtro-content">
                 {/* 이미지 섹션 */}
-                <div className="image-section">
+                <div className="image1-section">
                     <img
-                        src={`${process.env.PUBLIC_URL}/images/rocket.png`}
+                        src={`${process.env.PUBLIC_URL}/images/mainPicture/rocket.png`}
                         alt="로켓"
                         className="outtro-image"
                     />
@@ -33,7 +33,7 @@ const OuttroPage = () => {
                 </div>
 
                 {/* 글 박스 */}
-                <div className="text-box">
+                <div className="text1-box">
                     <p>지금의 선택이 미래를 바꿉니다.</p>
                     <p>더 나은 내일을 위한 첫걸음을 시작하세요!</p>
                     <p>사주의 통찰로 자신만의 특별한 길을 열어보세요.</p>

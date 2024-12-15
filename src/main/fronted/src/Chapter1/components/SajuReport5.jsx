@@ -42,7 +42,7 @@ const SajuReport5 = () => {
                 { title: "올빼미처럼 지혜롭게 문제를 해결하세요.", description: "올빼미처럼 상황을 분석하며 해답을 찾아보세요"},
                 ],
             imageAlt: "코끼리와 올빼미 이미지",
-            imageSrc: `${process.env.PUBLIC_URL}/images/teamwork.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/relationship/elephant&owl.png`,
         },
         "비겁": {
             title: name + "님의 대인관계 강점을 알려드립니다",
@@ -57,7 +57,7 @@ const SajuReport5 = () => {
                 { title: "호랑이처럼 경쟁력을 키우세요.", description: "호랑이처럼 자신감을 갖고 과감히 나아가세요"},
             ],
             imageAlt: "늑대와 호랑이 이미지",
-            imageSrc: `${process.env.PUBLIC_URL}/images/leader.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/relationship/wolf&tiger.png`,
         },
         "식재관": {
             title: name + "님의 대인관계 강점을 알려드립니다",
@@ -73,7 +73,7 @@ const SajuReport5 = () => {
                 { title: "사자처럼 리더십을 발휘하세요.", description: "사자처럼 강한 리더십으로 목표를 이끌어보세요"},
             ],
             imageAlt: "소, 독수리, 사자 이미지",
-            imageSrc: `${process.env.PUBLIC_URL}/images/confidence.png`,
+            imageSrc: `${process.env.PUBLIC_URL}/images/relationship/cow&eagle&lion.png`,
         },
     };
 

@@ -51,7 +51,7 @@ const SajuReport36 = () => {
             </div>
 
             <footer className="report36-footer">
-                <p>귀인을 만나면 삶의 전환점을 만들고 원하는 목표를 이룰 수 있습니다</p>
+                <p></p>
             </footer>
         </div>
     );

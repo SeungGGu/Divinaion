@@ -54,3 +54,47 @@
     font-size: 1rem;
     color: #add8e6;
 }
+
+.content-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* 설명 섹션 */
+.content-section .description-container {
+    flex: 1;
+    text-align: left;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+}
+
+.content-section .description-container .description-title {
+    font-size: 1.4rem;
+    color: #f0c674;
+    margin-bottom: 15px;
+}
+
+.content-section .description-container .description-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #dcdcdc;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.content-section .description-container .description-list li {
+    margin-bottom: 10px;
+}
+
+.content-section .description-container .description-list li strong {
+    color: #f0c674;
+}

@@ -69,10 +69,10 @@ const SajuReport9 = () => {
 
             </main>
 
-            {/* 하단 섹션 */}
-            <footer className="report9-footer">
-                <p>사주의 타고난 능력을 활용하면 목표를 설정하고 성공을 이룰 수 있습니다</p>
-            </footer>
+            {/*/!* 하단 섹션 *!/*/}
+            {/*<footer className="report9-footer">*/}
+            {/*    <p>사주의 타고난 능력을 활용하면 목표를 설정하고 성공을 이룰 수 있습니다</p>*/}
+            {/*</footer>*/}
         </div>
     );
 };

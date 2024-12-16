@@ -182,6 +182,9 @@ const SajuReport34 = () => {
                     </table>
                 </div>
             </div>
+            <footer className="report34-footer">
+                <p>신살 에너지를 활용하면 특별한 기회를 발견하고 새로운 변화를 만들 수 있습니다.</p>
+            </footer>
         </div>
     );
 };

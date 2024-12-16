@@ -59,9 +59,9 @@ const SajuReport33 = () => {
                 ))}
             </div>
 
-            <footer className="report33-footer">
-                <p>신살의 숨겨진 매력을 이해하면 삶에 새로운 가능성을 열 수 있습니다.</p>
-            </footer>
+            {/*<footer className="report33-footer">*/}
+            {/*    <p>신살의 숨겨진 매력을 이해하면 삶에 새로운 가능성을 열 수 있습니다.</p>*/}
+            {/*</footer>*/}
         </div>
     );
 };

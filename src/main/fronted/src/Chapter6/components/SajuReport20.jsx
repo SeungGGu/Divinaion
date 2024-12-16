@@ -52,12 +52,12 @@ const SajuReport20 = () => {
                 </div>
             </div>
 
-            {/* 하단 메시지 및 버튼 */}
-            <div className="footer-section">
-                <p className="footer-message">
-                    5대 덕을 활용하면 인연의 가치를 발견하고 행복한 삶을 만들 수 있습니다
-                </p>
-            </div>
+            {/*/!* 하단 메시지 및 버튼 *!/*/}
+            {/*<div className="footer-section">*/}
+            {/*    <p className="footer-message">*/}
+            {/*        5대 덕을 활용하면 인연의 가치를 발견하고 행복한 삶을 만들 수 있습니다*/}
+            {/*    </p>*/}
+            {/*</div>*/}
         </div>
     );
 };

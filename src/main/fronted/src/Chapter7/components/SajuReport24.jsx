@@ -47,9 +47,9 @@ const SajuReport24 = () => {
                 </div>
             </div>
 
-            <p className="footer-message">
-                사주의 강점을 활용하면 목표를 구체화하고 성공적인 미래를 설계할 수 있습니다
-            </p>
+            {/*<p className="footer-message">*/}
+            {/*    사주의 강점을 활용하면 목표를 구체화하고 성공적인 미래를 설계할 수 있습니다*/}
+            {/*</p>*/}
         </div>
     );
 };

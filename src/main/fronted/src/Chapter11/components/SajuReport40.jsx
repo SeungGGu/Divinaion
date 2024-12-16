@@ -163,9 +163,9 @@ const SajuReport40 = () => {
             <button className="nextPage-button" onClick={handleNextPage}>
                 다음 ▶
             </button>
-            <h1 className="report40-title">{name}님의 운세로 미래 계획을 구체화하세요</h1>
+            <h1 className="report40-title">29. {name}님의 {currentYear}년과 {nextYear}년, 운세를 분석합니다</h1>
             <p className="report40-subtitle">
-                운세 흐름을 분석하여 구체적인 목표와 방향을 설정해보세요!
+                다가올 운세를 분석하고 기회를 잡아보세요!
             </p>
 
             <div className="report40-content">

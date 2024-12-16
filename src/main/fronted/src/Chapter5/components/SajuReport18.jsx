@@ -211,6 +211,7 @@ const SajuReport18 = () => {
                 <div className="blessing-table-container">
                     <table className="blessing-table">
                         <thead>
+                        <td colSpan={3}>사주로 알아보는 {name}님의 타고난 5대 복</td>
                         <tr>
                             <th>사주 에너지</th>
                             <th>5대 복</th>
@@ -231,6 +232,15 @@ const SajuReport18 = () => {
                                 <td>{getEvaluation(blessing, score)}</td>
                             </tr>
                         ))}
+                        <tr>
+                            <td colSpan={3}>비율이 낮으면 해당 복의 활용이 약할 수 있어요</td>
+                        </tr>
+                        <tr>
+                            <td colSpan={3}>
+                                비율이 높으면 복의 영향이 강하게 나타나요<br/>
+                                너무 높은 비율은 단점으로 작용할 가능성이 있어요
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

@@ -33,7 +33,7 @@ const SajuReport39 = () => {
             </div>
 
             <footer className="report39-footer">
-                <p>운과 흐름을 따르면 성장과 성공을 계획할 수 있습니다.</p>
+                <p></p>
             </footer>
         </div>
     );

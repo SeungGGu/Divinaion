@@ -36,8 +36,8 @@ const SajuReport28 = () => {
 
                 {/* 박스 글 추가 */}
                 <div className="report28-text-box">
-                    <p className="report28-text-title">음양 오행의 에너지가</p>
-                    <p className="report28-text-subtitle">당신의 강점을 찾아드립니다</p>
+                    <p className="report28-text-title"></p>
+                    <p className="report28-text-subtitle">음양 오행의 에너지가<br/>당신의 강점을 찾아드립니다</p>
                     <p className="report28-text-description">
                         {name}님의 오행을 통해 <br />
                         숨겨진 가능성을 발견해보세요
@@ -48,7 +48,7 @@ const SajuReport28 = () => {
             {/* 하단 메시지 */}
             <div className="footer-section">
                 <p className="footer-message">
-                    음향오행 에너지를 활용하면 강점과 건강을 함께 증진시킬 수 있습니다
+
                 </p>
             </div>
         </div>

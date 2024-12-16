@@ -22,7 +22,7 @@ const SajuReport17 = () => {
             <div className="header-section">
                 <h1 className="title">{name}님의 타고난 복, 사주로 알 수 있어요</h1>
                 <p className="subtitle">
-                    {name}님의 5대 복의 의미를 확인하고 삶의 균형을 찾아보세요!
+                    5대 복의 의미를 확인하고 삶의 균형을 찾아보세요!
                 </p>
             </div>
 
@@ -48,12 +48,12 @@ const SajuReport17 = () => {
                 </div>
             </div>
 
-            {/* 하단 메시지 */}
-            <div className="footer-section">
-                <p className="footer-message">
-                    5대 복을 강점으로 활용하면 풍요로운 삶을 만들 수 있습니다.
-                </p>
-            </div>
+            {/*/!* 하단 메시지 *!/*/}
+            {/*<div className="footer-section">*/}
+            {/*    <p className="footer-message">*/}
+            {/*        5대 복을 강점으로 활용하면 풍요로운 삶을 만들 수 있습니다.*/}
+            {/*    </p>*/}
+            {/*</div>*/}
         </div>
     );
 };

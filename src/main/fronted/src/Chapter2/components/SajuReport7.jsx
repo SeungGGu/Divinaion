@@ -27,7 +27,7 @@ const SajuReport7 = () => {
             adviceTitle: "늑대처럼 협력과 목표 달성을 중시하는 직업",
             advice: [
                 {description: "팀워크가 중요한 직업에서 조화를 이루세요"},
-                {description: "목표를 향해 함께 나아가 성과를 만드세요"},
+                {description: "목표를 향해 성과를 함께 만드세요"},
             ],
             imageAlt: "늑대",
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/wolf.png`,
@@ -50,7 +50,7 @@ const SajuReport7 = () => {
             adviceTitle: "호랑이처럼 도전 정신이 필요한 직업",
             advice: [
                 {description: "도전 정신으로 목표를 이루고 성취하세요"},
-                {description: "목표 속 즐거움을 찾을 직업을 선택하세요"},
+                {description: "목표에서 즐거움을 찾는 직업을 선택하세요"},
             ],
             imageAlt: "호랑이",
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/tiger.png`,
@@ -70,10 +70,10 @@ const SajuReport7 = () => {
             description:
                 name +
                 "님은 꾸준히 성실하게 일할 수 있는 직업 환경에서 만족감을 느낄 수 있어요.",
-            adviceTitle: "소처럼 꾸준함을 요구되는 직업",
+            adviceTitle: "소처럼 꾸준함이 필요한 직업",
             advice: [
-                {description: "성실과 꾸준함으로 실력을 쌓아 빛나세요"},
-                {description: "차분히 목표를 이루는 직업이 어울려요"},
+                {description: "성실과 꾸준함으로 실력을 쌓아보세요"},
+                {description: "차분히 목표를 이루는 직무가 적합해요"},
             ],
             imageAlt: "소",
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/cow.png`,
@@ -93,10 +93,10 @@ const SajuReport7 = () => {
             description:
                 name +
                 "님은 창의성과 개성을 발휘할 수 있는 환경에서 더 큰 성취감을 얻을 수 있어요",
-            adviceTitle: "원숭이처럼 창의력이 필요한 직업",
+            adviceTitle: "원숭이처럼 창의력을 펼칠 수 있는 직업",
             advice: [
-                {description: "창의력과 발상을 펼칠 직무에서 활약하세요"},
-                {description: "유연한 사고와 아이디어로 빛날 환경이에요"},
+                {description: "창의력과 발상을 펼칠 직무에서 활약해보세요"},
+                {description: "유연한 사고와 아이디어로 빛날 곳이에요"},
             ],
             imageAlt: "원숭이",
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/monkey.png`,
@@ -119,7 +119,7 @@ const SajuReport7 = () => {
             adviceTitle: "독수리처럼 분석력과 목표 지향적인 직업",
             advice: [
                 {description: "전략적 사고와 분석력이 잘 맞는 직무예요"},
-                {description: "문제 해결과 목표 달성으로 빛나는 분야예요"},
+                {description: "문제 해결과 목표 달성으로 돋보이는 분야예요"},
             ],
             imageAlt: "독수리",
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/eagle.png`,
@@ -141,8 +141,8 @@ const SajuReport7 = () => {
                 "님은 안정적이고 체계적인 직업 환경에서 책임감을 가지고 일할 수 있어요",
             adviceTitle: "개미처럼 체계적이고 성실한 직업",
             advice: [
-                {description: "계획에 따라 성과를 내는 직무가 어울려요"},
-                {description: "규칙적인 환경에서 꾸준히 노력하며 빛나세요"},
+                {description: "계획에 따라 성과를 내는 직무에 적합해요"},
+                {description: "규칙적인 환경에서 꾸준히 노력해보세요"},
             ],
             imageAlt: "개미",
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/ant.png`,
@@ -164,8 +164,8 @@ const SajuReport7 = () => {
                 "님은 도전적인 과제를 통해 성장할 수 있는 직업 환경에서 잘 적응할 수 있어요",
             adviceTitle: "사자처럼 리더십을 발휘할 수 있는 직업",
             advice: [
-                {description: "팀을 이끌며 리더십을 발휘할 역할이 맞아요"},
-                {description: "책임감을 가지고 앞장서는 직무가 어울려요"},
+                {description: "팀을 이끌며 리더십을 발휘할 직무에 적합해요"},
+                {description: "책임감을 가지고 앞장서는 직무에 적합해요"},
             ],
             imageAlt: "사자",
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/lion.png`,
@@ -185,10 +185,10 @@ const SajuReport7 = () => {
             description:
                 name +
                 "님은 규칙적이고 질서 있는 환경에서 성실하게 실력을 쌓을 수 있어요",
-            adviceTitle: "말처럼 균형 감각을 요구하는 직업",
+            adviceTitle: "말처럼 균형 감각을 발휘할 수 있는 직업",
             advice: [
-                {description: "다양한 업무를 수행할 직무가 잘 어울려요"},
-                {description: "균형과 책임감을 발휘하며 재능을 빛내세요"},
+                {description: "다양한 업무를 수행하는 직무가 적합해요"},
+                {description: "균형과 책임감을 발휘하며 재능을 살리세요"},
             ],
             imageAlt: "말",
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/horse.png`,
@@ -211,7 +211,7 @@ const SajuReport7 = () => {
             adviceTitle: "올빼미처럼 독립적이고 탐구심이 필요한 직업",
             advice: [
                 {description: "지식을 쌓고 분석하는 직무에 어울려요"},
-                {description: "통찰력을 발휘하며 돋보일 수 있는 분야예요"},
+                {description: "통찰력을 발휘하며 빛날 수 있는 분야예요"},
             ],
             imageAlt: "올빼미",
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/owl.png`,
@@ -234,7 +234,7 @@ const SajuReport7 = () => {
             adviceTitle: "코끼리처럼 지혜와 협력이 중요한 직업",
             advice: [
                 {description: "협력하며 의견 나누는 직무에 어울려요"},
-                {description: "신뢰받고 조화롭게 일할 역할이 맞아요"},
+                {description: "신뢰받고 조화롭게 일할 직무에 적합해요"},
             ],
             imageAlt: "코끼리",
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/elephant.png`,

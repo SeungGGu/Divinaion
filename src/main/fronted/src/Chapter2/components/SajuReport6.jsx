@@ -21,10 +21,12 @@ const SajuReport6 = () => {
             </button>
 
             <div className="report6-header">
-                <h1>사주로 알아보는 {name}님의 직업</h1>
+                <h1>{name}님의 적성에 맞는 직업, 사주로 찾아드립니다!</h1>
             </div>
+            <p>사주로 적성을 파악하고 성공적인 직장 생활을 시작하세요</p>
             <div className="report6-content">
                 <div className="report6-image">
+                    <p>사주로 당신의 성향과 재능을 알아보세요</p>
                     <img
                         src={`${process.env.PUBLIC_URL}/images/mainPicture/professions.png`}
                         alt="적성에 맞는 직업"
@@ -37,9 +39,9 @@ const SajuReport6 = () => {
                     <p>강점을 활용해 성공적인 직장 생활을 시작하세요</p>
                 </div>
             </div>
-            <div className="report6-footer">
-                <p>적성에 맞는 직업을 선택하면 성공적인 직장 생활을 시작할 수 있습니다.</p>
-            </div>
+            {/*<div className="report6-footer">*/}
+            {/*    <p>적성에 맞는 직업을 선택하면 성공적인 직장 생활을 시작할 수 있습니다.</p>*/}
+            {/*</div>*/}
         </div>
     );
 };

@@ -26,7 +26,7 @@ const SajuReport6 = () => {
             <p>사주로 적성을 파악하고 성공적인 직장 생활을 시작하세요</p>
             <div className="report6-content">
                 <div className="report6-image">
-                    <p>사주로 당신의 성향과 재능을 알아보세요</p>
+                    <p>사주로 알아보는 {name}님의 직업</p>
                     <img
                         src={`${process.env.PUBLIC_URL}/images/mainPicture/professions.png`}
                         alt="적성에 맞는 직업"

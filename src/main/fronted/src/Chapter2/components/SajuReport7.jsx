@@ -266,7 +266,7 @@ const SajuReport7 = () => {
                 다음 ▶
             </button>
 
-            <h1 className="report-title">{currentAnalysis.title}</h1>
+            <h1 className="report-title">5. {currentAnalysis.title}</h1>
             <p className="report-subtitle">{currentAnalysis.subtitle}</p>
 
             <div className="report-content">

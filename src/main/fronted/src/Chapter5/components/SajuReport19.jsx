@@ -45,9 +45,9 @@ const SajuReport19 = () => {
 
     // 점수에 따른 기호를 반환하는 함수
     const getScoreSymbol = (score) => {
-        if (score === 0) return '❗';
-        if (score >= 1 && score <= 42) return '👍';
-        if (score >= 43) return '🚫';
+        if (score === 0) return '약해요';
+        if (score >= 1 && score <= 42) return '좋아요';
+        if (score >= 43) return '많아요';
         return '';
     };
 
@@ -79,19 +79,18 @@ const SajuReport19 = () => {
             </p>
 
             {/* 복별 메시지 표 */}
+            <p>5대 복이 {name}님의 삶에 미치는 영향을 확인해보세요</p>
             <table className="blessing-table">
                 <thead>
                 <tr>
                     <th>복</th>
-                    <th>상태</th>
                     <th>메시지</th>
                 </tr>
                 </thead>
                 <tbody>
                 {Object.entries(blessingScores).map(([blessing, score]) => (
                     <tr key={blessing}>
-                        <td className="blessing-title">{blessing} 복</td>
-                        <td className="blessing-score">{getScoreSymbol(score)}</td>
+                        <td className="blessing-title">{blessing} 복 {score}% 있어요 - {getScoreSymbol(score)}</td>
                         <td className="blessing-message">
                             {getBlessingMessage(blessing, score)}
                         </td>

@@ -1,12 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSaju } from '../../context/SajuContext';
+import {useNavigate} from 'react-router-dom';
+import {useSaju} from '../../context/SajuContext';
 import '../css/SajuReport25.css';
 
 const SajuReport25 = () => {
     const navigate = useNavigate();
-    const { sajuData } = useSaju();
-    const { name, result } = sajuData || {};
+    const {sajuData} = useSaju();
+    const {name, result} = sajuData || {};
 
     if (!result) {
         return <div>데이터가 없습니다. 이전 페이지로 돌아가세요.</div>;
@@ -79,8 +79,29 @@ const SajuReport25 = () => {
     const highestPercentage = Math.max(...Object.values(energyScores));
 
     const handleNextPage = () => {
-        navigate('/Report26', { state: { energyScores } });
+        navigate('/Report26', {state: {energyScores}});
     };
+
+    // 관계별 개수 계산 함수
+    const calculateRelationCounts = () => {
+        const counts = {};
+        Object.keys(energyToStrength).forEach((energy) => {
+            counts[energy] = 0; // 초기화
+        });
+
+        // 나 자신(manseDaySkyRelation) 제외하고 개수 계산
+        Object.entries(result).forEach(([key, value]) => {
+            if (key === 'manseDaySkyRelation') return; // 나 자신 제외
+            if (counts.hasOwnProperty(value)) {
+                counts[value]++;
+            }
+        });
+
+        return counts;
+    };
+
+    // 관계별 개수 계산 결과
+    const relationCounts = calculateRelationCounts();
 
     return (
         <div className="report25-container">
@@ -159,18 +180,19 @@ const SajuReport25 = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        {Object.entries(energyScores).map(([energy, percentage]) => (
-                            <tr key={energy}>
-                                <td>{energy}</td>
-                                <td>
-                                    {percentage === highestPercentage && '👍 '}
-                                    {energyToStrength[energy]}
-                                </td>
-                                <td>
-                                    {`${percentage}%`}
-                                </td>
-                            </tr>
-                        ))}
+                        {Object.entries(energyScores)
+                            .filter(([energy]) => relationCounts[energy] > 0) // 0인 에너지는 제외
+                            .map(([energy, percentage]) => (
+                                <tr key={energy}>
+                                    <td>{`${energy} (${relationCounts[energy]}개)`}</td>
+                                    <td>
+                                        {`${energyToStrength[energy]} - ${
+                                            relationCounts[energy] <= 3 ? '좋아요' : '강해요'
+                                        }`}
+                                    </td>
+                                    <td>{`${percentage}% 가졌어요`}</td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                     <p>높은 비율은 강점이지만, 지나치면 단점이 될 수 있어요</p>

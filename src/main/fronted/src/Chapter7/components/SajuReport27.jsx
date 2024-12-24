@@ -1,14 +1,14 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import '../css/SajuReport27.css';
-import { useSaju } from "../../context/SajuContext";
+import {useSaju} from "../../context/SajuContext";
 
 const SajuReport27 = () => {
-    const { sajuData } = useSaju();
-    const { name } = sajuData || {};
+    const {sajuData} = useSaju();
+    const {name} = sajuData || {};
     const location = useLocation();
     const navigate = useNavigate();
-    const { energyScores } = location.state || {}; // 26페이지에서 전달된 약점 데이터
+    const {energyScores} = location.state || {}; // 26페이지에서 전달된 약점 데이터
 
     if (!energyScores) {
         return <div>데이터가 없습니다. 이전 페이지로 돌아가세요.</div>;
@@ -86,16 +86,20 @@ const SajuReport27 = () => {
                     .filter(([_, score]) => score > 0)
                     .map(([weakness, score]) => (
                         <div key={weakness} className="saju-report27-weakness-card">
-                            <img
-                                src={weaknessMessages[weakness]?.imageSrc}
-                                alt={weaknessMessages[weakness]?.imageAlt}
-                                className="saju-report27-weakness-image"
-                            />
-                            <h2 className="saju-report27-weakness-title">{weakness}</h2>
-                            <p className="saju-report27-weakness-score">👍 {score}%</p>
-                            <p className="saju-report27-weakness-description">
-                                {weaknessMessages[weakness]?.description}
-                            </p>
+                            <div className="energy-content">
+                                <img
+                                    src={weaknessMessages[weakness]?.imageSrc}
+                                    alt={weaknessMessages[weakness]?.imageAlt}
+                                    className="saju-report27-weakness-image"
+                                />
+                                <div>
+                                    <h2 className="saju-report27-weakness-title">{weakness} 에너지</h2>
+                                    <p className="saju-report27-weakness-score">{score}% 있어요</p>
+                                    <p className="saju-report27-weakness-description">
+                                        {weaknessMessages[weakness]?.description}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     ))}
             </div>

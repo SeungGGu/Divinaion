@@ -104,7 +104,7 @@ const SajuReport30 = () => {
                     <table className="five-element-table">
                         <thead>
                         <tr>
-                            <th colSpan="4">{name}님의 사주팔자 오행 에너지 분석</th>
+                            <th colSpan="4">{name}님의 오행 에너지 구성</th>
                         </tr>
                         </thead>
                         <tbody>

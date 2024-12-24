@@ -28,9 +28,8 @@ const SajuReport15 = () => {
 
     // 평가 기호 함수
     const getEvaluationSymbol = (percentage) => {
-        if (percentage === 0) return "❗";
-        if (percentage <= 42) return "👍";
-        return "❗❗";
+        if (percentage <= 42) return "좋아요";
+        return "강해요";
     };
 
     // 가장 높은 %의 성향 찾기
@@ -62,8 +61,7 @@ const SajuReport15 = () => {
                     .map(([mind, score]) => (
                         <div key={mind} className={`result-section ${mind === highestMind ? 'highlight' : ''}`}>
                             <div className="result-header">
-                                <span className="result-category">{mind} 성향</span>
-                                <span className="result-score">{getEvaluationSymbol(score)} {score}%</span>
+                                <span className="result-category">{mind} 마음 - {getEvaluationSymbol(score)}</span>
                             </div>
                             <div className="result-message">
                                 <ul className="mind-description">
@@ -81,6 +79,6 @@ const SajuReport15 = () => {
             </div>
         </div>
     );
-};
+}
 
 export default SajuReport15;

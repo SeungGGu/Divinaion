@@ -23,64 +23,66 @@
     margin-bottom: 20px;
 }
 
+.footer-section {
+    font-size: 0.9rem;
+    color: #dcdcdc;
+    text-align: center;
+}
+
 .saju-report27-weakness-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3열 그리드 */
-    gap: 20px; /* 카드 간격 */
+    grid-template-columns: repeat(3, 1fr); /* 3열 고정 */
+    gap: 20px; /* 카드 간의 간격 줄임 */
     justify-items: center;
-    max-width: 900px; /* 전체 너비 제한 */
+    max-width: 900px; /* 최대 너비 설정 */
     margin: 0 auto; /* 중앙 정렬 */
 }
 
 .saju-report27-weakness-card {
     background-color: #2a2a2a;
-    padding: 15px;
+    padding: 15px; /* 내부 여백 줄임 */
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%; /* 부모 그리드에 맞춤 */
+    max-width: 250px; /* 카드 최대 너비 줄임 */
     text-align: center;
-    width: 100%;
-    max-width: 250px; /* 카드 크기 통일 */
     transition: transform 0.3s ease;
 }
 
 .saju-report27-weakness-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
+}
+
+.energy-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
 }
 
 .saju-report27-weakness-image {
     width: 80px; /* 이미지 크기 축소 */
     height: 80px;
     border-radius: 50%;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    border: 2px solid #555;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    border: 2px solid #444;
 }
 
 .saju-report27-weakness-title {
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 1rem; /* 글자 크기 축소 */
     color: #f0c674;
-    margin-bottom: 8px;
 }
 
 .saju-report27-weakness-score {
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* 점수 글자 크기 줄임 */
     background-color: #444;
     color: #fff;
     padding: 3px 8px;
     border-radius: 5px;
-    margin-bottom: 8px;
-    display: inline-block;
 }
 
 .saju-report27-weakness-description {
-    font-size: 0.8rem;
+    font-size: 0.8rem; /* 설명 글자 크기 줄임 */
     color: #dcdcdc;
     line-height: 1.4;
-}
-
-.footer-section {
-    font-size: 0.9rem;
-    color: #dcdcdc;
-    text-align: center;
 }

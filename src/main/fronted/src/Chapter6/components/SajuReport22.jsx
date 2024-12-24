@@ -81,9 +81,9 @@ const SajuReport22 = () => {
     };
 
     const getScoreSymbol = (score) => {
-        if (score === 0) return '❗';
-        if (score >= 1 && score <= 42) return '👍';
-        if (score >= 43) return '!!';
+        if (score === 0) return '약해요';
+        if (score >= 1 && score <= 42) return '좋아요';
+        if (score >= 43) return '많아요';
         return '';
     };
 
@@ -106,8 +106,7 @@ const SajuReport22 = () => {
             {Object.entries(blessingScores).map(([key, value]) => (
                 <div className="result-section" key={key}>
                     <div className="result-header">
-                        <span className="result-category">{key} 덕</span>
-                        <span className="result-score">{getScoreSymbol(value)} {value}%</span>
+                        <span className="result-category">{key} 덕 - {getScoreSymbol(value)}</span>
                     </div>
                     <div className="result-message">{getBlessingMessage(key, value)}</div>
                 </div>

@@ -28,10 +28,8 @@ const SajuReport16 = () => {
 
     // 약점 평가 기호 함수
     const getEvaluationSymbol = (percentage, isHighest) => {
-        if (isHighest) return "⚠";
-        if (percentage <= 42) return "❗";
-        if (percentage <= 70) return "‼";
-        return "🚫";
+        if (percentage <= 42) return "있어요";
+        return "강해요";
     };
 
     // 가장 높은 %의 성향 찾기
@@ -67,9 +65,8 @@ const SajuReport16 = () => {
                         const isHighest = mind === highestMind;
                         return (
                             <div key={mind} className={`mind-improvement-box ${isHighest ? 'highlight' : ''}`}>
-                                <h2 className="mind-title">{mind} 마음</h2>
+                                <h2 className="mind-title">{mind} 마음 - {score}%{getEvaluationSymbol(score, isHighest)}</h2>
                                 <p className="mind-score">
-                                    {getEvaluationSymbol(score, isHighest)} {score}%
                                 </p>
                                 <ul className="mind-improvement-list">
                                     {mindImprovement[mind].map((desc, index) => (

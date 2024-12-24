@@ -28,14 +28,35 @@ const SajuReport10 = () => {
         사고력: ['편인', '정인'],
     };
 
-    // 관계 매핑 함수
-    const getRelation = (relation) => {
-        for (const [key, values] of Object.entries(relationGroups)) {
-            if (values.includes(relation)) {
-                return key;
+    // 관계별 개수 계산 함수 추가
+    const calculateRelationCounts = () => {
+        const counts = {};
+        Object.entries(relationGroups).forEach(([group, relations]) => {
+            relations.forEach((relation) => {
+                counts[relation] = 0;
+            });
+        });
+
+        // API 응답 데이터를 순회하며 개수를 증가
+        Object.entries(result).forEach(([key, value]) => {
+            if (key === 'manseDaySkyRelation') return; // 나 자신은 제외
+            if (counts.hasOwnProperty(value)) {
+                counts[value]++;
             }
-        }
-        return '';
+        });
+
+        return counts;
+    };
+
+// 개수 계산 결과
+    const relationCounts = calculateRelationCounts();
+
+// relationGroups와 relationCounts를 기반으로 관계 표시 생성
+    const getRelationWithCounts = (key) => {
+        const relations = relationGroups[key] || [];
+        return relations
+            .map((relation) => `${relation}(${relationCounts[relation] || 0}개)`) // 0개도 포함
+            .join('/');
     };
 
     // 재능 결과 계산
@@ -67,9 +88,9 @@ const SajuReport10 = () => {
     };
 
     const getEvaluation = (score, isHighest) => {
-        if (score === 0) return "❗약해요";
-        if (score >= 1 && score <= 42) return isHighest ? "👍좋아요" : "좋아요";
-        return "넘쳐요";
+        if (score === 0) return "약해요";
+        if (score >= 1 && score <= 42) return isHighest ? "좋아요" : "좋아요";
+        return "강해요";
     };
 
     // 가장 높은 1~42% 값 찾기
@@ -194,7 +215,7 @@ const SajuReport10 = () => {
 
                 {/* 퍼센티지 결과 */}
                 <div className="percentage-section">
-                    <h2 className="section-title">사주로 알아보는 {name}님의 타고난 재능과 능력</h2>
+                    <h2 className="section-title">사주로 알아보는 {name}님의 타고난 능력</h2>
                     <table className="percentage-table">
                         <thead>
                         <tr>
@@ -206,9 +227,9 @@ const SajuReport10 = () => {
                         <tbody>
                         {Object.entries(scores).map(([key, score]) => (
                             <tr key={key}>
-                                <td>{relationGroups[key].join('/')}</td>
-                                <td>{key} - {score}%</td>
-                                <td>{getEvaluation(score, highestKey === key)}</td>
+                                <td>{getRelationWithCounts(key)}</td>
+                                <td>{key} - {score}% 있어요</td>
+                                <td>{key}이 {getEvaluation(score, highestKey === key)}</td>
                             </tr>
                         ))}
                         </tbody>
@@ -221,7 +242,7 @@ const SajuReport10 = () => {
             </div>
 
             <div className="footer">
-                <p>강점을 살리고 약점을 보완하면 원하는 목표를 달성할 수 있습니다.</p>
+            <p>강점을 살리고 약점을 보완하면 원하는 목표를 달성할 수 있습니다.</p>
             </div>
         </div>
     );

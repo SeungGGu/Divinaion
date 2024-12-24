@@ -41,23 +41,6 @@ const SajuReport11 = () => {
         navigate('/Report12', { state: { scores } });
     };
 
-    // 평가 기호 함수
-    const getEvaluationSymbol = (value) => {
-        if (value === 0) return "❗";
-        if (value >= 1 && value <= 42) return "👍";
-        return "❗❗";
-    };
-
-    // 태그와 부족 여부 포함
-    const getStrengthDescription = (key, value) => {
-        const description = strengthData[key];
-        const tags = strengthTags[key];
-        if (value === 0) {
-            return `${description}이 부족\n ${tags}`;
-        }
-        return `${description}\n ${tags}`;
-    };
-
     return (
         <div className="report11-container">
             {/* 다음 페이지 버튼 */}
@@ -66,7 +49,7 @@ const SajuReport11 = () => {
             </button>
 
             <h1 className="report-title">
-                8. {name}님의 타고난 능력, 강점과 약점을 알아봅시다
+                8. {name}님의 타고난 능력, 강점과 약점을 알아봅니다
             </h1>
             <p className="report-subtitle">
                 사주 비율로 능력의 강점과 약점을 이해해보세요
@@ -83,9 +66,22 @@ const SajuReport11 = () => {
                     <tbody>
                     {Object.entries(scores).map(([key, value]) => (
                         <tr key={key}>
-                            <td className="analysis11-label">{key}</td>
-                            <td className="analysis11-score">{getEvaluationSymbol(value)}</td>
-                            <td className="analysis11-tags">{getStrengthDescription(key, value)}</td>
+                            {/* 첫 번째 칸: 능력 이름과 평가 */}
+                            <td className="analysis11-ability">
+                                {key} {value === 0 ? "약해요" : "있어요"}
+                            </td>
+
+                            {/* 두 번째 칸: 상세 설명과 강점/약점 평가 */}
+                            <td className="analysis11-description">
+                                {strengthData[key]}
+                                {value === 0
+                                    ? `이 약해요`
+                                    : value <= 54
+                                        ? `이 좋아요`
+                                        : `이 강해요`}
+                                <br/>
+                                {strengthTags[key]}<br/>
+                            </td>
                         </tr>
                     ))}
                     </tbody>

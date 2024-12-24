@@ -93,16 +93,39 @@ const SajuReport21 = () => {
 
     // 퍼센트에 따라 결과값 반환
     const getEvaluation = (blessing, percentage) => {
-        if (percentage === 0) return '❗ 약해요';
+        if (percentage === 0) return '약해요';
         if (percentage >= 1 && percentage <= 42) {
-            return highestLowScore?.key === blessing ? '👍 좋아요' : '좋아요';
+            return highestLowScore?.key === blessing ? ' 좋아요' : '좋아요';
         }
-        return '넘쳐요';
+        return '많아요';
     };
 
     const handleNextPage = () => {
         navigate('/Report22', { state: { blessingScores } });
     };
+
+    // 관계별 개수 계산 함수
+    const calculateRelationCounts = () => {
+        const counts = {};
+        Object.keys(blessingGroups).forEach((blessing) => {
+            blessingGroups[blessing].forEach((relation) => {
+                counts[relation] = 0; // 초기화
+            });
+        });
+
+        // 나 자신(manseDaySkyRelation) 제외하고 개수 계산
+        Object.entries(result).forEach(([key, value]) => {
+            if (key === 'manseDaySkyRelation') return; // 나 자신 제외
+            if (counts.hasOwnProperty(value)) {
+                counts[value]++;
+            }
+        });
+
+        return counts;
+    };
+
+// 관계별 개수 계산 결과
+    const relationCounts = calculateRelationCounts();
 
     return (
         <div className="report21-container">
@@ -179,16 +202,23 @@ const SajuReport21 = () => {
                         {Object.entries(blessingScores).map(([blessing, score], index) => (
                             <tr key={index}>
                                 <td>
-                                    {blessing === '인' && '비견 / 겁재'}
-                                    {blessing === '처가' && '식신 / 상관'}
-                                    {blessing === '자식' && '편관 / 정관'}
-                                    {blessing === '여자' && '편재 / 정재'}
-                                    {blessing === '남자' && '편관 / 정관'}
-                                    {blessing === '부모' && '편인 / 정인'}
-                                    {blessing === '시댁' && '편재 / 정재'}
+                                    {blessing === '인' &&
+                                        `비견(${relationCounts['비견']}) / 겁재(${relationCounts['겁재']})`}
+                                    {blessing === '처가' &&
+                                        `식신(${relationCounts['식신']}) / 상관(${relationCounts['상관']})`}
+                                    {blessing === '자식' &&
+                                        `편관(${relationCounts['편관']}) / 정관(${relationCounts['정관']})`}
+                                    {blessing === '여자' &&
+                                        `편재(${relationCounts['편재']}) / 정재(${relationCounts['정재']})`}
+                                    {blessing === '남자' &&
+                                        `편관(${relationCounts['편관']}) / 정관(${relationCounts['정관']})`}
+                                    {blessing === '부모' &&
+                                        `편인(${relationCounts['편인']}) / 정인(${relationCounts['정인']})`}
+                                    {blessing === '시댁' &&
+                                        `편재(${relationCounts['편재']}) / 정재(${relationCounts['정재']})`}
                                 </td>
-                                <td>{`${blessing} 덕 - ${score}%`}</td>
-                                <td>{getEvaluation(blessing, score)}</td>
+                                <td>{`${blessing} 덕 - ${score}% 있어요`}</td>
+                                <td>{blessing + ' 덕이' + getEvaluation(blessing, score)}</td>
                             </tr>
                         ))}
                         </tbody>

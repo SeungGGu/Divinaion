@@ -91,22 +91,38 @@ const SajuReport14 = () => {
 
     // 평가 기호 함수
     const getEvaluation = (percentage, isHighest) => {
-        if (percentage === 0) return '약해요';
-        if (percentage <= 42) return isHighest ? '👍 좋아요' : '좋아요';
+        if (percentage <= 42) return isHighest ? '좋아요' : '좋아요';
         return '강해요';
     };
-
-    // 가장 높은 "좋아요" 비율 찾기
-    const highestMind = Object.keys(mindScores).reduce((highest, key) => {
-        if (mindScores[key] <= 42 && (!highest || mindScores[key] > mindScores[highest])) {
-            return key;
-        }
-        return highest;
-    }, null);
 
     const handleNextPage = () => {
         navigate('/Report15', { state: { mindScores: mindScores } });
     };
+
+    // 사주 에너지 개수 계산 함수
+    const calculateEnergyCounts = () => {
+        const counts = {};
+        Object.entries(mindGroups).forEach(([relation]) => {
+            counts[relation] = 0; // 초기화
+        });
+
+        Object.entries(result).forEach(([key, value]) => {
+            if (key === 'manseDaySkyRelation') return; // 나 자신은 제외
+            if (counts.hasOwnProperty(value)) {
+                counts[value]++;
+            }
+        });
+
+        return counts;
+    };
+
+// 개수 계산 결과
+    const energyCounts = calculateEnergyCounts();
+
+// 0개인 에너지는 제외한 목록 생성
+    const filteredEnergies = Object.entries(energyCounts)
+        .filter(([_, count]) => count > 0)
+        .map(([relation, count]) => ({ relation, count }));
 
     return (
         <div className="report14-container">
@@ -207,16 +223,21 @@ const SajuReport14 = () => {
                         <tbody>
                         {uniqueEnergies.map((energy) => {
                             const mind = mindGroups[energy];
-                            const percentage = mindScores[mind] || 0;
+                            const count = energyCounts[energy] || 0; // 에너지 개수 가져오기
+
+                            // 개수가 0인 에너지는 건너뛰기
+                            if (count === 0) return null;
+
                             return (
                                 <tr key={energy}>
-                                    <td>{energy}</td>
-                                    <td>{mind} - {percentage}%</td>
-                                    <td>{getEvaluation(percentage, highestMind === mind)}</td>
+                                    <td>{`${energy} (${count}개)`}</td>
+                                    <td>{`${mind} 마음 - ${mindScores[mind] || 0}% 있어요`}</td>
+                                    <td>타고남이 {getEvaluation(mindScores[mind] || 0)}</td>
                                 </tr>
                             );
                         })}
                         </tbody>
+
                     </table>
                     <p>높은 비율은 강점이지만, 지나치면 단점이 될 수 있어요</p>
                 </div>

@@ -8,28 +8,9 @@ const SajuReport5 = () => {
     const { result, name } = sajuData;
     const navigate = useNavigate();
 
-    // // 관계 그룹 설정
-    // const relationGroups = {
-    //     "편인, 정인": "인성",
-    //     "비견, 겁재": "비겁",
-    //     "식신, 상관, 편재, 정재, 편관, 정관": "식재관",
-    // };
-    //
-    // // 관계 기반으로 그룹 찾기
-    // const getRelationGroup = (relation) => {
-    //     for (const group in relationGroups) {
-    //         if (group.split(", ").includes(relation)) {
-    //             return relationGroups[group];
-    //         }
-    //     }
-    //     return "알 수 없는 관계"; // 기본값
-    // };
-    // const relationGroup = getRelationGroup(result.manseMonthGroundRelation);
-
-    // 동적 데이터 매핑
     const analysisData = {
         "비견": {
-            title: name + "님의 대인관계 강점을 알려드립니다",
+            title: name + "님의 대인관계 강점을 확인하세요",
             strengths: [
                 { title: "의견을 명확히 전달합니다", description: "대화에서 자신의 생각을 분명히 전달합니다" },
                 { title: "목표를 향해 도전합니다", description: "도전적이고 즐겁게 목표를 달성합니다" },
@@ -45,7 +26,7 @@ const SajuReport5 = () => {
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/wolf.png`,
         },
         "겁재": {
-            title: name + "님의 대인관계 강점을 알려드립니다",
+            title: name + "님의 대인관계 강점을 확인하세요",
             strengths: [
                 { title: "의견을 명확히 전달합니다", description: "대화에서 자신의 생각을 분명히 전달합니다" },
                 { title: "목표를 향해 도전합니다", description: "도전적이고 즐겁게 목표를 달성합니다" },
@@ -61,7 +42,7 @@ const SajuReport5 = () => {
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/tiger.png`,
         },
         "식신": {
-            title: name + "님의 대인관계 강점을 알려드립니다",
+            title: name + "님의 대인관계 강점을 확인하세요",
             strengths: [
                 { title: "변화를 빠르게 받아들입니다", description: "상대방의 의견을 열심히 수용합니다" },
                 { title: "다양한 의견을 존중합니다", description: "다른 사람의 생각을 경청하며 협력합니다" },
@@ -77,7 +58,7 @@ const SajuReport5 = () => {
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/cow.png`,
         },
         "상관": {
-            title: name + "님의 대인관계 강점을 알려드립니다",
+            title: name + "님의 대인관계 강점을 확인하세요",
             strengths: [
                 { title: "변화를 빠르게 받아들입니다", description: "상대방의 의견을 열심히 수용합니다" },
                 { title: "다양한 의견을 존중합니다", description: "다른 사람의 생각을 경청하며 협력합니다" },
@@ -93,7 +74,7 @@ const SajuReport5 = () => {
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/monkey.png`,
         },
         "편재": {
-            title: name + "님의 대인관계 강점을 알려드립니다",
+            title: name + "님의 대인관계 강점을 확인하세요",
             strengths: [
                 { title: "변화를 빠르게 받아들입니다", description: "상대방의 의견을 열심히 수용합니다" },
                 { title: "다양한 의견을 존중합니다", description: "다른 사람의 생각을 경청하며 협력합니다" },
@@ -109,7 +90,7 @@ const SajuReport5 = () => {
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/eagle.png`,
         },
         "정재": {
-            title: name + "님의 대인관계 강점을 알려드립니다",
+            title: name + "님의 대인관계 강점을 확인하세요",
             strengths: [
                 { title: "변화를 빠르게 받아들입니다", description: "상대방의 의견을 열심히 수용합니다" },
                 { title: "다양한 의견을 존중합니다", description: "다른 사람의 생각을 경청하며 협력합니다" },
@@ -125,7 +106,7 @@ const SajuReport5 = () => {
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/ant.png`,
         },
         "편관": {
-            title: name + "님의 대인관계 강점을 알려드립니다",
+            title: name + "님의 대인관계 강점을 확인하세요",
             strengths: [
                 { title: "변화를 빠르게 받아들입니다", description: "상대방의 의견을 열심히 수용합니다" },
                 { title: "다양한 의견을 존중합니다", description: "다른 사람의 생각을 경청하며 협력합니다" },
@@ -141,7 +122,7 @@ const SajuReport5 = () => {
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/lion.png`,
         },
         "정관": {
-            title: name + "님의 대인관계 강점을 알려드립니다",
+            title: name + "님의 대인관계 강점을 확인하세요",
             strengths: [
                 { title: "변화를 빠르게 받아들입니다", description: "상대방의 의견을 열심히 수용합니다" },
                 { title: "다양한 의견을 존중합니다", description: "다른 사람의 생각을 경청하며 협력합니다" },
@@ -157,7 +138,7 @@ const SajuReport5 = () => {
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/horse.png`,
         },
         "편인": {
-            title: name + "님의 대인관계 강점을 알려드립니다",
+            title: name + "님의 대인관계 강점을 확인하세요",
             strengths: [
                 { title: "변화에 빠르게 적응합니다", description: "새로운 상황에 유연히 대처하며 신뢰를 쌓습니다." },
                 { title: "팀워크를 중시합니다", description: "협력을 통해 최고의 결과를 만듭니다." },
@@ -173,7 +154,7 @@ const SajuReport5 = () => {
             imageSrc: `${process.env.PUBLIC_URL}/images/animals/owl.png`,
         },
         "정인": {
-            title: name + "님의 대인관계 강점을 알려드립니다",
+            title: name + "님의 대인관계 강점을 확인하세요",
             strengths: [
                 { title: "변화에 빠르게 적응합니다", description: "새로운 상황에 유연히 대처하며 신뢰를 쌓습니다." },
                 { title: "팀워크를 중시합니다", description: "협력을 통해 최고의 결과를 만듭니다." },

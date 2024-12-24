@@ -57,9 +57,9 @@ const SajuReport12 = () => {
 
     // 평가 기호 함수
     const getEvaluationSymbol = (percentage) => {
-        if (percentage === 0) return "❗";
-        if (percentage <= 42) return "👍";
-        return "❗❗";
+        if (percentage === 0) return "악해요";
+        if (percentage <= 42) return "좋아요";
+        return "강해요";
     };
 
     const handleNextPage = () => {
@@ -80,8 +80,7 @@ const SajuReport12 = () => {
             {Object.entries(scores).map(([key, value]) => (
                 <div className="result-section" key={key}>
                     <div className="result-header">
-                        <span className="result-category">{key}</span>
-                        <span className="result-score">{getEvaluationSymbol(value)} {value}%</span>
+                        <span className="result-category">{key}-{getEvaluationSymbol(value)}</span>
                     </div>
                     <div className="result-message">{getMessage(key, value)}</div>
                 </div>

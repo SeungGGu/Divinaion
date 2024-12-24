@@ -96,7 +96,7 @@ const SajuReport26 = () => {
                                 />
                                 <div>
                                     <h2 className="energy-title">{energy} 에너지</h2>
-                                    <p className="energy-score">👍 {score}%</p>
+                                    <p className="energy-score">{score}% 있어요</p>
                                     <p className="energy-description">{energyMessages[energy]?.description}</p>
                                 </div>
                             </div>

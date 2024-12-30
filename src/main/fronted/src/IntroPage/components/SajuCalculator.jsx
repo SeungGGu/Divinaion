@@ -4,52 +4,12 @@ import {useSaju} from '../../context/SajuContext';
 import '../css/SajuCalculator.css';
 import {useNavigate} from "react-router-dom";
 
-//오행 색상 매핑
-const fiveElementColorMap = {
-    wood: '#89b798',  // green for 목(木)
-    fire: '#e57373',   // red for 화(火)
-    earth: '#f0d58c',  // yellow for 토(土)
-    metal: '#c0c0c0',  // silver for 금(金)
-    water: 'black'   // blue for 수(水)
-};
-
-//한자 천간 및 지지에 따른 오행 매핑
-const hanjaToElementMap = {
-    // 천간 오행
-    "甲": "wood", "乙": "wood",
-    "丙": "fire", "丁": "fire",
-    "戊": "earth", "己": "earth",
-    "庚": "metal", "辛": "metal",
-    "壬": "water", "癸": "water",
-
-    // 지지 오행
-    "寅": "wood", "卯": "wood",
-    "巳": "fire", "午": "fire",
-    "辰": "earth", "未": "earth", "戌": "earth", "丑": "earth",
-    "申": "metal", "酉": "metal",
-    "亥": "water", "子": "water"
-};
-
-
-// 한자 -> 한글 매핑 테이블
-const hanjaToKoreanMap = {
-    // 천간 매핑
-    "甲": "갑", "乙": "을", "丙": "병", "丁": "정", "戊": "무",
-    "己": "기", "庚": "경", "辛": "신", "壬": "임", "癸": "계",
-
-    // 지지 매핑
-    "子": "자", "丑": "축", "寅": "인", "卯": "묘", "辰": "진",
-    "巳": "사", "午": "오", "未": "미", "申": "신", "酉": "유",
-    "戌": "술", "亥": "해"
-};
-
 const SajuCalculator = () => {
     const [name, setName] = useState(''); // 이름 상태 추가
     const [birthDate, setBirthDate] = useState('');
     const [birthTime, setBirthTime] = useState('');
     const [birthdayType, setBirthdayType] = useState('SOLAR'); // 양력/음력 여부
     const [gender, setGender] = useState('MALE'); // 성별
-    const [result] = useState(null);
     const {setSajuData} = useSaju();
     const navigate = useNavigate();
 
@@ -78,21 +38,44 @@ const SajuCalculator = () => {
                 birthdayType,
                 gender
             });
-            const calculationResult = response.data.data;
-            // setResult(calculationResult);
-            // 사주 정보를 Context에 저장
-            setSajuData({
-                name,
-                birthDate,
-                birthTime,
-                birthdayType,
-                gender,
-                result: calculationResult,
-            });
-            navigate('/Intro1');
 
+            // API 응답 전체를 출력
+            console.log("API 응답 전체:", response);
+
+            // API 응답 데이터 확인
+            if (response.data) {
+                console.log("API 응답 데이터:", response.data);
+
+                if (response.data.status === "success") {
+                    const calculationResult = response.data.data;
+
+                    // 데이터가 비정상적인 경우 로그로 확인
+                    if (!calculationResult) {
+                        console.error("API 응답에서 data가 비어 있습니다:", response.data);
+                    } else {
+                        console.log("Context에 저장할 데이터:", calculationResult);
+
+                        // Context에 저장
+                        setSajuData({
+                            name,
+                            birthDate,
+                            birthTime,
+                            birthdayType,
+                            gender,
+                            result: calculationResult
+                        });
+
+                        // 다음 페이지로 이동
+                        navigate('/Intro1');
+                    }
+                } else {
+                    console.error("API 응답 상태가 success가 아닙니다:", response.data);
+                }
+            } else {
+                console.error("response.data가 없습니다:", response);
+            }
         } catch (error) {
-            console.error('Error calculating saju:', error);
+            console.error("API 요청 중 오류 발생:", error);
         }
     };
 
@@ -128,25 +111,6 @@ const SajuCalculator = () => {
         } else {
             setBirthDate(input); // 8자리가 아닐 때는 그대로 입력된 값을 유지
         }
-    };
-
-    // 한자 -> 한글 변환 함수
-    const convertToKorean = (hanja) => {
-        return hanjaToKoreanMap[hanja] || hanja; // 매핑된 한글 반환, 없으면 그대로 한자 반환
-    };
-
-    // 오행에 따른 색상 반환
-    const getElementColor = (hanja) => {
-        const element = hanjaToElementMap[hanja];  // 해당 한자가 어떤 오행인지 찾기
-        return fiveElementColorMap[element] || "transparent";  // 매핑된 색상 반환, 없으면 투명
-    };
-
-// 배경색에 따라 텍스트 색상을 동적으로 설정하는 함수
-    const getTextColor = (backgroundColor) => {
-        if (backgroundColor === 'black') {
-            return 'white';  // 배경이 파란색이면 글자색을 하얀색으로
-        }
-        return 'black';  // 그 외의 경우 기본 검정색 글자
     };
 
     return (
@@ -215,123 +179,6 @@ const SajuCalculator = () => {
                 {/* 사주 계산하기 버튼 */}
                 <button className="submit-button" type="submit">사주 계산하기</button>
             </form>
-
-            {result && (
-                <div className="saju-result">
-                    <h2>계산 결과:</h2>
-                    <table className="saju-table">
-                        <thead>
-                        <tr>
-                            <th></th>
-                            <th>생시</th>
-                            <th>생일</th>
-                            <th>생월</th>
-                            <th>생년</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th>천간 (한글)</th>
-                            <td>{convertToKorean(result.timeSky)}</td>
-                            <td>{convertToKorean(result.daySky)}</td>
-                            <td>{convertToKorean(result.monthSky)}</td>
-                            <td>{convertToKorean(result.yearSky)}</td>
-                        </tr>
-                        <tr>
-                            <th>천간 (한자)</th>
-                            <td
-                                className="saju-cell"
-                                style={{
-                                    backgroundColor: getElementColor(result.timeSky),
-                                    color: getTextColor(getElementColor(result.timeSky))
-                                }}>
-                                {result.timeSky}
-                            </td>
-                            <td
-                                className="saju-cell"
-                                style={{
-                                    backgroundColor: getElementColor(result.daySky),
-                                    color: getTextColor(getElementColor(result.daySky))
-                                }}>
-                                {result.daySky}
-                            </td>
-                            <td
-                                className="saju-cell"
-                                style={{
-                                    backgroundColor: getElementColor(result.monthSky),
-                                    color: getTextColor(getElementColor(result.monthSky))
-                                }}>
-                                {result.monthSky}
-                            </td>
-                            <td
-                                className="saju-cell"
-                                style={{
-                                    backgroundColor: getElementColor(result.yearSky),
-                                    color: getTextColor(getElementColor(result.yearSky))
-                                }}>
-                                {result.yearSky}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>관계</th>
-                            <td>{result.manseTimeSkyRelation}</td>
-                            <td>본원</td>
-                            <td>{result.manseMonthSkyRelation}</td>
-                            <td>{result.manseYearSkyRelation}</td>
-                        </tr>
-                        <tr>
-                            <th>지지 (한글)</th>
-                            <td>{convertToKorean(result.timeGround)}</td>
-                            <td>{convertToKorean(result.dayGround)}</td>
-                            <td>{convertToKorean(result.monthGround)}</td>
-                            <td>{convertToKorean(result.yearGround)}</td>
-                        </tr>
-                        <tr>
-                            <th>지지 (한자)</th>
-                            <td
-                                className="saju-cell"
-                                style={{
-                                    backgroundColor: getElementColor(result.timeGround),
-                                    color: getTextColor(getElementColor(result.timeGround))
-                                }}>
-                                {result.timeGround}
-                            </td>
-                            <td
-                                className="saju-cell"
-                                style={{
-                                    backgroundColor: getElementColor(result.dayGround),
-                                    color: getTextColor(getElementColor(result.dayGround))
-                                }}>
-                                {result.dayGround}
-                            </td>
-                            <td
-                                className="saju-cell"
-                                style={{
-                                    backgroundColor: getElementColor(result.monthGround),
-                                    color: getTextColor(getElementColor(result.monthGround))
-                                }}>
-                                {result.monthGround}
-                            </td>
-                            <td
-                                className="saju-cell"
-                                style={{
-                                    backgroundColor: getElementColor(result.yearGround),
-                                    color: getTextColor(getElementColor(result.yearGround))
-                                }}>
-                                {result.yearGround}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>관계</th>
-                            <td>{result.manseTimeGroundRelation}</td>
-                            <td>{result.manseDayGroundRelation}</td>
-                            <td>{result.manseMonthGroundRelation}</td>
-                            <td>{result.manseYearGroundRelation}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            )}
         </div>
     );
 };

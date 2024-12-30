@@ -2,6 +2,7 @@ package com.km.divination.controller;
 
 import com.km.divination.service.SajuService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -14,13 +15,13 @@ public class SajuController {
     private SajuService sajuService;
 
     @PostMapping("/calculate")
-    public String calculateSaju(@RequestBody Map<String, String> request) {
-        String birthDate = request.get("birthDate");      // YYYYMMDD 형식
-        String birthTime = request.get("birthTime");      // 시간 (00, 02, 04 등)
-        String birthdayType = request.get("birthdayType"); // 양력/음력
-        String gender = request.get("gender");             // MALE/FEMALE
-
-        // SajuService를 통해 사주 계산
-        return sajuService.calculateSaju(birthDate, birthTime, birthdayType, gender);
+    public ResponseEntity<Map<String, Object>> calculateSaju(@RequestBody Map<String, String> request) {
+        Map<String, Object> sajuData = sajuService.calculateSaju(
+                request.get("birthDate"),
+                request.get("birthTime"),
+                request.get("birthdayType"),
+                request.get("gender")
+        );
+        return ResponseEntity.ok(sajuData); // 올바른 JSON 반환
     }
 }

@@ -31,10 +31,6 @@ const SajuReport39 = () => {
                     />
                 </div>
             </div>
-
-            <footer className="report39-footer">
-                <p></p>
-            </footer>
         </div>
     );
 };

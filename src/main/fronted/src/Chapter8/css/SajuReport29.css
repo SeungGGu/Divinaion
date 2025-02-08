@@ -11,13 +11,14 @@
 .report-title {
     font-size: 2rem;
     color: #f0c674;
-    margin-bottom: 10px;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .report-subtitle {
     font-size: 1.2rem;
     color: #dcdcdc;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 /* 전체 레이아웃 컨테이너 */
@@ -66,21 +67,4 @@
     margin-top: 30px;
     font-size: 1rem;
     color: #dcdcdc;
-}
-
-.next-page-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #f0d58c;
-    color: #000;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.next-page-button:hover {
-    background-color: #e5c07b;
 }

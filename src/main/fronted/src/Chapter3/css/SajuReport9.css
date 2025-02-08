@@ -2,13 +2,13 @@
 .report9-container {
     background-color: #1e1e1e;
     color: #f8f8f8;
-    height: 100vh;
+    min-height: 100vh; /* 최소 높이 설정 */
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    padding: 20px;
     font-family: 'Arial', sans-serif;
-    overflow-y: hidden; /* 스크롤 제거 */
+    overflow-y: auto; /* 스크롤 허용 */
 }
 
 /* 헤더 스타일 */
@@ -28,26 +28,26 @@
     color: #dcdcdc;
 }
 
-/* 메인 콘텐츠 섹션 */
+/* 메인 콘텐츠 섹션 - 세로 정렬 */
 .report9-main {
     display: flex;
+    flex-direction: column; /* 세로로 배치 */
     align-items: center;
-    justify-content: space-around;
     width: 100%;
-    max-width: 1200px;
-    gap: 40px;
+    max-width: 800px;
+    gap: 20px; /* 위아래 간격 */
+    margin-bottom: 20px;
 }
 
 /* 이미지 섹션 */
 .radar-chart-section {
-    flex: 1;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .radar-chart-image {
-    max-width: 700px; /* 이미지 크기 확대 */
+    max-width: 90%; /* 반응형 크기 조절 */
     height: auto;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
@@ -55,66 +55,57 @@
 
 /* 능력 설명 표 */
 .ability-table {
-    flex: 1;
+    width: 100%;
     color: #dcdcdc;
     text-align: left;
     font-size: 1.1rem;
     max-width: 800px;
 }
 
-.ability-table p {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #f0c674;
-    margin-bottom: 10px;
-}
-
 .ability-table table {
     width: 100%;
     border-collapse: collapse;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .ability-table th,
 .ability-table td {
     border: 1px solid #f0c674;
-    padding: 8px 12px;
+    padding: 12px 15px;
     text-align: left;
+    word-break: break-word; /* 긴 문장 줄바꿈 */
 }
 
 .ability-table th {
     background-color: #f0c674;
     color: #1e1e1e;
     font-weight: bold;
+    text-align: center;
+    font-size: 1.2rem;
 }
 
 .ability-table td {
     color: #dcdcdc;
-}
-
-/* 푸터 스타일 */
-.report9-footer {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.report9-footer p {
-    font-size: 1.2rem;
-    color: #dcdcdc;
-    margin-bottom: 20px;
-}
-
-.next-page-button {
-    padding: 10px 20px;
-    background-color: #f0d58c;
-    color: #000;
+    background-color: #333;
     font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-.next-page-button:hover {
-    background-color: #e5c07b;
+/* 다음 페이지 버튼 */
+.nextPage-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.nextPage-button:hover {
+    background-color: #45a049;
 }

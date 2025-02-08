@@ -7,20 +7,26 @@
     font-family: 'Arial', sans-serif;
 }
 
-.report-title {
+.report12-container .report-title {
     font-size: 2rem;
     color: #f0c674;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.report-subtitle {
+.report12-container .report-subtitle {
     font-size: 1.2rem;
     color: #dcdcdc;
-    margin-bottom: 30px;
-    text-align: left;
+    margin-bottom: 40px;
+    text-align: center;
     max-width: 800px;
-    margin: 0 auto;
+    width: 100%; /* 전체 너비를 사용하여 정렬 */
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    margin-left: auto; /* 좌우 중앙 정렬 */
+    margin-right: auto; /* 좌우 중앙 정렬 */
 }
+
 
 .result-section {
     background-color: #2a2a2a;

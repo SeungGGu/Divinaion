@@ -83,11 +83,11 @@ const SajuReport29 = () => {
     // 음양 메시지 결정
     const getYinYangMessage = () => {
         if (yangCount > yinCount) {
-            return `${name}님의 양 에너지가 높아 활동적으로 도전적인 성향이 강합니다.`;
+            return `${name}님의 양(+) 에너지가 높아 활동적이고 도전적인 성향이 강합니다.`;
         } else if (yinCount > yangCount) {
-            return `${name}님의 음 에너지가 높아 신중하고 내면을 중시하는 성향이 강합니다.`;
+            return `${name}님의 음(-) 에너지가 높아 신중하고 내면을 중시하는 성향이 강합니다.`;
         } else {
-            return `${name}님의 음과 양이 균형을 이루어 조화롭고 균형 잡힌 성향을 보입니다.`;
+            return `${name}님의 음(-)과 양(+)이 균형을 이루어 조화롭고 균형 잡힌 성향을 보입니다.`;
         }
     };
 

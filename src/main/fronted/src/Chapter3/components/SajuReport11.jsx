@@ -5,36 +5,36 @@ import { useSaju } from '../../context/SajuContext';
 
 const SajuReport11 = () => {
     const navigate = useNavigate();
-    const location = useLocation(); // 전달된 데이터 수신
+    const location = useLocation();
     const { sajuData } = useSaju();
     const { name } = sajuData;
 
-    // 전달받은 scores 데이터 가져오기
     const { scores } = location.state || {
         scores: {
             자신감: 0,
-            창의력: 0,
+            잠재력: 0,
             경제력: 0,
-            성취력: 0,
-            사고력: 0,
+            조직력: 0,
+            학습력: 0,
         },
     };
 
-    // 강점 분석 데이터
-    const strengthData = {
-        자신감: "목표를 설정하고 꾸준히 실현하는 능력",
-        창의력: "문제를 유연하게 해결하는 능력",
-        경제력: "자원을 관리하며 목표를 달성하는 능력",
-        성취력: "협력을 통해 목표를 이루는 능력",
-        사고력: "정보를 분석하고 문제를 해결하는 능력",
+    // 강점 데이터
+    const strengthDescriptions = {
+        자신감: "어려움 속에서도 문제를 끝까지 해결하고 추진력을 발휘하는 능력이 있어요",
+        잠재력: "평범한 상황에서도 특별한 재능을 발휘하고 새로운 기회를 만드는 능력이 있어요",
+        경제력: "현명하게 돈을 벌고 관리하며, 새로운 재정적 기회를 잡는 데 능숙한 능력이 있어요",
+        조직력: "조직에서 신뢰를 얻고 목표를 달성하며 성공적인 경력을 만드는 능력이 있어요",
+        학습력: "새로운 지식을 빠르게 이해하고 정보를 분석해 실생활에 활용하는 능력이 있어요",
     };
 
-    const strengthTags = {
-        자신감: "#책임감 #결단력 #도전 정신",
-        창의력: "#아이디어 #유연성 #문제해결",
-        경제력: "#실천력 #계획성 #효율적관리",
-        성취력: "#팀워크 #조직력 #목표달성",
-        사고력: "#분석력 #집중력 #문제해결",
+    // 약점 데이터
+    const weaknessDescriptions = {
+        자신감: "어려움 속에서 추진력이 약할 수 있지만, 꾸준한 경험을 통해 강해질 수 있어요",
+        잠재력: "타고난 잠재력이 부족해 보일 수 있지만, 꾸준한 노력을 통해 성장할 수 있어요",
+        경제력: "경제 감각이 부족할 수 있지만, 재정 관리 습관을 통해 안정적인 재산을 만들 수 있어요",
+        조직력: "조직에서 목표 달성이 어려울 수 있지만 꾸준한 노력으로 성과를 높일 수 있어요",
+        학습력: "지식을 쌓는 속도가 느릴 수 있지만 관심 분야에 집중하면 크게 발전할 수 있어요",
     };
 
     const handleNextPage = () => {
@@ -68,19 +68,16 @@ const SajuReport11 = () => {
                         <tr key={key}>
                             {/* 첫 번째 칸: 능력 이름과 평가 */}
                             <td className="analysis11-ability">
-                                {key} {value === 0 ? "약해요" : "있어요"}
+                                {key}
+                                <br />
+                                {value === 0 ? "부족해요" : "있어요"}
                             </td>
 
-                            {/* 두 번째 칸: 상세 설명과 강점/약점 평가 */}
+                            {/* 두 번째 칸: 강점/약점 설명과 태그 */}
                             <td className="analysis11-description">
-                                {strengthData[key]}
                                 {value === 0
-                                    ? `이 약해요`
-                                    : value <= 54
-                                        ? `이 좋아요`
-                                        : `이 강해요`}
-                                <br/>
-                                {strengthTags[key]}<br/>
+                                    ? weaknessDescriptions[key]
+                                    : strengthDescriptions[key]}
                             </td>
                         </tr>
                     ))}

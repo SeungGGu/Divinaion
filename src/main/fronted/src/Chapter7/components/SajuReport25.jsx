@@ -1,18 +1,17 @@
 import React from 'react';
-import {useNavigate} from 'react-router-dom';
-import {useSaju} from '../../context/SajuContext';
+import { useNavigate } from 'react-router-dom';
+import { useSaju } from '../../context/SajuContext';
 import '../css/SajuReport25.css';
 
 const SajuReport25 = () => {
     const navigate = useNavigate();
-    const {sajuData} = useSaju();
-    const {name, result} = sajuData || {};
+    const { sajuData } = useSaju();
+    const { name, result } = sajuData || {};
 
     if (!result) {
         return <div>데이터가 없습니다. 이전 페이지로 돌아가세요.</div>;
     }
 
-    // 관계별 퍼센티지 데이터
     const relationsPercentage = {
         manseYearSkyRelation: 14,
         manseYearGroundRelation: 14,
@@ -23,18 +22,17 @@ const SajuReport25 = () => {
         manseTimeGroundRelation: 14,
     };
 
-    // 사주 에너지별 강점 매핑
     const energyToStrength = {
-        비견: '협력/팀워크',
-        겁재: '독립적/강인함',
-        식신: '창의력/아이디어',
-        상관: '표현력/설득력',
-        편재: '기회 탐구/실리 추구',
-        정재: '성실/재물 관리',
-        편관: '리더십/도전',
-        정관: '신뢰/책임감',
-        편인: '독창적/문제 탐구',
-        정인: '체계적/지식 쌓기',
+        비견: '협력적 행동 - 자립적이다',
+        겁재: '도전적 행동 - 경쟁적이다',
+        식신: '내향적 행동 - 창의적이다',
+        상관: '외향적 행동 - 표현적이다',
+        편재: '실리적 행동 - 현실적이다',
+        정재: '실용적 행동 - 계획적이다',
+        편관: '권위적 행동 - 주도적이다',
+        정관: '원칙적 행동 - 모범적이다',
+        편인: '독창적 행동 - 탐구적이다',
+        정인: '포용적 행동 - 신뢰적이다',
     };
 
     // 오행 색상 매핑
@@ -75,23 +73,14 @@ const SajuReport25 = () => {
 
     const energyScores = calculateEnergyScores();
 
-    // 가장 높은 비율 찾기
-    const highestPercentage = Math.max(...Object.values(energyScores));
-
-    const handleNextPage = () => {
-        navigate('/Report26', {state: {energyScores}});
-    };
-
-    // 관계별 개수 계산 함수
-    const calculateRelationCounts = () => {
+    // 사주 에너지 개수 계산 함수
+    const calculateEnergyCounts = () => {
         const counts = {};
         Object.keys(energyToStrength).forEach((energy) => {
             counts[energy] = 0; // 초기화
         });
 
-        // 나 자신(manseDaySkyRelation) 제외하고 개수 계산
         Object.entries(result).forEach(([key, value]) => {
-            if (key === 'manseDaySkyRelation') return; // 나 자신 제외
             if (counts.hasOwnProperty(value)) {
                 counts[value]++;
             }
@@ -100,30 +89,25 @@ const SajuReport25 = () => {
         return counts;
     };
 
-    // 관계별 개수 계산 결과
-    const relationCounts = calculateRelationCounts();
+    const energyCounts = calculateEnergyCounts();
+
+    const handleNextPage = () => {
+        navigate('/Report26', { state: { energyScores } });
+    };
 
     return (
         <div className="report25-container">
-            {/* 다음 페이지 버튼 */}
             <button className="nextPage-button" onClick={handleNextPage}>
                 다음 ▶
             </button>
 
-            <h1 className="report-title">18. {name}님의 타고난 강점, 사주로 분석합니다</h1>
-            <p className="report-subtitle">
-                사주로 당신의 강점을 발견하고 더 나은 방향을 설정해보세요!
-            </p>
+            <h1 className="report-title">18. {name}님의 타고난 행동 성향, 사주로 분석합니다</h1>
+            <p className="report-subtitle">사주로 당신의 강점을 발견하고 더 나은 방향을 설정해보세요!</p>
 
-            <div className="report-content">
-                {/* 왼쪽 에너지 분석 */}
-                <div className="energy-analysis-section">
-                    <table className="energy-analysis-table">
-                        <thead>
-                        <tr>
-                            <th colSpan={4}>{name}님의 사주 에너지 구성</th>
-                        </tr>
-                        </thead>
+            <div className="report25-tables">
+                <div className="table-container">
+                    <h2 className="table-title">{name}님의 사주 에너지 구성</h2>
+                    <table className="saju-table">
                         <tbody>
                         <tr>
                             <td>{result.manseTimeSkyRelation}</td>
@@ -158,21 +142,19 @@ const SajuReport25 = () => {
                             ))}
                         </tr>
                         <tr>
-                            {['manseTimeGroundRelation', 'manseDayGroundRelation', 'manseMonthGroundRelation', 'manseYearGroundRelation'].map((key) => (
-                                <td key={key}>{result[key]}</td>
-                            ))}
+                            <td>{result.manseTimeGroundRelation}</td>
+                            <td>{result.manseDayGroundRelation}</td>
+                            <td>{result.manseMonthGroundRelation}</td>
+                            <td>{result.manseYearGroundRelation}</td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
 
-                {/* 오른쪽 에너지 점수 */}
-                <div className="energy-score-section">
-                    <table className="energy-score-table">
+                <div className="table-container">
+                    <h2 className="table-title">사주로 알아보는 {name}님의 행동 성향 강점</h2>
+                    <table className="saju-table">
                         <thead>
-                        <tr>
-                            <th colSpan={3}>사주로 알아보는 {name}님의 타고난 강점</th>
-                        </tr>
                         <tr>
                             <th>사주 에너지</th>
                             <th>타고난 강점</th>
@@ -180,29 +162,22 @@ const SajuReport25 = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        {Object.entries(energyScores)
-                            .filter(([energy]) => relationCounts[energy] > 0) // 0인 에너지는 제외
-                            .map(([energy, percentage]) => (
-                                <tr key={energy}>
-                                    <td>{`${energy} (${relationCounts[energy]}개)`}</td>
-                                    <td>
-                                        {`${energyToStrength[energy]} - ${
-                                            relationCounts[energy] <= 3 ? '좋아요' : '강해요'
-                                        }`}
-                                    </td>
-                                    <td>{`${percentage}% 가졌어요`}</td>
-                                </tr>
-                            ))}
+                        {Object.entries(energyScores).map(([energy, percentage]) => (
+                            <tr key={energy}>
+                                <td>{`${energy} (${energyCounts[energy]}개)`}</td>
+                                <td>{energyToStrength[energy]}</td>
+                                <td>{percentage}% 있어요</td>
+                            </tr>
+                        ))}
                         </tbody>
                     </table>
                     <p>높은 비율은 강점이지만, 지나치면 단점이 될 수 있어요</p>
                 </div>
             </div>
 
-            {/* 하단 메시지 */}
             <div className="footer-section">
                 <p className="footer-message">
-                    뛰어난 강점을 바탕으로 목표를 세우면 더 나은 방향으로 나아갈 수 있습니다
+                    뛰어난 강점을 바탕으로 목표를 세우면 더 나은 방향으로 나아갈 수 있습니다.
                 </p>
             </div>
         </div>

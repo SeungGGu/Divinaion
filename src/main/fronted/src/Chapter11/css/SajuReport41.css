@@ -1,16 +1,25 @@
+/* 기본 마진/패딩 제거 */
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e1e; /* 전체 배경색과 맞춤 */
+}
+
+/* 기존 컨테이너 스타일 유지 */
 .report41-container {
     background-color: #1e1e1e;
     color: #f8f8f8;
     text-align: center;
-    padding: 0px 40px;
+    padding: 0 40px;
     font-family: 'Arial', sans-serif;
-    height: 100vh; /* 화면 높이 고정 */
-    overflow: hidden; /* 스크롤 제거 */
+    position: relative; /* 내부 절대 위치 요소(다음 버튼) 위한 설정 */
 }
 
+/* 제목 및 부제목 스타일 */
 .report41-title {
     font-size: 2rem;
     color: #f0c674;
+    margin-top: 70px;
     margin-bottom: 15px;
 }
 
@@ -20,18 +29,23 @@
     margin-bottom: 30px;
 }
 
+/* 운세 섹션 스타일 */
 .yearly-fortune-section {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     gap: 30px;
+    margin-top: 60px;
 }
 
+/* 박스 스타일 수정: 가로 길이 확장 */
 .year-box {
     background-color: #2a2a2a;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    width: 400px;
+    width: 90%;
+    max-width: 700px;
     text-align: left;
 }
 
@@ -42,7 +56,8 @@
     text-align: center;
 }
 
-.caution-item, .advice-item {
+.caution-item,
+.advice-item {
     margin-top: 15px;
     padding: 10px;
     border-radius: 5px;
@@ -50,15 +65,32 @@
     color: #f8f8f8;
 }
 
-.item-title {
-    font-size: 1.2rem;
-    color: #f4a89a;
-    margin-bottom: 5px;
-}
-
+/* 내용 스타일: 가독성을 위한 line-height와 색상 적용 */
 .item-content {
     font-size: 1rem;
     color: #ddd;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* 내용 스타일: 가독성을 위한 line-height와 색상 적용 */
+.item-content {
+    font-size: 1rem;
+    color: #ddd;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* EndDescription 스타일 */
+.end-description {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #444;
+    border-left: 5px solid #f0c674;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #eee;
+    text-align: center;
 }
 
 .report41-footer {

@@ -189,14 +189,8 @@ const SajuReport30 = () => {
                         </thead>
                         <tbody>
                         {(() => {
-                            const maxElement = Object.entries(percentages)
-                                .filter(([_, percentage]) => percentage > 0 && percentage < 50) // 1% ~ 49% 범위 필터
-                                .reduce((prev, current) => (parseFloat(prev[1]) > parseFloat(current[1]) ? prev : current), [null, 0]);
-
                             return Object.entries(percentages).map(([element, percentage]) => {
                                 const numericPercentage = parseFloat(percentage);
-                                const isMax = maxElement[0] === element; // 가장 높은 비율인지 확인
-                                const isZeroOrHigh = numericPercentage === 0 || numericPercentage >= 50;
 
                                 // 소수점 제거
                                 const formattedPercentage = numericPercentage % 1 === 0
@@ -216,13 +210,13 @@ const SajuReport30 = () => {
                                                         element === 'metal' ? '금(金)' : '수(水)'}
                                         </td>
                                         <td>
-                                            {element === 'wood' ? '성장, 창의력' :
-                                                element === 'fire' ? '열정, 도전적' :
-                                                    element === 'earth' ? '안정, 책임감' :
-                                                        element === 'metal' ? '결단, 통찰력' : '지혜, 감성적'}
+                                            {element === 'wood' ? '자립적/창의적이다' :
+                                                element === 'fire' ? '열정적/진취적이다' :
+                                                    element === 'earth' ? '안정적/책임감 있다' :
+                                                        element === 'metal' ? '강인함/결단력이다' : '공감적/감성적이다'}
                                         </td>
                                         <td>
-                                            {isZeroOrHigh ? '❗ ' : ''}{isMax ? '👍 ' : ''}{formattedPercentage}%
+                                            {formattedPercentage}%있어요
                                         </td>
                                     </tr>
                                 );

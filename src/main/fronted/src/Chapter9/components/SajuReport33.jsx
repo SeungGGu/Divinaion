@@ -46,15 +46,15 @@ const SajuReport33 = () => {
             <div className="sinsal-summary-container">
                 {sinsalData.map((sinsal, index) => (
                     <div className="sinsal-card" key={index}>
+                        <div className="sinsal-content">
+                            <h2 className="sinsal-type">{sinsal.type}</h2>
+                            <p className="sinsal-description">{sinsal.description}</p>
+                        </div>
                         <img
                             src={sinsal.image}
                             alt={sinsal.type}
                             className="sinsal-image"
                         />
-                        <div className="sinsal-content">
-                            <h2 className="sinsal-type">{sinsal.type}</h2>
-                            <p className="sinsal-description">{sinsal.description}</p>
-                        </div>
                     </div>
                 ))}
             </div>

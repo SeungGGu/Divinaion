@@ -8,9 +8,10 @@
     overflow: hidden; /* 스크롤 제거 */
 }
 
-.report-title {
+.report19-container .report-title {
     font-size: 2rem;
     color: #f0c674;
+    margin-top: 30px;
     margin-bottom: 10px;
 }
 

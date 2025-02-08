@@ -28,24 +28,35 @@ const SajuReport17 = () => {
 
             {/* 메인 콘텐츠 */}
             <div className="content-section">
+                {/* 이미지 섹션 */}
                 <div className="image-container">
                     <img
-                        src={`${process.env.PUBLIC_URL}/images/mainPicture/fivebok.png`} // 더미 이미지 경로
+                        src={`${process.env.PUBLIC_URL}/images/mainPicture/fivebok.png`}
                         alt="5대 복 이미지"
                         className="main-image"
                     />
                 </div>
-                {/* 설명 섹션 */}
-                <div className="description-container">
-                    <h2 className="description-title">{name}님의 타고난 5대 복을 찾아보세요</h2>
-                    <ul className="description-list">
-                        <li><strong>인 복</strong>: 좋은 인간관계와 도움을 받는 복이에요</li>
-                        <li><strong>재능 복</strong>: 타고난 재능과 능력을 뜻해요</li>
-                        <li><strong>재물 복</strong>: 경제적 안정과 기회를 상징해요</li>
-                        <li><strong>직장 복</strong>: 직업에서 성공과 안정성을 보여줘요</li>
-                        <li><strong>명예 복</strong>: 사회적 지위와 명성을 의미해요</li>
-                    </ul>
+
+                {/* 텍스트 섹션 */}
+                <div className="text-container">
+                    <h2>
+                        5대 복(福)은 {name}님의 삶을 빛내는 숨은 열쇠!<br/>
+                        성공과 행복의 문을 활짝 여는 비밀이에요!<br/>
+                        {name}님은 어떤 복을 많이 타고났을까요?<br/>
+                        삶을 빛낼 특별한 복의 비밀을 찾아보세요!<br/>
+                    </h2>
                 </div>
+            </div>
+
+            <div className="description-container">
+                <h2 className="description-title">{name}님의 타고난 5대 복을 찾아보세요</h2>
+                <ul className="description-list">
+                    <li><strong>인 복</strong>: 주변 사람들의 사랑과 도움을 받아 인생에서 따뜻한 관계를 맺는 복이에요</li>
+                    <li><strong>식 복</strong>: 타고난 재능으로 경제적 안정과 현실적 문제를 해결하는 특별한 복이에요</li>
+                    <li><strong>재물 복</strong>: 경제적으로 여유롭고 안정된 삶을 누리며 기회를 만들어가는 복이에요</li>
+                    <li><strong>직장 복</strong>: 직장에서의 성공과 안정된 커리어를 통해 인정을 받는 든든한 복이에요</li>
+                    <li><strong>문서 복</strong>: 계약, 문서 처리, 자격증, 학위 등 공인된 증서를 통해 인정받는 복이에요</li>
+                </ul>
             </div>
 
             {/*/!* 하단 메시지 *!/*/}

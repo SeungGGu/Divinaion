@@ -79,9 +79,9 @@ const SajuReport38 = () => {
             <p className="report38-description">
                 {name}님의 후천적 귀인을 확인하세요. <br/>
                 {name}님의 귀인은{' '}
-                {benefactors
+                <strong>{benefactors
                     .map((benefactor) => animalImages[benefactor]?.name || "알 수 없음")
-                    .join("와 ")}의 사람들입니다. <br/>
+                    .join("와 ")}</strong>의 사람들입니다. <br/>
                 중요한 순간에 도움을 줄 특별한 인연입니다.
             </p>
             <div className="report38-animals">

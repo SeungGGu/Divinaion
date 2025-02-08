@@ -46,10 +46,10 @@ const SajuReport18 = () => {
     // 관계에 따른 복의 구분
     const blessingGroups = {
         인: ['비견', '겁재'],
-        재능: ['식신', '상관'],
+        식: ['식신', '상관'],
         재물: ['편재', '정재'],
         직장: ['편관', '정관'],
-        명예: ['편인', '정인'],
+        문서: ['편인', '정인'],
     };
 
     // 관계를 복 이름으로 매핑하는 함수
@@ -63,10 +63,10 @@ const SajuReport18 = () => {
     const calculateBlessingScores = () => {
         const blessingScores = {
             인: 0,
-            재능: 0,
+            식: 0,
             재물: 0,
             직장: 0,
-            명예: 0,
+            문서: 0,
         };
 
         Object.entries(relationsPercentage).forEach(([relationKey, percentage]) => {
@@ -81,25 +81,6 @@ const SajuReport18 = () => {
     };
 
     const blessingScores = calculateBlessingScores();
-
-    // 가장 높은 1~42% 점수 찾기
-    const highestLowScore = Object.entries(blessingScores)
-        .filter(([_, score]) => score > 0 && score <= 42) // 1~42% 필터링
-        .reduce((highest, [key, score]) => {
-            if (!highest || score > highest.score) {
-                return { key, score };
-            }
-            return highest;
-        }, null);
-
-    // 어때요 평가
-    const getEvaluation = (blessing, percentage) => {
-        if (percentage === 0) return '약해요';
-        if (percentage <= 42) {
-            return highestLowScore?.key === blessing ? '좋아요' : '좋아요';
-        }
-        return '많아요';
-    };
 
     const handleNextPage = () => {
         navigate('/Report19', {state: {blessingScores}});
@@ -134,7 +115,7 @@ const SajuReport18 = () => {
                 다음 ▶
             </button>
 
-            <h1 className="report-title">13. {name}님의 타고난 5대 복, 사주로 분석합니다</h1>
+            <h1 className="report-title">10. {name}님의 타고난 5대 복, 사주로 분석합니다</h1>
             <p className="report-subtitle">
                 5대 복의 비밀을 확인하고 삶의 기회를 발견하세요
             </p>
@@ -237,7 +218,7 @@ const SajuReport18 = () => {
                         <tr>
                             <th>사주 에너지</th>
                             <th>타고난 5대 복</th>
-                            <th>어때요?</th>
+                            <th>비율</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -245,13 +226,20 @@ const SajuReport18 = () => {
                             <tr key={index}>
                                 <td>
                                     {blessing === '인' && `비견(${relationCounts['비견']}) / 겁재(${relationCounts['겁재']})`}
-                                    {blessing === '재능' && `식신(${relationCounts['식신']}) / 상관(${relationCounts['상관']})`}
+                                    {blessing === '식' && `식신(${relationCounts['식신']}) / 상관(${relationCounts['상관']})`}
                                     {blessing === '재물' && `편재(${relationCounts['편재']}) / 정재(${relationCounts['정재']})`}
                                     {blessing === '직장' && `편관(${relationCounts['편관']}) / 정관(${relationCounts['정관']})`}
-                                    {blessing === '명예' && `편인(${relationCounts['편인']}) / 정인(${relationCounts['정인']})`}
+                                    {blessing === '문서' && `편인(${relationCounts['편인']}) / 정인(${relationCounts['정인']})`}
                                 </td>
-                                <td>{blessing} 복 - {score}% 있어요</td>
-                                <td>{blessing} 복이 {getEvaluation(blessing, score)}</td>
+                                <td>
+                                    {blessing} 복 -
+                                    {blessing === '인' && " 좋은 인간 관계"}
+                                    {blessing === '식' && " 재능을 발휘할 기회"}
+                                    {blessing === '재물' && " 금전적 기회"}
+                                    {blessing === '직장' && " 좋은 직장 환경"}
+                                    {blessing === '문서' && " 문서와 계약의 혜택"}
+                                </td>
+                                <td>{score}% 있어요</td>
                             </tr>
                         ))}
                         <tr>

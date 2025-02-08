@@ -20,14 +20,11 @@ const SajuReport13 = () => {
             </button>
             {/* 상단 제목 */}
             <div className="header-section">
-                <h1 className="title">{name}님의 마음성향에서 발견하는 강점과 가능성</h1>
-                <p className="subtitle">
-                    사주로 마음 성향을 분석하고 더 나은 성장은 시작하세요
-                </p>
+                <h1 className="title">타고난 마음 성향</h1>
             </div>
 
             {/* 메인 이미지 섹션 */}
-            <div className="content-section">
+            <div className="content13-section">
                 <div className="image-section2">
                     <img
                         src={`${process.env.PUBLIC_URL}/images/mainPicture/mind.png`} // 더미 이미지 경로
@@ -35,7 +32,7 @@ const SajuReport13 = () => {
                         className="main-image2"
                     />
                 </div>
-                <div className="description-container">
+                <div className="description13-container">
                     <h1>
                         {name}님의 마음성향에서<br/>
                         발견하는 강점과 가능성

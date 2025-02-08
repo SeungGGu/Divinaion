@@ -1,6 +1,6 @@
 import React from 'react';
-import '../css/SajuIntro3.css';
 import { useNavigate } from "react-router-dom";
+import '../css/SajuIntro3.css';
 
 const SajuIntro3 = () => {
     const navigate = useNavigate();
@@ -10,28 +10,25 @@ const SajuIntro3 = () => {
     }
 
     return (
-        <div className="saju-intro2-container">
+        <div className="saju-intro3-container">
+            {/* 상단 고정 타이틀 */}
+            <div className="saju-intro3-title-box">
+                <h1 className="saju-intro3-title">
+                    무엇이 궁금하신가요?<br />
+                    당신의 고민에 맞춘 사주 분석 보고서, 지금 확인해보세요!
+                </h1>
+            </div>
             {/* 우측 상단의 다음 버튼 */}
-            <button className="saju-intro2-next-button" onClick={nextPageOnClick}>
+            <button className="saju-intro3-next-button" onClick={nextPageOnClick}>
                 다음 ▶
             </button>
-            {/* 페이지 타이틀 */}
-            <h1 className="saju-intro2-title">
-                무엇이 궁금하신가요?<br/>
-                당신의 고민에 맞춘 사주 분석 보고서, 지금 확인해보세요!
-            </h1>
-            {/* 중앙 구조 */}
-            <div className="saju-intro2-main">
-                <div className="saju-intro2-center">보이는 사주</div>
-                <div className="saju-intro2-circle">
-                    <div className="saju-intro2-item" style={{gridArea: '인연'}}>인연</div>
-                    <div className="saju-intro2-item" style={{gridArea: '건강'}}>건강</div>
-                    <div className="saju-intro2-item" style={{gridArea: '직업'}}>직업</div>
-                    <div className="saju-intro2-item" style={{gridArea: '적성'}}>적성</div>
-                    <div className="saju-intro2-item" style={{gridArea: '운세'}}>운세</div>
-                    <div className="saju-intro2-item" style={{gridArea: '재물'}}>재물</div>
-                    <div className="saju-intro2-item" style={{gridArea: '성격'}}>성격</div>
-                </div>
+            {/* 중앙 이미지 */}
+            <div className="saju-intro3-image-container">
+                <img
+                    className="saju-intro3-image"
+                    src={`${process.env.PUBLIC_URL}/images/mainPicture/intro3.png`}
+                    alt="Intro Background"
+                />
             </div>
         </div>
     );

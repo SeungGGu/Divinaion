@@ -1,70 +1,83 @@
+/* 전체 컨테이너 */
 .report31-container {
     background-color: #1e1e1e;
     color: #f8f8f8;
     padding: 0px 40px;
     text-align: center;
     font-family: 'Arial', sans-serif;
-    height: 100vh; /* 화면 높이 고정 */
-    overflow: hidden; /* 스크롤 제거 */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+/* 제목 스타일 */
 .report-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: #f0c674;
     margin-bottom: 20px;
 }
 
 .report-subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+    font-size: 1.4rem;
     color: #dcdcdc;
+    margin-bottom: 40px;
 }
 
+/* 오행 테이블 */
 .energy-summary-table {
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 850px;
     background-color: #2a2a2a;
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     overflow: hidden;
+    padding: 20px;
 }
 
+/* 테이블 */
 .energy-summary-table table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.energy-summary-table th, .energy-summary-table td {
-    border: 1px solid #444;
-    padding: 15px;
-    text-align: center;
-    font-size: 1rem;
-    color: #f8f8f8;
-}
-
+/* 테이블 헤더 */
 .energy-summary-table th {
-    background-color: #333;
+    background-color: #444;
+    font-size: 1.2rem;
     font-weight: bold;
+    padding: 15px;
+    color: #f8f8f8;
+    text-align: center;
 }
 
-.next-page-button {
-    margin-top: 20px;
-    padding: 10px 20px;
+/* 테이블 셀 */
+.energy-summary-table td {
+    padding: 15px;
     font-size: 1rem;
-    background-color: #f0d58c;
-    color: #000;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    text-align: center;
+    border-bottom: 1px solid #555;
 }
 
-.next-page-button:hover {
-    background-color: #e5c07b;
+/* 비율 셀 */
+.percentage-cell {
+    font-weight: bold;
+    color: #f0c674;
+    font-size: 1.1rem;
 }
 
-.report31-footer {
-    margin-top: 20px;
-    font-size: 1rem;
+/* 설명 셀 */
+.description-cell {
+    text-align: left;
     color: #dcdcdc;
+    line-height: 1.6;
+}
+
+/* 하단 메시지 */
+.report31-footer {
+    margin-top: 40px;
+    font-size: 1.2rem;
+    color: #bbb;
+    text-align: center;
 }

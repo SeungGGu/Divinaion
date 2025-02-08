@@ -1,18 +1,23 @@
+/* 전체 컨테이너 */
 .report20-container {
     background-color: #1e1e1e; /* 어두운 배경 */
     color: #f8f8f8; /* 밝은 텍스트 */
-    padding: 0px 40px;
+    padding: 20px 40px;
     text-align: center;
     font-family: 'Arial', sans-serif;
-    height: 100vh; /* 화면 높이 고정 */
-    overflow: hidden; /* 스크롤 제거 */
+    min-height: 100vh; /* 최소 높이 설정 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* 제목 섹션 */
 .header-section .title {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: bold;
     color: #f0c674; /* 강조 색상 */
     margin-bottom: 10px;
+    margin-top: 20px;
 }
 
 .header-section .subtitle {
@@ -26,18 +31,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px; /* 이미지와 글 간격 */
+    gap: 20px; /* 이미지와 글 간격 */
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 30px;
 }
+
 /* 이미지 섹션 스타일 */
 .image-section {
-    flex: 0 0 60%; /* 이미지 섹션의 너비를 고정 */
+    flex: 1;
     display: flex;
     justify-content: center; /* 이미지 가운데 정렬 */
     align-items: center;
 }
 
 .image-section .main-image {
-    max-width: 50%;
+    max-width: 70%;
     height: auto;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
@@ -45,13 +54,14 @@
 
 /* 글 박스 스타일 */
 .text-box {
-    max-width: 40%;
+    flex: 1;
     padding: 20px;
     border: 2px solid #f0c674; /* 테두리 색상 */
     border-radius: 10px;
     background-color: #2a2a2a; /* 박스 배경색 */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* 박스 그림자 */
     text-align: left;
+    max-width: 400px;
 }
 
 .text-box .text-content {
@@ -64,6 +74,51 @@
     color: #f0c674; /* 강조된 텍스트 색상 */
 }
 
+/* 5대 덕 섹션 */
+.blessing-section {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 30px;
+    text-align: left;
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f0c674;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* 5대 덕 리스트 */
+.blessing-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.blessing-item {
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    border-bottom: 1px solid #444;
+    display: flex;
+    flex-direction: column;
+}
+
+.blessing-item:last-child {
+    border-bottom: none;
+}
+
+.blessing-title {
+    font-weight: bold;
+    color: #f0c674;
+    font-size: 1.2rem;
+}
+
 /* 하단 메시지 */
 .footer-section {
     margin-top: 20px;
@@ -73,4 +128,20 @@
     font-size: 1.2rem;
     color: #dcdcdc;
     margin-bottom: 20px;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .main-section {
+        flex-direction: column;
+    }
+
+    .text-box {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .blessing-section {
+        text-align: center;
+    }
 }

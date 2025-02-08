@@ -21,16 +21,16 @@ const SajuReport37 = () => {
 
     // 귀인 맵 정의
     const benefactorMap = {
-        "甲": ["축", "미"],
-        "乙": ["자", "신"],
-        "丙": ["유", "해"],
-        "丁": ["유", "해"],
-        "戊": ["축", "미"],
-        "己": ["자", "신"],
-        "庚": ["축", "미"],
-        "辛": ["인", "오"],
-        "壬": ["묘", "사"],
-        "癸": ["묘", "사"],
+        "甲": ["축(丑)", "미(未)"],
+        "乙": ["자(子)", "신(申)"],
+        "丙": ["유(酉)", "해(亥)"],
+        "丁": ["유(酉)", "해(亥)"],
+        "戊": ["축(丑)", "미(未)"],
+        "己": ["자(子)", "신(申)"],
+        "庚": ["축(丑)", "미(未)"],
+        "辛": ["인(寅)", "오(午)"],
+        "壬": ["묘(卯)", "사(巳)"],
+        "癸": ["묘(卯)", "사(巳)"]
     };
 
     const benefactors = benefactorMap[result.daySky] || ["없음", "없음"];
@@ -82,7 +82,10 @@ const SajuReport37 = () => {
     );
 
     const handleNextPage = () => {
-        navigate('/Report38', {state: {benefactors}}); // 다음 페이지로 이동
+        // 한자 제거하고 키 값만 추출
+        const cleanBenefactors = benefactors.map(b => b.split("(")[0]);
+
+        navigate('/Report38', { state: { benefactors: cleanBenefactors } });
     };
 
     return (
@@ -193,7 +196,7 @@ const SajuReport37 = () => {
                 <p className="footer-message">
                     {hasBenefactor
                         ? "귀인의 도움으로 새로운 기회를 발견하고 도전에 성공할 가능성이 높습니다."
-                        : "귀인이 없을 때는 내 주변의 사람들과 협력하여 기회를 찾을 수 있습니다."}
+                        : "귀인이 없을 때는 주변 사람들과 힘을 합치면 새로운 기회를 만들 수 있습니다."}
                 </p>
             </div>
         </div>

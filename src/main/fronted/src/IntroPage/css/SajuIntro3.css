@@ -1,105 +1,74 @@
 /* 전체 컨테이너 */
-.saju-intro2-container {
+.saju-intro3-container {
     background-color: #1a1a1a;
     color: #f0f0f0;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     overflow: hidden;
     position: relative;
 }
 
-/* 상단 타이틀 */
-.saju-intro2-title {
-    font-size: 1.5rem;
-    text-align: center;
-    margin-top: 20px;
-    line-height: 1.6;
-    color: #f0f0f0;
-}
-
-/* 중앙 메인 구조 */
-.saju-intro2-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 100%;
-    height: 70%;
-}
-
-/* "보이는 사주" 글귀 */
-.saju-intro2-center {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #000;
-    background-color: #f0f0f0;
-    padding: 20px;
+/* 상단 고정 타이틀 박스 */
+.saju-intro3-title-box {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8); /* 반투명 배경 */
+    padding: 15px 30px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    z-index: 1;
-    position: absolute;
-}
-
-/* 원형 배치 컨테이너 */
-.saju-intro2-circle {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0;
-    margin-top: 20px;
-}
-
-/* 각 박스 */
-.saju-intro2-item {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    background-color: #444;
-    color: #f0f0f0;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    font-weight: bold;
+    z-index: 10;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
 }
 
-.saju-intro2-item:nth-child(1) { transform: translate(-120px, -120px); }
-.saju-intro2-item:nth-child(2) { transform: translate(120px, -120px); }
-.saju-intro2-item:nth-child(3) { transform: translate(-160px, 0px); }
-.saju-intro2-item:nth-child(4) { transform: translate(160px, 0px); }
-.saju-intro2-item:nth-child(5) { transform: translate(-120px, 120px); }
-.saju-intro2-item:nth-child(6) { transform: translate(120px, 120px); }
-.saju-intro2-item:nth-child(7) { transform: translate(0, -180px); }
+/* 타이틀 텍스트 */
+.saju-intro3-title {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #f0f0f0;
+    margin: 0;
+}
+
+/* 중앙 이미지 컨테이너 */
+.saju-intro3-image-container {
+    width: 80%; /* 화면 크기에 따라 조정 가능 */
+    max-width: 800px; /* 최대 크기 제한 */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px; /* 타이틀 박스 아래 공간 확보 */
+}
+
+/* 중앙 이미지 */
+.saju-intro3-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 15px; /* 둥근 모서리 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* 그림자 */
+}
 
 /* 우측 상단 다음 버튼 */
-.saju-intro2-next-button {
+.saju-intro3-next-button {
     position: absolute;
     top: 20px;
     right: 20px;
     background-color: #4caf50;
-    color: #fff;
+    color: white;
     font-size: 1rem;
     padding: 10px 20px;
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-.saju-intro2-next-button:hover {
-    background-color: #45a049;
+.saju-intro3-next-button:hover {
     transform: scale(1.05);
+    background-color: #45a049;
 }

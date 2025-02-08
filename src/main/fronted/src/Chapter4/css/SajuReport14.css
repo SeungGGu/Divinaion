@@ -5,53 +5,70 @@
     font-family: 'Arial', sans-serif;
     height: 100vh; /* 화면 높이 고정 */
     overflow: hidden; /* 스크롤 제거 */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.report-title {
+/* 타이틀 스타일 */
+.report14-container .report-title {
     font-size: 2rem;
     color: #f0c674;
+    margin-top: 20px;
     margin-bottom: 10px;
 }
 
-.report-subtitle {
+.report14-container .report-subtitle {
     font-size: 1.2rem;
     color: #dcdcdc;
     margin-bottom: 30px;
+    text-align: center;
 }
 
-.report-content {
+/* 컨텐츠 가로 정렬 */
+.report14-container .report-content {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    flex-direction: row; /* 가로 배치 */
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px; /* 두 표 사이 간격 */
+    width: 90%;
+    max-width: 1200px;
     margin-bottom: 30px;
 }
 
-.mind-analysis-section,
-.mind-score-section {
+/* 개별 표 스타일 */
+.report14-container .mind-analysis-section,
+.report14-container .mind-score-section {
     flex: 1;
     background-color: #2a2a2a;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 550px;
 }
 
-.mind-analysis-table,
-.mind-score-table {
+/* 표 정렬 및 스타일 */
+.report14-container .mind-analysis-table,
+.report14-container .mind-score-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-.mind-analysis-table th,
-.mind-score-table th,
-.mind-analysis-table td,
-.mind-score-table td {
+.report14-container .mind-analysis-table th,
+.report14-container .mind-score-table th,
+.report14-container .mind-analysis-table td,
+.report14-container .mind-score-table td {
     border: 1px solid #555;
     padding: 10px;
     text-align: center;
 }
 
-.next-page-button {
+/* 다음 페이지 버튼 */
+.report14-container .next-page-button {
     padding: 10px 20px;
     background-color: #f0d58c;
     color: #000;
@@ -60,8 +77,9 @@
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    margin-top: 20px;
 }
 
-.next-page-button:hover {
+.report14-container .next-page-button:hover {
     background-color: #e5c07b;
 }

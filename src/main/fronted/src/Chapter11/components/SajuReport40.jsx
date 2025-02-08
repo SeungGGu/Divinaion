@@ -1,5 +1,5 @@
 import React from "react";
-import { useSaju } from "../../context/SajuContext";
+import {useSaju} from "../../context/SajuContext";
 import "../css/SajuReport40.css";
 import {useNavigate} from "react-router-dom";
 
@@ -41,18 +41,31 @@ const hanjaToElementMap = {
     "戌": "earth", "亥": "water",
 };
 
-// 운세 설명 매핑
-const fortuneDescriptions = {
-    "비견": "변화를 수용하는 해",
-    "겁재": "도전을 이끄는 해",
-    "식신": "안정을 추구하는 해",
-    "상관": "창의력을 발휘하는 해",
-    "편재": "기회를 잡는 해",
-    "정재": "신뢰를 쌓는 해",
-    "편관": "리더쉽을 발휘하는 해",
-    "정관": "책임을 다하는 해",
-    "편인": "내면의 성장을 배우는 해",
-    "정인": "인정을 받는 해",
+// 남자(FEMALE X)와 여자(FEMALE O) 해시태그 구분
+const maleFortuneTags = {
+    "비견": "#협력 #자신감 상승 #갈등 #경쟁하다",
+    "겁재": "#도전 #인간관계 #재물 손실 #분쟁",
+    "식신": "#건강 #창의력 #이성문제 #나태함",
+    "상관": "#능력발휘 #추진력 #구설수 #충돌",
+    "편재": "#재산 증가 #활동성 #과소비 #이성 문제",
+    "정재": "#안정감 #책임감 #집착하다 #스트레스",
+    "편관": "#도전정신 #리더십 #갈등 #불안과 강박",
+    "정관": "#직장 운 #목표달성 #압박감 #책임부담",
+    "편인": "#많은 생각 #몰입하다 #고립감 #비현실적",
+    "정인": "#안정감 #혜택 받다 #많은 걱정 #고집",
+};
+
+const femaleFortuneTags = {
+    "비견": "#협력 #자신감 상승 #갈등 #경쟁하다",
+    "겁재": "#도전 #인간관계 #재물 손실 #분쟁",
+    "식신": "#건강 #창의력 #이성문제 #나태함",
+    "상관": "#능력발휘 #추진력 #구설수 #충돌",
+    "편재": "#재산 증가 #활동성 #과소비 #금전 문제",
+    "정재": "#안정감 #책임감 #집착하다 #스트레스",
+    "편관": "#도전정신 #리더십 #강박감 #이성문제",
+    "정관": "#이성관계 #목표달성 #압박감 #책임부담",
+    "편인": "#많은 생각 #몰입하다 #고립감 #비현실적",
+    "정인": "#안정감 #혜택 받다 #많은 걱정 #고집",
 };
 
 const getElementColor = (hanja) => fiveElementColorMap[hanjaToElementMap[hanja]] || "#fff";
@@ -63,11 +76,11 @@ const calculateRelationship = (dayElement, dayYinYang, branchElement, branchYinY
     if (!dayElement || !branchElement) return "운세 없음";
 
     const relations = {
-        wood: { produces: "fire", controls: "earth", supportedBy: "water" },
-        fire: { produces: "earth", controls: "metal", supportedBy: "wood" },
-        earth: { produces: "metal", controls: "water", supportedBy: "fire" },
-        metal: { produces: "water", controls: "wood", supportedBy: "earth" },
-        water: { produces: "wood", controls: "fire", supportedBy: "metal" },
+        wood: {produces: "fire", controls: "earth", supportedBy: "water"},
+        fire: {produces: "earth", controls: "metal", supportedBy: "wood"},
+        earth: {produces: "metal", controls: "water", supportedBy: "fire"},
+        metal: {produces: "water", controls: "wood", supportedBy: "earth"},
+        water: {produces: "wood", controls: "fire", supportedBy: "metal"},
     };
 
     // 비견/겁재: 일간과 동일한 오행
@@ -128,8 +141,8 @@ const getYearlyFortune = (dayStem, yearBranch) => {
 };
 
 const SajuReport40 = () => {
-    const { sajuData } = useSaju();
-    const { name, result } = sajuData || {};
+    const {sajuData} = useSaju();
+    const {name, result, gender} = sajuData || {};
     const navigate = useNavigate();
 
     if (!result) {
@@ -144,6 +157,9 @@ const SajuReport40 = () => {
 
     const currentFortune = getYearlyFortune(result.daySky, currentYearInfo.earthlyBranch);
     const nextFortune = getYearlyFortune(result.daySky, nextYearInfo.earthlyBranch);
+
+    const currentYearFortune = currentFortune; // 현재 연도 운세 저장
+    const nextYearFortune = nextFortune; // 다음 연도 운세 저장
 
     const handleNextPage = () => {
         navigate('/Report41', {
@@ -271,10 +287,16 @@ const SajuReport40 = () => {
                             <td>{nextFortune} 운</td>
                         </tr>
                         <tr>
-                            <td colSpan={2}>{currentYear}년 : {fortuneDescriptions[currentFortune]}</td>
-                        </tr>
-                        <tr>
-                            <td colSpan={2}>{nextYear}년 : {fortuneDescriptions[nextFortune]}</td>
+                            <td>
+                                <span className="fortune-tags">
+                                    {gender === "FEMALE" ? femaleFortuneTags[currentYearFortune] : maleFortuneTags[currentYearFortune]}
+                                </span>
+                            </td>
+                            <td>
+                                <span className="fortune-tags">
+                                    {gender === "FEMALE" ? femaleFortuneTags[nextYearFortune] : maleFortuneTags[nextYearFortune]}
+                                </span>
+                            </td>
                         </tr>
                         </tbody>
                     </table>

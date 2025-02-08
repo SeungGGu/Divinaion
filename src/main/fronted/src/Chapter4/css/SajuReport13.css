@@ -29,20 +29,58 @@
     color: #dcdcdc;
 }
 
+/* 메인 콘텐츠 섹션 */
+.content13-section {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* 중앙 정렬 */
+    gap: 40px; /* 이미지와 설명 사이 간격 */
+    max-width: 1200px; /* 최대 너비 설정 */
+    width: 100%;
+    margin-top: 20px;
+}
+
 /* 이미지 섹션 */
 .image-section2 {
     display: flex;
     justify-content: center;
-    margin: 20px 0;
 }
 
 .main-image2 {
-    max-width: 600px; /* 이미지 최대 너비 축소 */
+    max-width: 500px; /* 이미지 크기 조정 */
     height: auto; /* 비율 유지 */
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
+/* 설명 컨테이너 */
+.description13-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 세로 중앙 정렬 */
+    align-items: center; /* 가로 중앙 정렬 */
+    text-align: center; /* 내부 텍스트 중앙 정렬 */
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    padding: 30px; /* 여백 조정 */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    width: 40%; /* 컨테이너 크기 설정 */
+    max-width: 450px;
+}
+
+/* 설명 컨테이너 내부 텍스트 */
+.description13-container h1 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #f0c674;
+    margin-bottom: 10px;
+}
+
+.description13-container p {
+    font-size: 1rem;
+    color: #dcdcdc;
+    line-height: 1.5;
+}
 
 /* 하단 메시지 */
 .footer-section {
@@ -53,48 +91,4 @@
 .footer-message {
     font-size: 1rem;
     color: #add8e6;
-}
-
-.content-section {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 20px;
-    max-width: 1200px;
-    width: 100%;
-    margin-top: 20px;
-}
-
-/* 설명 섹션 */
-.content-section .description-container {
-    flex: 1;
-    text-align: left;
-    background-color: #2a2a2a;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    max-width: 400px;
-}
-
-.content-section .description-container .description-title {
-    font-size: 1.4rem;
-    color: #f0c674;
-    margin-bottom: 15px;
-}
-
-.content-section .description-container .description-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    color: #dcdcdc;
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-.content-section .description-container .description-list li {
-    margin-bottom: 10px;
-}
-
-.content-section .description-container .description-list li strong {
-    color: #f0c674;
 }

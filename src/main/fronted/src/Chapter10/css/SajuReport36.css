@@ -8,7 +8,6 @@
     height: 100vh; /* 화면 높이 고정 */
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* 상단, 중단, 하단 균등 분포 */
     align-items: center;
     box-sizing: border-box; /* 패딩 포함 높이 계산 */
 }
@@ -18,14 +17,14 @@
     font-size: 2.5rem;
     font-weight: bold;
     color: #f0c674;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
 }
 
 /* 부제목 스타일 */
 .report36-subtitle {
     font-size: 1.4rem;
     color: #dcdcdc;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 /* 이미지와 박스를 가로 정렬 */
@@ -35,7 +34,7 @@
     align-items: center;
     gap: 20px;
     flex-wrap: wrap; /* 화면이 좁아질 때 줄바꿈 */
-    max-width: 1200px;
+    max-width: 1400px;
     height: auto;
 }
 
@@ -63,7 +62,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     text-align: left;
-    max-width: 45%; /* 텍스트 박스 너비 제한 */
+    max-width: 70%; /* 텍스트 박스 너비 제한 */
 }
 
 .text-line {

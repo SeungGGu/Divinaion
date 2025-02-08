@@ -22,15 +22,15 @@ const SajuReport14 = () => {
     // 관계에 따른 마음 성향
     const mindGroups = {
         비견: '협력적',
-        겁재: '경쟁적',
+        겁재: '도전적',
         식신: '내향적',
         상관: '외향적',
-        편재: '물질적',
-        정재: '안정적',
+        편재: '실리적',
+        정재: '실용적',
         편관: '권위적',
-        정관: '모범적',
-        편인: '창의적',
-        정인: '지혜적',
+        정관: '원칙적',
+        편인: '독창적',
+        정인: '포용적',
     };
 
     // 오행 색상 매핑
@@ -60,16 +60,16 @@ const SajuReport14 = () => {
     // 마음 성향 결과 계산
     const calculateMindScores = () => {
         const mindScores = {
-            물질적: 0,
-            경쟁적: 0,
+            실리적: 0,
+            도전적: 0,
             내향적: 0,
             외향적: 0,
-            안정적: 0,
+            실용적: 0,
             권위적: 0,
-            모범적: 0,
+            원칙적: 0,
             협력적: 0,
-            창의적: 0,
-            지혜적: 0,
+            독창적: 0,
+            포용적: 0,
         };
 
         Object.entries(relationsPercentage).forEach(([key, percentage]) => {
@@ -83,17 +83,25 @@ const SajuReport14 = () => {
         return mindScores;
     };
 
+    // 마음 성향과 추가 설명을 매칭한 객체
+    const mindDescriptions = {
+        협력적: '자기 확신',
+        도전적: '경쟁 심리',
+        내향적: '내적 안정',
+        외향적: '표현 욕구',
+        실리적: '현실 감각',
+        실용적: '계획적 사고',
+        권위적: '책임 의식',
+        원칙적: '공정한 판단',
+        독창적: '탐구 정신',
+        포용적: '신뢰 형성',
+    };
+
     const mindScores = calculateMindScores();
 
     // 사주 에너지 중복 제거 및 mindGroups에 포함된 항목만 필터링
     const uniqueEnergies = Object.values(result)
         .filter((relation, index, self) => self.indexOf(relation) === index && mindGroups[relation]);
-
-    // 평가 기호 함수
-    const getEvaluation = (percentage, isHighest) => {
-        if (percentage <= 42) return isHighest ? '좋아요' : '좋아요';
-        return '강해요';
-    };
 
     const handleNextPage = () => {
         navigate('/Report15', { state: { mindScores: mindScores } });
@@ -119,11 +127,6 @@ const SajuReport14 = () => {
 // 개수 계산 결과
     const energyCounts = calculateEnergyCounts();
 
-// 0개인 에너지는 제외한 목록 생성
-    const filteredEnergies = Object.entries(energyCounts)
-        .filter(([_, count]) => count > 0)
-        .map(([relation, count]) => ({ relation, count }));
-
     return (
         <div className="report14-container">
             {/* 다음 페이지 버튼 */}
@@ -131,7 +134,7 @@ const SajuReport14 = () => {
                 다음 ▶
             </button>
 
-            <h1 className="report-title">10. {name}님의 타고난 마음 성향, 사주로 분석합니다</h1>
+            <h1 className="report-title">15. {name}님의 타고난 마음 성향, 사주로 분석합니다</h1>
             <p className="report-subtitle">
                 자신의 마음 성향을 이해하고 삶에 활용할 실천 방안을 제시합니다
             </p>
@@ -217,13 +220,14 @@ const SajuReport14 = () => {
                         <tr>
                             <th>사주 에너지</th>
                             <th>마음 성향</th>
-                            <th>어때요?</th>
+                            <th>비율</th>
                         </tr>
                         </thead>
                         <tbody>
                         {uniqueEnergies.map((energy) => {
                             const mind = mindGroups[energy];
                             const count = energyCounts[energy] || 0; // 에너지 개수 가져오기
+                            const description = mindDescriptions[mind] || ''; // 추가 설명 가져오기
 
                             // 개수가 0인 에너지는 건너뛰기
                             if (count === 0) return null;
@@ -231,8 +235,8 @@ const SajuReport14 = () => {
                             return (
                                 <tr key={energy}>
                                     <td>{`${energy} (${count}개)`}</td>
-                                    <td>{`${mind} 마음 - ${mindScores[mind] || 0}% 있어요`}</td>
-                                    <td>타고남이 {getEvaluation(mindScores[mind] || 0)}</td>
+                                    <td>{`${mind} 마음 - ${description}`}</td>
+                                    <td>{`${mindScores[mind] || 0}% 있어요`}</td>
                                 </tr>
                             );
                         })}

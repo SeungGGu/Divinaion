@@ -1,85 +1,121 @@
+/* 전체 컨테이너 */
 .saju-report2-wrapper {
-    background-color: #1e1e1e; /* 기존 색상 유지 */
+    background-color: #1e1e1e;
     color: #f8f8f8;
     text-align: center;
-    height: 100vh; /* 화면 전체 높이에 맞춤 */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* 세로 방향 중앙 정렬 */
-    box-sizing: border-box; /* 내부 패딩 포함 계산 */
-    overflow: hidden; /* 스크롤 방지 */
-    padding: 20px; /* 여백 설정 */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
+/* 타이틀과 심볼을 가로로 정렬 */
+.title-symbol-container {
+    display: flex;
+    align-items: center; /* 수직 정렬 */
+    justify-content: center; /* 중앙 정렬 */
+    gap: 20px; /* 타이틀과 심볼 사이 간격 */
+    margin-bottom: 20px;
+}
+
+/* 페이지 제목 */
 .report-title {
     font-size: 2rem;
     color: #f0c674;
-    margin-bottom: 10px; /* 간격 조정 */
+    margin: 0; /* 여백 제거로 더 깔끔한 정렬 */
 }
 
+/* 부제목 */
 .report-subtitle {
     font-size: 1.2rem;
     color: #dcdcdc;
-    margin-bottom: 20px; /* 간격 조정 */
+    margin-bottom: 20px;
 }
 
+/* 콘텐츠 세로 정렬 */
 .report-content {
     display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    align-items: flex-start;
-    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
+/* 상단 - 천간 심볼 */
+.sky-symbol-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid #ccac00;
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.sky-symbol {
+    font-size: 2rem;
+    font-weight: bold;
+    color: black;
+}
+
+/* 성격 분석 박스 */
 .analysis-container {
-    flex: 2;
-    text-align: left;
-    padding: 20px;
     background-color: #2a2a2a;
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    text-align: left;
 }
 
 .analysis-title {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: bold;
     margin-bottom: 15px;
     color: #f0c674;
 }
 
 .strengths-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    margin-bottom: 20px;
+    list-style-type: disc;
+    padding-left: 20px; /* 왼쪽 여백 추가 */
+    color: #f8f8f8;
+    text-align: left;  /* 리스트 전체 왼쪽 정렬 */
 }
 
 .strengths-list li {
+    margin-bottom: 10px;
     font-size: 1rem;
-    margin-bottom: 15px;
-    color: #f8f8f8;
+    line-height: 1.4;
+    text-align: left; /* 리스트 항목 개별 왼쪽 정렬 */
+    padding-left: 10px; /* 들여쓰기 */
 }
 
+/* 이미지 및 설명 */
 .analysis-image-container {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-color: #353535;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    width: 100%;
 }
 
 .analysis-image {
-    max-width: 300px;
-    max-height: 300px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    max-width: 150px;
+    max-height: 150px;
+    margin-bottom: 10px;
+    border-radius: 8px;
     border: 2px solid #555;
-    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .analysis-description {
@@ -88,28 +124,36 @@
     border-radius: 8px;
     font-size: 1rem;
     color: #dcdcdc;
-    line-height: 1.5;
     text-align: center;
+    margin-bottom: 10px;
 }
 
-.sky-symbol-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* 다음 버튼 - 기존 위치 유지 */
+.nextPage-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.sky-symbol {
-    font-size: 2rem; /* 텍스트 크기를 조정하여 아이콘 내부에 잘 맞게 함 */
+.nextPage-button:hover {
+    background-color: #45a049;
+}
+
+/* 하단 문구 */
+.footer-text {
+    margin-top: 20px;
+    background-color: #000;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
     font-weight: bold;
-    width: 100px; /* 아이콘 크기 */
-    height: 100px; /* 아이콘 크기 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    background-color: #f9c74f; /* 기본 배경 색상 */
-    color: black; /* 텍스트 색상 */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
-    text-align: center;
 }

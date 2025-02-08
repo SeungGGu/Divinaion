@@ -75,7 +75,7 @@ const SajuReport1 = () => {
                 다음 ▶
             </button>
 
-            <h1>{name}님의 타고난 성향과 미래 가능성을 알려드립니다</h1>
+            <h1>{name}님의 님의 타고난 성향과 미래 가능성을 알려드립니다</h1>
             <p>성격, 적성, 대인관계까지 사주로 쉽게 풀어드립니다!</p>
 
             <div className="saju-report1-layout">
@@ -149,7 +149,6 @@ const SajuReport1 = () => {
                     <div className="info-box">약점 관리</div>
                 </div>
             </div>
-            <p className="footer-text">타고난 사주를 알면 나를 더 깊이 이해할 수 있습니다</p>
         </div>
     );
 };

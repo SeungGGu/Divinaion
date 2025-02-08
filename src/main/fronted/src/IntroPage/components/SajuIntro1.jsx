@@ -1,8 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/SajuIntro1.css';
+import {useSaju} from "../../context/SajuContext";
 
 const SajuIntro1 = () => {
+    const { sajuData } = useSaju();
+    const { name } = sajuData;
     const navigate = useNavigate();
 
     function nextPageOnClick() {
@@ -26,7 +29,11 @@ const SajuIntro1 = () => {
 
                 {/* 중앙 이미지 */}
                 <div className="saju-intro1-image-container">
-                    <img src={`${process.env.PUBLIC_URL}/images/mainPicture/saju.webp`} alt="Saju Main"/>
+                    <img
+                        className="saju-intro1-image"
+                        src={`${process.env.PUBLIC_URL}/images/mainPicture/saju.png`}
+                        alt="Saju Main"
+                    />
                 </div>
 
                 {/* 오른쪽 아이콘 */}
@@ -38,13 +45,13 @@ const SajuIntro1 = () => {
             </div>
 
             <div className="saju-intro1-title">
-                <h1>나의 사주를</h1>
-                <h1>알고 싶다</h1>
+                <h1>{name}님</h1>
+                <h1>사주 보고서</h1>
             </div>
 
             {/* 안내 텍스트 */}
             <div className="saju-intro1-text">
-                <p>나만의 사주 보고서로 나의 진짜 모습을 찾아보세요!</p>
+                <p>나만의 사주 보고서로 성향, 진로, 인연 등 다양한 분석을 지금 바로 확인하세요!</p>
             </div>
         </div>
     );

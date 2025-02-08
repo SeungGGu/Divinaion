@@ -1,106 +1,89 @@
+/* 📌 SajuReport15 전용 스타일 */
 .report15-container {
     background-color: #1e1e1e;
     color: #f8f8f8;
     min-height: 100vh;
-    height: 100vh; /* 화면 높이 고정 */
-    overflow: hidden; /* 스크롤 제거 */
-    padding: 0px 20px;
+    padding: 40px 20px;
     font-family: 'Arial', sans-serif;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.report-title {
+/* 제목 스타일 */
+.report15-title {
     font-size: 2rem;
     color: #f0c674;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
-.report-subtitle {
+.report15-subtitle {
     font-size: 1.2rem;
     color: #dcdcdc;
     margin-bottom: 30px;
 }
 
-.report3-content {
+/* 카드 컨테이너 - 3개씩 가로 정렬 */
+.report15-card-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 1줄에 3개 */
-    gap: 20px;
-    justify-items: center;
-    align-items: start;
+    grid-template-columns: repeat(3, 1fr); /* 3열 */
+    gap: 15px;
+    width: 90%;
+    max-width: 1200px;
 }
 
-.result-section {
+/* 개별 카드 */
+.report15-card {
     background-color: #2a2a2a;
-    border-radius: 10px;
     padding: 20px;
-    width: 90%;
+    border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     text-align: left;
+    transition: transform 0.3s ease-in-out;
 }
 
-.result-section.highlight {
-    background-color: gray;
-    color: #1e1e1e;
+.report15-card:hover {
+    transform: translateY(-5px);
 }
 
-.result-header {
+/* 카드 헤더 */
+.report15-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
-.result-category {
-    font-weight: bold;
+/* 성향 카테고리 */
+.mind-category {
+    color: #f0c674;
 }
 
-.result-score {
+/* 퍼센티지 */
+.mind-score {
     background-color: #444;
+    color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
-    color: #fff;
-}
-
-.result-message {
     font-size: 1rem;
-    margin-top: 10px;
 }
 
+/* 성향 설명 */
 .mind-description {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    font-size: 1rem;
     color: #dcdcdc;
+    line-height: 1.5;
 }
 
-.mind-description li {
-    margin-bottom: 5px;
+/* 하단 메시지 */
+.report15-footer {
+    margin-top: 25px;
 }
 
-.report-footer {
-    margin-top: 30px;
-}
-
-.footer-text {
+.report15-footer-text {
     font-size: 1rem;
     color: #bbb;
-}
-
-.next-page-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #000;
-    background-color: #f0c674;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.next-page-button:hover {
-    background-color: #e5b960;
-    transform: scale(1.05);
 }

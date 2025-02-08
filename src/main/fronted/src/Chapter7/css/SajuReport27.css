@@ -1,88 +1,85 @@
+/* 전체 컨테이너 */
 .saju-report27-container {
     background-color: #1e1e1e;
     color: #f8f8f8;
     padding: 0px 20px;
     text-align: center;
     font-family: 'Arial', sans-serif;
-    height: 100vh; /* 화면 높이 고정 */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
-}
-
-.saju-report27-title {
-    font-size: 1.8rem;
-    color: #f0c674;
-    margin-bottom: 10px;
-}
-
-.saju-report27-subtitle {
-    font-size: 1rem;
-    color: #dcdcdc;
-    margin-bottom: 20px;
-}
-
-.footer-section {
-    font-size: 0.9rem;
-    color: #dcdcdc;
-    text-align: center;
-}
-
-.saju-report27-weakness-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3열 고정 */
-    gap: 20px; /* 카드 간의 간격 줄임 */
-    justify-items: center;
-    max-width: 900px; /* 최대 너비 설정 */
-    margin: 0 auto; /* 중앙 정렬 */
-}
-
-.saju-report27-weakness-card {
-    background-color: #2a2a2a;
-    padding: 15px; /* 내부 여백 줄임 */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    width: 100%; /* 부모 그리드에 맞춤 */
-    max-width: 250px; /* 카드 최대 너비 줄임 */
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.saju-report27-weakness-card:hover {
-    transform: scale(1.03);
-}
-
-.energy-content {
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
 }
 
-.saju-report27-weakness-image {
-    width: 80px; /* 이미지 크기 축소 */
-    height: 80px;
-    border-radius: 50%;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-    border: 2px solid #444;
-}
-
-.saju-report27-weakness-title {
-    font-size: 1rem; /* 글자 크기 축소 */
+/* 제목 스타일 */
+.saju-report27-title {
+    font-size: 2.2rem;
     color: #f0c674;
+    margin-bottom: 20px;
 }
 
-.saju-report27-weakness-score {
-    font-size: 0.9rem; /* 점수 글자 크기 줄임 */
-    background-color: #444;
-    color: #fff;
-    padding: 3px 8px;
-    border-radius: 5px;
-}
-
-.saju-report27-weakness-description {
-    font-size: 0.8rem; /* 설명 글자 크기 줄임 */
+.saju-report27-subtitle {
+    font-size: 1.4rem;
     color: #dcdcdc;
-    line-height: 1.4;
+    margin-bottom: 40px;
+}
+
+/* 약점 테이블 */
+.saju-report27-weakness-list {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 1100px; /* 최대 너비 설정 */
+    border-top: 3px solid #f0c674;
+    padding: 10px 0;
+}
+
+/* 개별 약점 행 */
+.saju-report27-weakness-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-bottom: 2px solid #444;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* 호버 효과 */
+.saju-report27-weakness-row:hover {
+    background-color: #3a3a3a;
+    transform: scale(1.02);
+}
+
+/* 행동 성향 (왼쪽) */
+.saju-report27-weakness-category {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #f0c674;
+    text-align: left;
+    flex: 1;
+    padding-left: 20px;
+}
+
+/* 설명 (오른쪽) */
+.saju-report27-weakness-description {
+    font-size: 1.2rem;
+    color: #dcdcdc;
+    text-align: left;
+    flex: 2;
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+/* 하단 메시지 */
+.footer-section {
+    margin-top: 50px;
+}
+
+.footer-message {
+    font-size: 1.2rem;
+    color: #bbb;
 }

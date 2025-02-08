@@ -1,12 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import '../css/SajuReport21.css';
-import { useSaju } from '../../context/SajuContext';
+import {useSaju} from '../../context/SajuContext';
 
 const SajuReport21 = () => {
     const navigate = useNavigate();
-    const { sajuData } = useSaju();
-    const { name, gender, result } = sajuData || {};
+    const {sajuData} = useSaju();
+    const {name, gender, result} = sajuData || {};
 
     const relationsPercentage = {
         manseYearSkyRelation: 14,
@@ -86,7 +86,7 @@ const SajuReport21 = () => {
         .filter(([_, score]) => score >= 1 && score <= 42) // 1~42% 필터링
         .reduce((highest, [key, score]) => {
             if (!highest || score > highest.score) {
-                return { key, score };
+                return {key, score};
             }
             return highest;
         }, null);
@@ -101,7 +101,7 @@ const SajuReport21 = () => {
     };
 
     const handleNextPage = () => {
-        navigate('/Report22', { state: { blessingScores } });
+        navigate('/Report22', {state: {blessingScores}});
     };
 
     // 관계별 개수 계산 함수
@@ -133,13 +133,13 @@ const SajuReport21 = () => {
             <button className="nextPage-button" onClick={handleNextPage}>
                 다음 ▶
             </button>
-            <h1 className="report-title">15. {name}님의 타고난 5대 덕, 사주로 분석합니다</h1>
+            <h1 className="report-title">12. {name}님의 타고난 5대 덕, 사주로 분석합니다</h1>
             <p className="report-subtitle">
                 5덕의 비율로 인연의 의미를 이해하고 더 나은 관계를 만들어보세요
             </p>
 
             {/* 분석 표 */}
-            <div className="report-content">
+            <div className="report21-content">
                 {/* 왼쪽 덕 분석 */}
                 <div className="blessing-analysis-section">
                     <h2 className="section-title">{name}님의 사주 에너지 구성</h2>
@@ -194,8 +194,8 @@ const SajuReport21 = () => {
                         <thead>
                         <tr>
                             <th>사주 에너지</th>
-                            <th>5대 덕</th>
-                            <th>어때요?</th>
+                            <th>타고난 5대 덕</th>
+                            <th>비율</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -217,8 +217,19 @@ const SajuReport21 = () => {
                                     {blessing === '시댁' &&
                                         `편재(${relationCounts['편재']}) / 정재(${relationCounts['정재']})`}
                                 </td>
-                                <td>{`${blessing} 덕 - ${score}% 있어요`}</td>
-                                <td>{blessing + ' 덕이' + getEvaluation(blessing, score)}</td>
+                                <td>
+                                    {`${blessing} 덕 - ${
+                                        blessing === '인' ? '사람들의 신뢰를 얻다' :
+                                        blessing === '처가' ? '처가에서 도움을 받다' :
+                                        blessing === '시댁' ? '시댁에서 도움을 받다' :
+                                        blessing === '여자' ? '여성들과 좋은 관계다' :
+                                        blessing === '남자' ? '남자들과 좋은 관계다' :
+                                        blessing === '자식' ? '자녀에게 기쁨을 얻다' :
+                                        blessing === '부모' ? '부모에게 지지를 받다' :
+                                        ''
+                                    }`}
+                                </td>
+                                <td>{score}% 있어요</td>
                             </tr>
                         ))}
                         </tbody>

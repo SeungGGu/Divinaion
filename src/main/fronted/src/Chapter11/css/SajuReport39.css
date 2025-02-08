@@ -8,19 +8,22 @@
     overflow: hidden; /* 스크롤 제거 */
 }
 
+/* 제목 스타일 */
 .report39-title {
-    font-size: 2rem;
+    font-size: 2.2rem; /* 폰트 크기 증가 */
     font-weight: bold;
     color: #f0c674;
-    margin-bottom: 15px;
-}
-
-.report39-subtitle {
-    font-size: 1.2rem;
-    color: #dcdcdc;
+    margin-top: 40px;
     margin-bottom: 30px;
 }
 
+.report39-subtitle {
+    font-size: 1.4rem; /* 부제목 크기 증가 */
+    color: #dcdcdc;
+    margin-bottom: 40px;
+}
+
+/* 이미지 섹션 */
 .report39-image-section {
     display: flex;
     justify-content: center;
@@ -28,39 +31,26 @@
     margin: 20px 0;
 }
 
-.image-container {
+/* 이미지 크기 확대 */
+.report39-image-section .image-container {
     position: relative;
-    width: 70%;
-    max-width: 500px;
+    width: 90%; /* 더 넓게 */
+    max-width: 1200px; /* 최대 크기 제한 */
     text-align: center;
 }
 
-.main-image {
+/* 이미지 크기 조정 및 스타일 */
+.report39-image-section .image-container .main-image {
     width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    max-height: 800px; /* 이미지 높이 제한 */
+    object-fit: cover; /* 이미지가 꽉 차도록 설정 */
+    border-radius: 15px; /* 둥근 모서리 */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
 }
 
+/* 하단 메시지 */
 .report39-footer {
-    margin-top: 30px;
-    font-size: 1rem;
+    margin-top: 40px;
+    font-size: 1.2rem;
     color: #bbb;
-}
-
-.next-button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #000;
-    background-color: #f0d58c;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.next-button:hover {
-    background-color: #e5c07b;
-    transform: scale(1.05);
 }

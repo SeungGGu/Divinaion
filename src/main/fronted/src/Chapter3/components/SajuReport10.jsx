@@ -22,11 +22,21 @@ const SajuReport10 = () => {
     // 관계에 따른 재능 그룹
     const relationGroups = {
         자신감: ['비견', '겁재'],
-        창의력: ['식신', '상관'],
+        잠재력: ['식신', '상관'],
         경제력: ['편재', '정재'],
-        성취력: ['편관', '정관'],
-        사고력: ['편인', '정인'],
+        조직력: ['편관', '정관'],
+        학습력: ['편인', '정인'],
     };
+
+    // 능력 매핑 객체 추가
+    const abilityDescriptions = {
+        자신감: "리더십 발휘 능력",
+        잠재력: "재능 발휘 능력",
+        경제력: "경제 감각 능력",
+        조직력: "조직 관리 능력",
+        학습력: "지식 습득 능력",
+    };
+
 
     // 관계별 개수 계산 함수 추가
     const calculateRelationCounts = () => {
@@ -63,10 +73,10 @@ const SajuReport10 = () => {
     const calculateScores = () => {
         const scores = {
             자신감: 0,
-            창의력: 0,
+            잠재력: 0,
             경제력: 0,
-            성취력: 0,
-            사고력: 0,
+            조직력: 0,
+            학습력: 0,
         };
 
         Object.entries(relationsPercentage).forEach(([key, percentage]) => {
@@ -86,20 +96,6 @@ const SajuReport10 = () => {
     const handleNextPage = () => {
         navigate('/Report11', { state: { scores } });
     };
-
-    const getEvaluation = (score, isHighest) => {
-        if (score === 0) return "약해요";
-        if (score >= 1 && score <= 42) return isHighest ? "좋아요" : "좋아요";
-        return "강해요";
-    };
-
-    // 가장 높은 1~42% 값 찾기
-    const highestKey = Object.keys(scores).reduce((highest, key) => {
-        if (scores[key] >= 1 && scores[key] <= 42 && (!highest || scores[key] > scores[highest])) {
-            return key;
-        }
-        return highest;
-    }, null);
 
     // 오행 색상 매핑
     const fiveElementColorMap = {
@@ -132,18 +128,18 @@ const SajuReport10 = () => {
                 다음 ▶
             </button>
 
-            <h1 className="report-title">
+            <h1 className="report10-title">
                 7. {name}님의 타고난 능력, 사주로 분석합니다
             </h1>
-            <p className="report-subtitle">
+            <p className="report10-subtitle">
                 타고난 능력과 가능성을 사주 에너지로 발견해보세요!
             </p>
 
-            <div className="report-content">
+            <div className="report10-content">
                 {/* 기존 재능 분석표 */}
-                <div className="analysis-section">
-                    <h2 className="section-title">{name}님의 사주 에너지 구성</h2>
-                    <table className="saju-table">
+                <div className="analysis10-section">
+                    <h2 className="section10-title">{name}님의 사주 에너지 구성</h2>
+                    <table className="saju10-table">
                         <tbody>
                         <tr>
                             <td>{result.manseTimeSkyRelation}</td>
@@ -214,27 +210,27 @@ const SajuReport10 = () => {
                 </div>
 
                 {/* 퍼센티지 결과 */}
-                <div className="percentage-section">
-                    <h2 className="section-title">사주로 알아보는 {name}님의 타고난 능력</h2>
-                    <table className="percentage-table">
+                <div className="percentage10-section">
+                    <h2 className="section10-title">사주로 알아보는 {name}님의 타고난 능력</h2>
+                    <table className="percentage10-table">
                         <thead>
                         <tr>
                             <th>사주 에너지</th>
                             <th>타고난 능력</th>
-                            <th>어때요?</th>
+                            <th>비율</th>
                         </tr>
                         </thead>
                         <tbody>
                         {Object.entries(scores).map(([key, score]) => (
                             <tr key={key}>
                                 <td>{getRelationWithCounts(key)}</td>
-                                <td>{key} - {score}% 있어요</td>
-                                <td>{key}이 {getEvaluation(score, highestKey === key)}</td>
+                                <td>{key} - {abilityDescriptions[key]}</td>
+                                <td>{score}% 있어요</td>
                             </tr>
                         ))}
                         </tbody>
                     </table>
-                    <div className="extra-footer">
+                    <div className="extra10-footer">
                         <p>비율이 낮으면 에너지가 부족합니다</p>
                         <p>높은 비율은 강점이지만, 지나치면 단점이 될 수 있어요</p>
                     </div>

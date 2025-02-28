@@ -64,7 +64,7 @@ public class SajuService {
             birthDateTime = adjustForLongitude(birthDateTime);
             birthDateTime = adjustForSummertime(birthDateTime);
 
-            System.out.println("시간 조정 후 : " + birthDateTime);
+            System.out.println("최종 시간 조정 후 : " + birthDateTime); // 변경된 시간을 출력하여 확인
 
             String[] sajuElements = calculateSajuElements(birthDateTime);
 
@@ -117,21 +117,28 @@ public class SajuService {
     }
 
     private LocalDateTime adjustForLongitude(LocalDateTime dateTime) {
+        boolean adjusted = false;
         for (LocalDateTime[] period : LONGITUDE_PERIODS) {
             if (!dateTime.isBefore(period[0]) && dateTime.isBefore(period[1])) {
                 System.out.println("adjustForLongitude - 동경시 조정 없음: " + dateTime);
-                return dateTime;
+                return dateTime; // 조정하지 않음
             }
         }
-        System.out.println("adjustForLongitude - 동경시 조정 적용됨: " + dateTime);
-        return dateTime.minusMinutes(30);
+        if (!adjusted) {
+            System.out.println("adjustForLongitude - 동경시 조정 적용 전: " + dateTime);
+            dateTime = dateTime.minusMinutes(30);
+            System.out.println("adjustForLongitude - 동경시 조정 적용 후: " + dateTime);
+        }
+        return dateTime;
     }
 
     private LocalDateTime adjustForSummertime(LocalDateTime dateTime) {
         for (LocalDateTime[] period : DST_PERIODS) {
             if (!dateTime.isBefore(period[0]) && dateTime.isBefore(period[1])) {
-                System.out.println("adjustForSummertime - 써머타임 조정 적용됨: " + dateTime);
-                return dateTime.minusHours(1);
+                System.out.println("adjustForSummertime - 써머타임 조정 적용 전: " + dateTime);
+                dateTime = dateTime.minusHours(1);
+                System.out.println("adjustForSummertime - 써머타임 조정 적용 후: " + dateTime);
+                return dateTime;
             }
         }
         return dateTime;
@@ -144,6 +151,7 @@ public class SajuService {
         int baseJiJiIndex = 0;
         int baseDayTenKanIndex = 5; // 일주의 천간 기준 (己)
         int baseDayJiJiIndex = 11;  // 일주의 지지 기준 (亥)
+
         System.out.println("일주의 천간 기준 : " + TENKAN_CYCLE[baseDayTenKanIndex]);
         System.out.println("일주의 지지 기준 : " + JIJI_CYCLE[baseDayJiJiIndex]);
 
@@ -157,38 +165,40 @@ public class SajuService {
         String yearTenKan = TENKAN_CYCLE[yearTenKanIndex];
         String yearJiJi = JIJI_CYCLE[yearJiJiIndex];
 
-        // 월주 계산
-        int solarTermIndex = getSolarTermIndex(birthDateTime); // 절기 인덱스 계산
-        if (solarTermIndex == 24) {
-            solarTermIndex = 0; // 대한 이후는 입춘으로 간주
-        }
-        String[] monthTenKanGround = getMonthTenKanGround(yearTenKan, solarTermIndex);
-
-        String monthTenKan = monthTenKanGround[0];
-        String monthJiJi = monthTenKanGround[1];
+        // 날짜 변경 로직 (야자시 & 조자시 적용)
+        int hour = birthDateTime.getHour();
+        int minute = birthDateTime.getMinute();
 
         // 일주 계산
         if (birthDateTime.getHour() == 23) {
             birthDateTime = birthDateTime.plusDays(1); // 자시 이후는 다음 날로 간주
         }
 
-        // 경과일 계산
+        // 월주 계산
+        int solarTermIndex = getSolarTermIndex(birthDateTime);
+        if (solarTermIndex == 24) {
+            solarTermIndex = 0;
+        }
+        String[] monthTenKanGround = getMonthTenKanGround(yearTenKan, solarTermIndex);
+        String monthTenKan = monthTenKanGround[0];
+        String monthJiJi = monthTenKanGround[1];
+
+        // 일주 계산
         long totalDaysSinceBase = java.time.temporal.ChronoUnit.DAYS.between(baseDate, birthDateTime.toLocalDate());
-
-
-        // 60일 주기 계산 (일주)
         int cycleIndex = (int) (totalDaysSinceBase % 60);
-        int dayTenKanIndex = (baseDayTenKanIndex + cycleIndex) % 10; // 천간
-        int dayJiJiIndex = (baseDayJiJiIndex + cycleIndex) % 12;      // 지지
+        int dayTenKanIndex = (baseDayTenKanIndex + cycleIndex) % 10;
+        int dayJiJiIndex = (baseDayJiJiIndex + cycleIndex) % 12;
         String dayTenKan = TENKAN_CYCLE[dayTenKanIndex];
         String dayJiJi = JIJI_CYCLE[dayJiJiIndex];
 
-        // 디버깅 로그
         System.out.println("경과일 계산: totalDaysSinceBase=" + totalDaysSinceBase);
         System.out.println("일주 계산: 일간=" + dayTenKan + ", 일지=" + dayJiJi);
 
-        // 시주 계산
+        // ✅ 시주 계산에서 01:30 이후는 확실히 丑時(축시)로 변경되도록 보장
         int timeIndex = calculateTimeIndex(birthDateTime);
+        if (hour == 1 && minute >= 30) {
+            timeIndex = 1; // 01:30 이후부터는 丑時(축시)로 설정
+        }
         String timeTenKan = calculateTimeTenKan(dayTenKan, timeIndex);
         String timeJiJi = JIJI_CYCLE[timeIndex % 12];
 
@@ -259,14 +269,16 @@ public class SajuService {
         LocalDateTime ipChun = calculateIpChun(birthDateTime.getYear());
         LocalDateTime[] solarTerms = calculateSolarTermsWithAdjustment(ipChun);
 
-        // 절기 인덱스 계산
+        // 절기 인덱스 계산 (시간까지 고려)
         for (int i = 0; i < solarTerms.length - 1; i++) {
             if (!birthDateTime.isBefore(solarTerms[i]) && birthDateTime.isBefore(solarTerms[i + 1])) {
+                System.out.println("현재 절기: " + SOLAR_TERMS[i % 24] + " (절기 시작 시간: " + solarTerms[i] + ")");
                 return i % 24; // 인덱스가 24를 넘을 경우 순환하여 반환
             }
         }
 
-        return 23; // 기본적으로 마지막 인덱스로 반환하여 문제를 해결
+        System.out.println("현재 절기: " + SOLAR_TERMS[23] + " (절기 시작 시간: " + solarTerms[23] + ")");
+        return 23;
     }
 
     private LocalDateTime[] calculateSolarTermsWithAdjustment(LocalDateTime ipChun) {
@@ -302,25 +314,53 @@ public class SajuService {
         int hour = birthDateTime.getHour();
         int minute = birthDateTime.getMinute();
 
-        // 23:30 ~ 01:29 -> 子時
-        if ((hour == 23 && minute >= 30) || (hour == 0) || (hour == 1 && minute < 30)) {
-            return 0; // 子時
+        int timeIndex;
+
+        if ((hour == 23 && minute >= 0) || (hour == 0) || (hour == 1 && minute < 0)) {
+            timeIndex = 0; // 子時 (자시)
+        } else if ((hour == 1 && minute >= 0) || (hour == 2) || (hour == 3 && minute < 0)) {
+            timeIndex = 1; // 丑時 (축시)
+        } else if ((hour == 3 && minute >= 0) || (hour == 4) || (hour == 5 && minute < 0)) {
+            timeIndex = 2; // 寅時 (인시)
+        } else if ((hour == 5 && minute >= 0) || (hour == 6) || (hour == 7 && minute < 0)) {
+            timeIndex = 3; // 卯時 (묘시)
+        } else if ((hour == 7 && minute >= 0) || (hour == 8) || (hour == 9 && minute < 0)) {
+            timeIndex = 4; // 辰時 (진시)
+        } else if ((hour == 9 && minute >= 0) || (hour == 10) || (hour == 11 && minute < 0)) {
+            timeIndex = 5; // 巳時 (사시)
+        } else if ((hour == 11 && minute >= 0) || (hour == 12) || (hour == 13 && minute < 0)) {
+            timeIndex = 6; // 午時 (오시)
+        } else if ((hour == 13 && minute >= 0) || (hour == 14) || (hour == 15 && minute < 0)) {
+            timeIndex = 7; // 未時 (미시)
+        } else if ((hour == 15 && minute >= 0) || (hour == 16) || (hour == 17 && minute < 0)) {
+            timeIndex = 8; // 申時 (신시)
+        } else if ((hour == 17 && minute >= 0) || (hour == 18) || (hour == 19 && minute < 0)) {
+            timeIndex = 9; // 酉時 (유시)
+        } else if ((hour == 19 && minute >= 0) || (hour == 20) || (hour == 21 && minute < 0)) {
+            timeIndex = 10; // 戌時 (술시)
+        } else {
+            timeIndex = 11; // 亥時 (해시)
         }
-        // 01:30 ~ 03:29 -> 丑時
-        return ((hour + 1) / 2) % 12; // 시간대 인덱스 (2시간 단위)
+
+        System.out.println("calculateTimeIndex - 입력 시간: " + hour + ":" + minute + " -> 시주 인덱스: " + timeIndex + " (" + JIJI_CYCLE[timeIndex] + ")");
+        return timeIndex;
     }
 
     private String calculateTimeTenKan(String dayTenKan, int timeIndex) {
-        String[] tenKanCycle = {"甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"};
-        Map<String, Integer> tenKanOffsets = Map.of(
-                "甲", 0, "乙", 2, "丙", 4, "丁", 6, "戊", 8,
-                "己", 0, "庚", 2, "辛", 4, "壬", 6, "癸", 8
+        // 표에서 가져온 천간 조합
+        Map<String, String[]> timeTenKanMap = Map.of(
+                "甲", new String[]{"甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸", "甲", "乙"},
+                "乙", new String[]{"丙", "丁", "戊", "己", "庚", "辛", "壬", "癸", "甲", "乙", "丙", "丁"},
+                "丙", new String[]{"戊", "己", "庚", "辛", "壬", "癸", "甲", "乙", "丙", "丁", "戊", "己"},
+                "丁", new String[]{"庚", "辛", "壬", "癸", "甲", "乙", "丙", "丁", "戊", "己", "庚", "辛"},
+                "戊", new String[]{"壬", "癸", "甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"},
+                "己", new String[]{"甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸", "甲", "乙"},
+                "庚", new String[]{"丙", "丁", "戊", "己", "庚", "辛", "壬", "癸", "甲", "乙", "丙", "丁"},
+                "辛", new String[]{"戊", "己", "庚", "辛", "壬", "癸", "甲", "乙", "丙", "丁", "戊", "己"},
+                "壬", new String[]{"庚", "辛", "壬", "癸", "甲", "乙", "丙", "丁", "戊", "己", "庚", "辛"},
+                "癸", new String[]{"壬", "癸", "甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"}
         );
-
-        int baseIndex = tenKanOffsets.get(dayTenKan);
-        int timeTenKanIndex = (baseIndex + timeIndex) % 10;
-
-        return tenKanCycle[timeTenKanIndex];
+        return timeTenKanMap.get(dayTenKan)[timeIndex];
     }
 
     private LocalDateTime parseDateTime(String birthDate, String birthTime) {
